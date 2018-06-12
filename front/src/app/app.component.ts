@@ -12,7 +12,7 @@ import { Vehicles } from '../pages/vehicles/vehicles';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = Home;
+  rootPage: any = Vehicles;
 
   pages: Array<{title: string, component: any}>;
 
