@@ -4,7 +4,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
 import { MyApp } from './app.component';
 import { Home } from '../pages/home/home';
-import { Vehicles } from '../pages/vehicles/vehicles';
+import { Vehicles, AddVehicle } from '../pages/vehicles';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -15,7 +15,8 @@ import { HttpModule } from "@angular/http";
   declarations: [
     MyApp,
     Home,
-    Vehicles
+    Vehicles,
+    AddVehicle
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,8 @@ import { HttpModule } from "@angular/http";
   entryComponents: [
     MyApp,
     Home,
-    Vehicles
+    Vehicles,
+    AddVehicle
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Araç Ekle</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only>
+        <ion-icon name="save"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="verticalcenter">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 text-center>
+            <ion-list>
+                <ion-item>
+                  <ion-label>Marka</ion-label>
+                  <ion-select [(ngModel)]="make">
+                    <ion-option value="nes">NES</ion-option>
+                    <ion-option value="n64">Nintendo64</ion-option>
+                    <ion-option value="ps">PlayStation</ion-option>
+                    <ion-option value="genesis">Sega Genesis</ion-option>
+                    <ion-option value="saturn">Sega Saturn</ion-option>
+                    <ion-option value="snes">SNES</ion-option>
+                  </ion-select>
+                </ion-item>
+                <ion-item>
+                  <ion-label>Model</ion-label>
+                  <ion-select [(ngModel)]="model">
+                    <ion-option value="nes">NES</ion-option>
+                    <ion-option value="n64">Nintendo64</ion-option>
+                    <ion-option value="ps">PlayStation</ion-option>
+                    <ion-option value="genesis">Sega Genesis</ion-option>
+                    <ion-option value="saturn">Sega Saturn</ion-option>
+                    <ion-option value="snes">SNES</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12 text-center>
+          <button ion-button color="secondary" (click)="saveVehicle()">
+            <ion-icon name="md-checkmark-circle"></ion-icon>&nbsp; Kaydet
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

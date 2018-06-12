@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BaseService } from '../../_services/base.service';
+import { AddVehicle } from './addvehicle';
 
 @Component({
-  selector: 'page-list',
+  selector: 'vehicles',
   templateUrl: 'vehicles.html'
 })
 export class Vehicles implements OnInit {
@@ -28,6 +29,12 @@ export class Vehicles implements OnInit {
   ngOnInit() {
     this.base.get('vehicle/all').subscribe(data => {
       console.log(JSON.parse(data['_body']));
+    });
+  }
+
+  addVehicle() {
+    this.navCtrl.push(AddVehicle, {
+
     });
   }
 
