@@ -13,12 +13,7 @@ export class AddVehicle implements OnInit {
   }
 
   ngOnInit() {
-    this.base.get('make/all').subscribe(data => {
-      console.log(JSON.parse(data['_body']));
-    });
-    this.base.get('model/all').subscribe(data => {
-      console.log(JSON.parse(data['_body']));
-    });
+    console.log(this.base.enums)
   }
 
 }

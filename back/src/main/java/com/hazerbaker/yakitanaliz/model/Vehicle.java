@@ -12,7 +12,7 @@ import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "ykt_Vehicle")
-@Where(clause = "status=0")
+@Where(clause = "deleted=0")
 public class Vehicle extends BaseEntityAudit implements Serializable {
 
     private static final long serialVersionUID = -8097544382325741743L;

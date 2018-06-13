@@ -23,23 +23,23 @@ public class BaseEntity {
     @Column(name = "version")
     private Long version;
 
-    @Column(name = "status", nullable = false, columnDefinition = "char(1)")
-    String status = "0";
+    @Column(name = "deleted", nullable = false, columnDefinition = "char(1)")
+    String deleted = "0";
 
     public UUID getId() {
         return id;
     }
 
-    public String getStatus() {
-        return status;
+    public String getDeleted() {
+        return deleted;
     }
 
     public Long getVersion() {
         return version;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setDeleted(String deleted) {
+        this.deleted = deleted;
     }
 
     @Override

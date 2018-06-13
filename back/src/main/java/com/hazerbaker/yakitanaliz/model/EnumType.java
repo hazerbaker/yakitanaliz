@@ -10,7 +10,7 @@ import org.hibernate.annotations.Where;
 
 @Entity
 @Table(name = "ykt_EnumType")
-@Where(clause = "status=0")
+@Where(clause = "deleted=0")
 public class EnumType extends BaseEntity implements Serializable {
 	
 	private static final long serialVersionUID = -6757761682191097336L;

@@ -7,6 +7,7 @@ export class BaseService implements OnInit {
 
     loading = false;
     loader = 0;
+    enums = [];
 
     constructor(private http: Http, private toastr: ToastController) { }
 
@@ -63,5 +64,31 @@ export class BaseService implements OnInit {
         else {
             this.loading = false;
         }
+    }
+
+    getEnums() {
+        this.get('enum/all').subscribe(data => {
+            let parents = [];
+            for(let item of JSON.parse(data['_body'])) {
+                if(item.parent != null) {
+                    if(parents[item.parent.name] == undefined) parents[item.parent.name] = [];
+                    parents[item.parent.name].push({
+                        id: item.id,
+                        name: item.name,
+                        enumType: item.enumType.name
+                    })
+                }
+            }
+            for(let item of JSON.parse(data['_body'])) {
+                if(item.parent == null) {
+                    if(this.enums[item.enumType.name] == undefined) this.enums[item.enumType.name] = [];
+                    this.enums[item.enumType.name].push({
+                        id: item.id,
+                        name: item.name,
+                        [parents[item.name][0].enumType]: parents[item.name]
+                    });
+                }
+            }
+        });
     }
 }
