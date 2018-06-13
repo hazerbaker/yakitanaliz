@@ -8,12 +8,20 @@ import { BaseService } from '../../_services/base.service';
 })
 export class AddVehicle implements OnInit {
 
+  make;
+  model;
+  models = [];
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private base: BaseService) {
 
   }
 
   ngOnInit() {
     console.log(this.base.enums)
+  }
+
+  makeChange() {
+    this.models = this.make.Model;
   }
 
 }

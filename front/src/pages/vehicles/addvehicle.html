@@ -20,24 +20,14 @@
             <ion-list>
                 <ion-item>
                   <ion-label>Marka</ion-label>
-                  <ion-select [(ngModel)]="make">
-                    <ion-option value="nes">NES</ion-option>
-                    <ion-option value="n64">Nintendo64</ion-option>
-                    <ion-option value="ps">PlayStation</ion-option>
-                    <ion-option value="genesis">Sega Genesis</ion-option>
-                    <ion-option value="saturn">Sega Saturn</ion-option>
-                    <ion-option value="snes">SNES</ion-option>
+                  <ion-select [(ngModel)]="make" (ngModelChange)="makeChange()">
+                    <ion-option *ngFor="let item of base.enums.Make" [value]="item">{{item.name}}</ion-option>
                   </ion-select>
                 </ion-item>
                 <ion-item>
                   <ion-label>Model</ion-label>
                   <ion-select [(ngModel)]="model">
-                    <ion-option value="nes">NES</ion-option>
-                    <ion-option value="n64">Nintendo64</ion-option>
-                    <ion-option value="ps">PlayStation</ion-option>
-                    <ion-option value="genesis">Sega Genesis</ion-option>
-                    <ion-option value="saturn">Sega Saturn</ion-option>
-                    <ion-option value="snes">SNES</ion-option>
+                    <ion-option *ngFor="let item of models" [value]="item">{{item.name}}</ion-option>
                   </ion-select>
                 </ion-item>
               </ion-list>
