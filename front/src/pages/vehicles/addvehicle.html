@@ -17,20 +17,34 @@
     <ion-grid>
       <ion-row>
         <ion-col col-12 text-center>
-            <ion-list>
-                <ion-item>
-                  <ion-label>Marka</ion-label>
-                  <ion-select [(ngModel)]="make" (ngModelChange)="makeChange()">
-                    <ion-option *ngFor="let item of base.enums.Make" [value]="item">{{item.name}}</ion-option>
-                  </ion-select>
-                </ion-item>
-                <ion-item>
-                  <ion-label>Model</ion-label>
-                  <ion-select [(ngModel)]="model">
-                    <ion-option *ngFor="let item of models" [value]="item">{{item.name}}</ion-option>
-                  </ion-select>
-                </ion-item>
-              </ion-list>
+          <ion-list>
+            <ion-item>
+              <ion-label>Rumuz</ion-label>
+              <ion-input type="text" style="text-align: right"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>Marka</ion-label>
+              <ion-select [(ngModel)]="make" (ngModelChange)="makeChange()">
+                <ion-option *ngFor="let item of base.enums.Make" [value]="item">{{item.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Model</ion-label>
+              <ion-select [(ngModel)]="model">
+                <ion-option *ngFor="let item of models" [value]="item">{{item.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Yakıt Tipi</ion-label>
+              <ion-select [(ngModel)]="fueltype">
+                <ion-option *ngFor="let item of base.enums.FuelType" [value]="item">{{item.name}}</ion-option>
+              </ion-select>
+            </ion-item>
+            <ion-item>
+              <ion-label>Motor Hacmi (cc)</ion-label>
+              <ion-input [(ngModel)]="cc" type="text" style="text-align: right"></ion-input>
+            </ion-item>
+          </ion-list>
         </ion-col>
       </ion-row>
       <ion-row>

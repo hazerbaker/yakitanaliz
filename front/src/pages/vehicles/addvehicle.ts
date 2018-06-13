@@ -25,3 +25,5 @@ export class AddVehicle implements OnInit {
   }
 
 }
+
+//TODO: araç fotoğrafı

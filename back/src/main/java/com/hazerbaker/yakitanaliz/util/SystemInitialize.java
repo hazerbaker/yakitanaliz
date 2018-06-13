@@ -29,6 +29,9 @@ public class SystemInitialize {
 		EnumType enumType2 = new EnumType();
 		enumType2.setName("Model");
 		enumTypeRepo.save(enumType2);
+		EnumType enumType3 = new EnumType();
+		enumType3.setName("FuelType");
+		enumTypeRepo.save(enumType3);
 
 		Enum makeEnum1 = new Enum();
 		makeEnum1.setEnumType(enumType1);
@@ -74,6 +77,23 @@ public class SystemInitialize {
 		modelEnum6.setName("5");
 		modelEnum6.setParent(makeEnum3);
 		enumRepo.save(modelEnum6);
+
+		Enum fuelTypeEnum1 = new Enum();
+		fuelTypeEnum1.setEnumType(enumType3);
+		fuelTypeEnum1.setName("Benzinli");
+		enumRepo.save(fuelTypeEnum1);
+		Enum fuelTypeEnum2 = new Enum();
+		fuelTypeEnum2.setEnumType(enumType3);
+		fuelTypeEnum2.setName("Hibrid");
+		enumRepo.save(fuelTypeEnum2);
+		Enum fuelTypeEnum3 = new Enum();
+		fuelTypeEnum3.setEnumType(enumType3);
+		fuelTypeEnum3.setName("Dizel");
+		enumRepo.save(fuelTypeEnum3);
+		Enum fuelTypeEnum4 = new Enum();
+		fuelTypeEnum4.setEnumType(enumType3);
+		fuelTypeEnum4.setName("Elektrikli");
+		enumRepo.save(fuelTypeEnum4);
 
 		Vehicle vehicle = new Vehicle();
 		vehicle.setMake(modelEnum1.getParent());

@@ -82,11 +82,12 @@ export class BaseService implements OnInit {
             for(let item of JSON.parse(data['_body'])) {
                 if(item.parent == null) {
                     if(this.enums[item.enumType.name] == undefined) this.enums[item.enumType.name] = [];
-                    this.enums[item.enumType.name].push({
+                    let newEnum = {
                         id: item.id,
-                        name: item.name,
-                        [parents[item.name][0].enumType]: parents[item.name]
-                    });
+                        name: item.name
+                    }
+                    if(parents[item.name] != undefined && parents[item.name].length > 0) newEnum[parents[item.name][0].enumType] = parents[item.name]
+                    this.enums[item.enumType.name].push(newEnum);
                 }
             }
         });
