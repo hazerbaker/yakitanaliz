@@ -24,6 +24,17 @@ export class AddVehicle implements OnInit {
     this.models = this.make.Model;
   }
 
+  saveVehicle() {
+    let data = {
+      make: this.make,
+      model: this.model
+    }
+    this.base.post('vehicle',data).subscribe(data => {
+      console.log(JSON.parse(data['_body']));
+    });
+  }
+
+
 }
 
 //TODO: araç fotoğrafı
