@@ -1,0 +1,9 @@
+{
+    "yakitanalizApp": {
+        "Transmission" : {
+            "null": "",
+            "AUTO": "AUTO",
+            "MANUAL": "MANUAL"
+        }
+    }
+}

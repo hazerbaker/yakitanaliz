@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-enumeration-ya-heading" jhiTranslate="yakitanalizApp.enumeration.home.createOrEditLabel">Create or edit a Enumeration</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!enumeration.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="enumeration.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.enumeration.name" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="enumeration.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.enumeration.description" for="field_description">Description</label>
+                    <input type="text" class="form-control" name="description" id="field_description"
+                        [(ngModel)]="enumeration.description" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.enumeration.enumerationType" for="field_enumerationType">Enumeration Type</label>
+                    <select class="form-control" id="field_enumerationType" name="enumerationType" [(ngModel)]="enumeration.enumerationTypeId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="enumerationTypeOption.id" *ngFor="let enumerationTypeOption of enumerationtypes; trackBy: trackEnumerationTypeById">{{enumerationTypeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.enumeration.parent" for="field_parent">Parent</label>
+                    <select class="form-control" id="field_parent" name="parent" [(ngModel)]="enumeration.parentId" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="enumerationOption.id" *ngFor="let enumerationOption of enumerations; trackBy: trackEnumerationById">{{enumerationOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

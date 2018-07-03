@@ -1,0 +1,27 @@
+
+{
+    "yakitanalizApp": {
+        "fillUp" : {
+            "home": {
+                "title": "Fill Ups",
+                "createLabel": "Create a new Fill Up",
+                "createOrEditLabel": "Create or edit a Fill Up"
+            },
+            "created": "A new Fill Up is created with identifier {{ param }}",
+            "updated": "A Fill Up is updated with identifier {{ param }}",
+            "deleted": "A Fill Up is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Fill Up {{ id }}?"
+            },
+            "detail": {
+                "title": "Fill Up"
+            },
+            "quantity": "Quantity",
+            "unitPrice": "Unit Price",
+            "date": "Date",
+            "totalDistance": "Total Distance",
+            "distance": "Distance",
+            "vehicle": "Vehicle"
+        }
+    }
+}

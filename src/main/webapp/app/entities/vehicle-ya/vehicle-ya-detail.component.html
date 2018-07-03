@@ -1,0 +1,51 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="vehicle">
+            <h2><span jhiTranslate="yakitanalizApp.vehicle.detail.title">Vehicle</span> {{vehicle.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.fuelType">Fuel Type</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'yakitanalizApp.FuelType.' + vehicle.fuelType}}">{{vehicle.fuelType}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.cc">Cc</span></dt>
+                <dd>
+                    <span>{{vehicle.cc}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.year">Year</span></dt>
+                <dd>
+                    <span>{{vehicle.year}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.transmission">Transmission</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'yakitanalizApp.Transmission.' + vehicle.transmission}}">{{vehicle.transmission}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.make">Make</span></dt>
+                <dd>
+                    <div *ngIf="vehicle.makeId">
+                        <a [routerLink]="['/enumeration-ya', vehicle.makeId, 'view']">{{vehicle.makeId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.model">Model</span></dt>
+                <dd>
+                    <div *ngIf="vehicle.modelId">
+                        <a [routerLink]="['/enumeration-ya', vehicle.modelId, 'view']">{{vehicle.modelId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/vehicle-ya', vehicle.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

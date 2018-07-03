@@ -1,0 +1,52 @@
+entity EnumerationType {
+	name String,
+    description String
+}
+
+entity Enumeration {
+	name String,
+    description String
+}
+
+entity Vehicle {
+	fuelType FuelType,
+    cc Integer,
+    year Integer,
+    transmission Transmission
+}
+
+entity FillUp {
+	quantity Double,
+    unitPrice Double,
+    date LocalDate,
+    totalDistance Integer,
+	distance Integer
+}
+
+enum Language {
+    FRENCH, ENGLISH, SPANISH
+}
+
+enum FuelType {
+    GAS, DIESEL, HYBRID, ELECTRIC
+}
+
+enum Transmission {
+    AUTO, MANUAL
+}
+
+relationship ManyToOne {
+	Enumeration{enumerationType} to EnumerationType,
+    Vehicle{make} to Enumeration,
+    Vehicle{model} to Enumeration,
+    FillUp{vehicle} to Vehicle,
+	Enumeration{parent} to Enumeration
+}
+
+paginate FillUp, Vehicle, Enumeration, EnumerationType with pagination
+
+dto * with mapstruct
+
+service all with serviceImpl
+
+angularSuffix * with ya

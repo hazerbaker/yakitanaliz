@@ -1,0 +1,47 @@
+{
+    "name": "Vehicle",
+    "fields": [
+        {
+            "fieldName": "fuelType",
+            "fieldType": "FuelType",
+            "fieldValues": "GAS,DIESEL,HYBRID,ELECTRIC"
+        },
+        {
+            "fieldName": "cc",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "year",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "transmission",
+            "fieldType": "Transmission",
+            "fieldValues": "AUTO,MANUAL"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "make",
+            "otherEntityName": "enumeration",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "model",
+            "otherEntityName": "enumeration",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180703174445",
+    "entityTableName": "vehicle",
+    "dto": "mapstruct",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "ya"
+}

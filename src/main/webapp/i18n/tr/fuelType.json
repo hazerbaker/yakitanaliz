@@ -1,0 +1,11 @@
+{
+    "yakitanalizApp": {
+        "FuelType" : {
+            "null": "",
+            "GAS": "GAS",
+            "DIESEL": "DIESEL",
+            "HYBRID": "HYBRID",
+            "ELECTRIC": "ELECTRIC"
+        }
+    }
+}

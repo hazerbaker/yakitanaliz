@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="enumeration">
+            <h2><span jhiTranslate="yakitanalizApp.enumeration.detail.title">Enumeration</span> {{enumeration.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="yakitanalizApp.enumeration.name">Name</span></dt>
+                <dd>
+                    <span>{{enumeration.name}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.enumeration.description">Description</span></dt>
+                <dd>
+                    <span>{{enumeration.description}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.enumeration.enumerationType">Enumeration Type</span></dt>
+                <dd>
+                    <div *ngIf="enumeration.enumerationTypeId">
+                        <a [routerLink]="['/enumeration-type-ya', enumeration.enumerationTypeId, 'view']">{{enumeration.enumerationTypeId}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.enumeration.parent">Parent</span></dt>
+                <dd>
+                    <div *ngIf="enumeration.parentId">
+                        <a [routerLink]="['/enumeration-ya', enumeration.parentId, 'view']">{{enumeration.parentId}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/enumeration-ya', enumeration.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

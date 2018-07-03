@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity EnumerationType.
+    -->
+    <changeSet id="20180703174443-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="enumeration_id"
+                                 baseTableName="enumeration_type"
+                                 constraintName="fk_enumeration_type_enumeration_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="enumeration"/>
+
+    </changeSet>
+</databaseChangeLog>
