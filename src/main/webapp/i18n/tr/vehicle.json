@@ -20,7 +20,6 @@
             "cc": "Cc",
             "year": "Year",
             "transmission": "Transmission",
-            "make": "Make",
             "model": "Model",
             "user": "User"
         }

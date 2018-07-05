@@ -16,7 +16,7 @@ import com.hazerbaker.yakitanaliz.domain.enumeration.Transmission;
  */
 @Entity
 @Table(name = "vehicle")
-public class Vehicle implements Serializable {
+public class Vehicle extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -38,10 +38,6 @@ public class Vehicle implements Serializable {
     @Enumerated(EnumType.STRING)
     @Column(name = "transmission")
     private Transmission transmission;
-
-    @ManyToOne
-    @JsonIgnoreProperties("")
-    private Enumeration make;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -112,19 +108,6 @@ public class Vehicle implements Serializable {
         this.transmission = transmission;
     }
 
-    public Enumeration getMake() {
-        return make;
-    }
-
-    public Vehicle make(Enumeration enumeration) {
-        this.make = enumeration;
-        return this;
-    }
-
-    public void setMake(Enumeration enumeration) {
-        this.make = enumeration;
-    }
-
     public Enumeration getModel() {
         return model;
     }
@@ -180,6 +163,7 @@ public class Vehicle implements Serializable {
             ", cc=" + getCc() +
             ", year=" + getYear() +
             ", transmission='" + getTransmission() + "'" +
+            ", user=" + getUser().getLogin() + 
             "}";
     }
 }

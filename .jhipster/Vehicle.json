@@ -23,12 +23,6 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "make",
-            "otherEntityName": "enumeration",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
             "relationshipName": "model",
             "otherEntityName": "enumeration",
             "otherEntityField": "id"
@@ -49,5 +43,6 @@
     "fluentMethods": true,
     "clientRootFolder": "",
     "applications": "*",
-    "angularJSSuffix": "ya"
+    "angularJSSuffix": "ya",
+    "enableEntityAudit": true
 }

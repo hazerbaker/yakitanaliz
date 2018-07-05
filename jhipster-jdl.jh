@@ -37,7 +37,6 @@ enum Transmission {
 
 relationship ManyToOne {
 	Enumeration{enumerationType} to EnumerationType,
-    Vehicle{make} to Enumeration,
     Vehicle{model} to Enumeration,
     FillUp{vehicle} to Vehicle,
 	Enumeration{parent} to Enumeration,

@@ -21,12 +21,6 @@
                 <dd>
                     <span jhiTranslate="{{'yakitanalizApp.Transmission.' + vehicle.transmission}}">{{vehicle.transmission}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.make">Make</span></dt>
-                <dd>
-                    <div *ngIf="vehicle.make">
-                        <a [routerLink]="['/enumeration-ya', vehicle.make?.id, 'view']">{{vehicle.make?.id}}</a>
-                    </div>
-                </dd>
                 <dt><span jhiTranslate="yakitanalizApp.vehicle.model">Model</span></dt>
                 <dd>
                     <div *ngIf="vehicle.model">

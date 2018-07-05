@@ -20,7 +20,6 @@ export interface IVehicleYa {
     cc?: number;
     year?: number;
     transmission?: Transmission;
-    make?: IEnumerationYa;
     model?: IEnumerationYa;
     user?: IUser;
 }
@@ -32,7 +31,6 @@ export class VehicleYa implements IVehicleYa {
         public cc?: number,
         public year?: number,
         public transmission?: Transmission,
-        public make?: IEnumerationYa,
         public model?: IEnumerationYa,
         public user?: IUser
     ) {}
