@@ -4,9 +4,6 @@ import com.hazerbaker.yakitanaliz.YakitanalizApp;
 
 import com.hazerbaker.yakitanaliz.domain.FillUp;
 import com.hazerbaker.yakitanaliz.repository.FillUpRepository;
-import com.hazerbaker.yakitanaliz.service.FillUpService;
-import com.hazerbaker.yakitanaliz.service.dto.FillUpDTO;
-import com.hazerbaker.yakitanaliz.service.mapper.FillUpMapper;
 import com.hazerbaker.yakitanaliz.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -64,13 +61,6 @@ public class FillUpResourceIntTest {
 
 
     @Autowired
-    private FillUpMapper fillUpMapper;
-    
-
-    @Autowired
-    private FillUpService fillUpService;
-
-    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -89,7 +79,7 @@ public class FillUpResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final FillUpResource fillUpResource = new FillUpResource(fillUpService);
+        final FillUpResource fillUpResource = new FillUpResource(fillUpRepository);
         this.restFillUpMockMvc = MockMvcBuilders.standaloneSetup(fillUpResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -124,10 +114,9 @@ public class FillUpResourceIntTest {
         int databaseSizeBeforeCreate = fillUpRepository.findAll().size();
 
         // Create the FillUp
-        FillUpDTO fillUpDTO = fillUpMapper.toDto(fillUp);
         restFillUpMockMvc.perform(post("/api/fill-ups")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(fillUpDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(fillUp)))
             .andExpect(status().isCreated());
 
         // Validate the FillUp in the database
@@ -148,12 +137,11 @@ public class FillUpResourceIntTest {
 
         // Create the FillUp with an existing ID
         fillUp.setId(1L);
-        FillUpDTO fillUpDTO = fillUpMapper.toDto(fillUp);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restFillUpMockMvc.perform(post("/api/fill-ups")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(fillUpDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(fillUp)))
             .andExpect(status().isBadRequest());
 
         // Validate the FillUp in the database
@@ -223,11 +211,10 @@ public class FillUpResourceIntTest {
             .date(UPDATED_DATE)
             .totalDistance(UPDATED_TOTAL_DISTANCE)
             .distance(UPDATED_DISTANCE);
-        FillUpDTO fillUpDTO = fillUpMapper.toDto(updatedFillUp);
 
         restFillUpMockMvc.perform(put("/api/fill-ups")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(fillUpDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(updatedFillUp)))
             .andExpect(status().isOk());
 
         // Validate the FillUp in the database
@@ -247,12 +234,11 @@ public class FillUpResourceIntTest {
         int databaseSizeBeforeUpdate = fillUpRepository.findAll().size();
 
         // Create the FillUp
-        FillUpDTO fillUpDTO = fillUpMapper.toDto(fillUp);
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restFillUpMockMvc.perform(put("/api/fill-ups")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(fillUpDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(fillUp)))
             .andExpect(status().isBadRequest());
 
         // Validate the FillUp in the database
@@ -291,28 +277,5 @@ public class FillUpResourceIntTest {
         assertThat(fillUp1).isNotEqualTo(fillUp2);
         fillUp1.setId(null);
         assertThat(fillUp1).isNotEqualTo(fillUp2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(FillUpDTO.class);
-        FillUpDTO fillUpDTO1 = new FillUpDTO();
-        fillUpDTO1.setId(1L);
-        FillUpDTO fillUpDTO2 = new FillUpDTO();
-        assertThat(fillUpDTO1).isNotEqualTo(fillUpDTO2);
-        fillUpDTO2.setId(fillUpDTO1.getId());
-        assertThat(fillUpDTO1).isEqualTo(fillUpDTO2);
-        fillUpDTO2.setId(2L);
-        assertThat(fillUpDTO1).isNotEqualTo(fillUpDTO2);
-        fillUpDTO1.setId(null);
-        assertThat(fillUpDTO1).isNotEqualTo(fillUpDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(fillUpMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(fillUpMapper.fromId(null)).isNull();
     }
 }

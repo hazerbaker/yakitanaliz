@@ -4,9 +4,6 @@ import com.hazerbaker.yakitanaliz.YakitanalizApp;
 
 import com.hazerbaker.yakitanaliz.domain.EnumerationType;
 import com.hazerbaker.yakitanaliz.repository.EnumerationTypeRepository;
-import com.hazerbaker.yakitanaliz.service.EnumerationTypeService;
-import com.hazerbaker.yakitanaliz.service.dto.EnumerationTypeDTO;
-import com.hazerbaker.yakitanaliz.service.mapper.EnumerationTypeMapper;
 import com.hazerbaker.yakitanaliz.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -53,13 +50,6 @@ public class EnumerationTypeResourceIntTest {
 
 
     @Autowired
-    private EnumerationTypeMapper enumerationTypeMapper;
-    
-
-    @Autowired
-    private EnumerationTypeService enumerationTypeService;
-
-    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -78,7 +68,7 @@ public class EnumerationTypeResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final EnumerationTypeResource enumerationTypeResource = new EnumerationTypeResource(enumerationTypeService);
+        final EnumerationTypeResource enumerationTypeResource = new EnumerationTypeResource(enumerationTypeRepository);
         this.restEnumerationTypeMockMvc = MockMvcBuilders.standaloneSetup(enumerationTypeResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -110,10 +100,9 @@ public class EnumerationTypeResourceIntTest {
         int databaseSizeBeforeCreate = enumerationTypeRepository.findAll().size();
 
         // Create the EnumerationType
-        EnumerationTypeDTO enumerationTypeDTO = enumerationTypeMapper.toDto(enumerationType);
         restEnumerationTypeMockMvc.perform(post("/api/enumeration-types")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(enumerationTypeDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(enumerationType)))
             .andExpect(status().isCreated());
 
         // Validate the EnumerationType in the database
@@ -131,12 +120,11 @@ public class EnumerationTypeResourceIntTest {
 
         // Create the EnumerationType with an existing ID
         enumerationType.setId(1L);
-        EnumerationTypeDTO enumerationTypeDTO = enumerationTypeMapper.toDto(enumerationType);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restEnumerationTypeMockMvc.perform(post("/api/enumeration-types")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(enumerationTypeDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(enumerationType)))
             .andExpect(status().isBadRequest());
 
         // Validate the EnumerationType in the database
@@ -197,11 +185,10 @@ public class EnumerationTypeResourceIntTest {
         updatedEnumerationType
             .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION);
-        EnumerationTypeDTO enumerationTypeDTO = enumerationTypeMapper.toDto(updatedEnumerationType);
 
         restEnumerationTypeMockMvc.perform(put("/api/enumeration-types")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(enumerationTypeDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(updatedEnumerationType)))
             .andExpect(status().isOk());
 
         // Validate the EnumerationType in the database
@@ -218,12 +205,11 @@ public class EnumerationTypeResourceIntTest {
         int databaseSizeBeforeUpdate = enumerationTypeRepository.findAll().size();
 
         // Create the EnumerationType
-        EnumerationTypeDTO enumerationTypeDTO = enumerationTypeMapper.toDto(enumerationType);
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restEnumerationTypeMockMvc.perform(put("/api/enumeration-types")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(enumerationTypeDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(enumerationType)))
             .andExpect(status().isBadRequest());
 
         // Validate the EnumerationType in the database
@@ -262,28 +248,5 @@ public class EnumerationTypeResourceIntTest {
         assertThat(enumerationType1).isNotEqualTo(enumerationType2);
         enumerationType1.setId(null);
         assertThat(enumerationType1).isNotEqualTo(enumerationType2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(EnumerationTypeDTO.class);
-        EnumerationTypeDTO enumerationTypeDTO1 = new EnumerationTypeDTO();
-        enumerationTypeDTO1.setId(1L);
-        EnumerationTypeDTO enumerationTypeDTO2 = new EnumerationTypeDTO();
-        assertThat(enumerationTypeDTO1).isNotEqualTo(enumerationTypeDTO2);
-        enumerationTypeDTO2.setId(enumerationTypeDTO1.getId());
-        assertThat(enumerationTypeDTO1).isEqualTo(enumerationTypeDTO2);
-        enumerationTypeDTO2.setId(2L);
-        assertThat(enumerationTypeDTO1).isNotEqualTo(enumerationTypeDTO2);
-        enumerationTypeDTO1.setId(null);
-        assertThat(enumerationTypeDTO1).isNotEqualTo(enumerationTypeDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(enumerationTypeMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(enumerationTypeMapper.fromId(null)).isNull();
     }
 }

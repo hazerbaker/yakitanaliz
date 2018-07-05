@@ -30,11 +30,11 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180703174446",
+    "changelogDate": "20180705155412",
     "entityTableName": "fill_up",
-    "dto": "mapstruct",
+    "dto": "no",
     "pagination": "pagination",
-    "service": "serviceImpl",
+    "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",

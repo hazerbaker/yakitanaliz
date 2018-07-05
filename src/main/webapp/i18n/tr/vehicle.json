@@ -21,7 +21,8 @@
             "year": "Year",
             "transmission": "Transmission",
             "make": "Make",
-            "model": "Model"
+            "model": "Model",
+            "user": "User"
         }
     }
 }

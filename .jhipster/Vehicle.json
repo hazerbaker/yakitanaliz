@@ -32,13 +32,19 @@
             "relationshipName": "model",
             "otherEntityName": "enumeration",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "user",
+            "otherEntityName": "user",
+            "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180703174445",
+    "changelogDate": "20180705155411",
     "entityTableName": "vehicle",
-    "dto": "mapstruct",
+    "dto": "no",
     "pagination": "pagination",
-    "service": "serviceImpl",
+    "service": "no",
     "jpaMetamodelFiltering": false,
     "fluentMethods": true,
     "clientRootFolder": "",

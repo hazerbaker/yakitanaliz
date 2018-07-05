@@ -1,3 +1,6 @@
+import { IEnumerationYa } from 'app/shared/model//enumeration-ya.model';
+import { IUser } from 'app/core/user/user.model';
+
 export const enum FuelType {
     GAS = 'GAS',
     DIESEL = 'DIESEL',
@@ -16,8 +19,9 @@ export interface IVehicleYa {
     cc?: number;
     year?: number;
     transmission?: Transmission;
-    makeId?: number;
-    modelId?: number;
+    make?: IEnumerationYa;
+    model?: IEnumerationYa;
+    user?: IUser;
 }
 
 export class VehicleYa implements IVehicleYa {
@@ -27,7 +31,8 @@ export class VehicleYa implements IVehicleYa {
         public cc?: number,
         public year?: number,
         public transmission?: Transmission,
-        public makeId?: number,
-        public modelId?: number
+        public make?: IEnumerationYa,
+        public model?: IEnumerationYa,
+        public user?: IUser
     ) {}
 }

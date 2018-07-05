@@ -40,13 +40,10 @@ relationship ManyToOne {
     Vehicle{make} to Enumeration,
     Vehicle{model} to Enumeration,
     FillUp{vehicle} to Vehicle,
-	Enumeration{parent} to Enumeration
+	Enumeration{parent} to Enumeration,
+    Vehicle{user} to User
 }
 
 paginate FillUp, Vehicle, Enumeration, EnumerationType with pagination
-
-dto * with mapstruct
-
-service all with serviceImpl
 
 angularSuffix * with ya

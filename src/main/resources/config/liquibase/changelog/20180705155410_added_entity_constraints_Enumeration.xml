@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity Enumeration.
     -->
-    <changeSet id="20180703174444-2" author="jhipster">
+    <changeSet id="20180705155410-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="enumeration_type_id"
                                  baseTableName="enumeration"

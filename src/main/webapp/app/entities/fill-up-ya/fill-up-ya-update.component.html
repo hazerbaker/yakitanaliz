@@ -42,9 +42,9 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.vehicle" for="field_vehicle">Vehicle</label>
-                    <select class="form-control" id="field_vehicle" name="vehicle" [(ngModel)]="fillUp.vehicleId" >
+                    <select class="form-control" id="field_vehicle" name="vehicle" [(ngModel)]="fillUp.vehicle" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="vehicleOption.id" *ngFor="let vehicleOption of vehicles; trackBy: trackVehicleById">{{vehicleOption.id}}</option>
+                        <option [ngValue]="vehicleOption.id === fillUp.vehicle?.id ? fillUp.vehicle : vehicleOption" *ngFor="let vehicleOption of vehicles; trackBy: trackVehicleById">{{vehicleOption.id}}</option>
                     </select>
                 </div>
             </div>

@@ -1,9 +1,12 @@
+import { IEnumerationTypeYa } from 'app/shared/model//enumeration-type-ya.model';
+import { IEnumerationYa } from 'app/shared/model//enumeration-ya.model';
+
 export interface IEnumerationYa {
     id?: number;
     name?: string;
     description?: string;
-    enumerationTypeId?: number;
-    parentId?: number;
+    enumerationType?: IEnumerationTypeYa;
+    parent?: IEnumerationYa;
 }
 
 export class EnumerationYa implements IEnumerationYa {
@@ -11,7 +14,7 @@ export class EnumerationYa implements IEnumerationYa {
         public id?: number,
         public name?: string,
         public description?: string,
-        public enumerationTypeId?: number,
-        public parentId?: number
+        public enumerationType?: IEnumerationTypeYa,
+        public parent?: IEnumerationYa
     ) {}
 }

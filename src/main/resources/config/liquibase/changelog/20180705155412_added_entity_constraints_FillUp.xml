@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity FillUp.
     -->
-    <changeSet id="20180703174446-2" author="jhipster">
+    <changeSet id="20180705155412-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="vehicle_id"
                                  baseTableName="fill_up"

@@ -8,6 +8,7 @@ import { IVehicleYa } from 'app/shared/model/vehicle-ya.model';
 import { VehicleYaService } from './vehicle-ya.service';
 import { IEnumerationYa } from 'app/shared/model/enumeration-ya.model';
 import { EnumerationYaService } from 'app/entities/enumeration-ya';
+import { IUser, UserService } from 'app/core';
 
 @Component({
     selector: 'jhi-vehicle-ya-update',
@@ -19,10 +20,13 @@ export class VehicleYaUpdateComponent implements OnInit {
 
     enumerations: IEnumerationYa[];
 
+    users: IUser[];
+
     constructor(
         private jhiAlertService: JhiAlertService,
         private vehicleService: VehicleYaService,
         private enumerationService: EnumerationYaService,
+        private userService: UserService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -34,6 +38,12 @@ export class VehicleYaUpdateComponent implements OnInit {
         this.enumerationService.query().subscribe(
             (res: HttpResponse<IEnumerationYa[]>) => {
                 this.enumerations = res.body;
+            },
+            (res: HttpErrorResponse) => this.onError(res.message)
+        );
+        this.userService.query().subscribe(
+            (res: HttpResponse<IUser[]>) => {
+                this.users = res.body;
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
@@ -70,6 +80,10 @@ export class VehicleYaUpdateComponent implements OnInit {
     }
 
     trackEnumerationById(index: number, item: IEnumerationYa) {
+        return item.id;
+    }
+
+    trackUserById(index: number, item: IUser) {
         return item.id;
     }
     get vehicle() {

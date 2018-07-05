@@ -4,9 +4,6 @@ import com.hazerbaker.yakitanaliz.YakitanalizApp;
 
 import com.hazerbaker.yakitanaliz.domain.Vehicle;
 import com.hazerbaker.yakitanaliz.repository.VehicleRepository;
-import com.hazerbaker.yakitanaliz.service.VehicleService;
-import com.hazerbaker.yakitanaliz.service.dto.VehicleDTO;
-import com.hazerbaker.yakitanaliz.service.mapper.VehicleMapper;
 import com.hazerbaker.yakitanaliz.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -61,13 +58,6 @@ public class VehicleResourceIntTest {
 
 
     @Autowired
-    private VehicleMapper vehicleMapper;
-    
-
-    @Autowired
-    private VehicleService vehicleService;
-
-    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -86,7 +76,7 @@ public class VehicleResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final VehicleResource vehicleResource = new VehicleResource(vehicleService);
+        final VehicleResource vehicleResource = new VehicleResource(vehicleRepository);
         this.restVehicleMockMvc = MockMvcBuilders.standaloneSetup(vehicleResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -120,10 +110,9 @@ public class VehicleResourceIntTest {
         int databaseSizeBeforeCreate = vehicleRepository.findAll().size();
 
         // Create the Vehicle
-        VehicleDTO vehicleDTO = vehicleMapper.toDto(vehicle);
         restVehicleMockMvc.perform(post("/api/vehicles")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(vehicleDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(vehicle)))
             .andExpect(status().isCreated());
 
         // Validate the Vehicle in the database
@@ -143,12 +132,11 @@ public class VehicleResourceIntTest {
 
         // Create the Vehicle with an existing ID
         vehicle.setId(1L);
-        VehicleDTO vehicleDTO = vehicleMapper.toDto(vehicle);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restVehicleMockMvc.perform(post("/api/vehicles")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(vehicleDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(vehicle)))
             .andExpect(status().isBadRequest());
 
         // Validate the Vehicle in the database
@@ -215,11 +203,10 @@ public class VehicleResourceIntTest {
             .cc(UPDATED_CC)
             .year(UPDATED_YEAR)
             .transmission(UPDATED_TRANSMISSION);
-        VehicleDTO vehicleDTO = vehicleMapper.toDto(updatedVehicle);
 
         restVehicleMockMvc.perform(put("/api/vehicles")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(vehicleDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(updatedVehicle)))
             .andExpect(status().isOk());
 
         // Validate the Vehicle in the database
@@ -238,12 +225,11 @@ public class VehicleResourceIntTest {
         int databaseSizeBeforeUpdate = vehicleRepository.findAll().size();
 
         // Create the Vehicle
-        VehicleDTO vehicleDTO = vehicleMapper.toDto(vehicle);
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restVehicleMockMvc.perform(put("/api/vehicles")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(vehicleDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(vehicle)))
             .andExpect(status().isBadRequest());
 
         // Validate the Vehicle in the database
@@ -282,28 +268,5 @@ public class VehicleResourceIntTest {
         assertThat(vehicle1).isNotEqualTo(vehicle2);
         vehicle1.setId(null);
         assertThat(vehicle1).isNotEqualTo(vehicle2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(VehicleDTO.class);
-        VehicleDTO vehicleDTO1 = new VehicleDTO();
-        vehicleDTO1.setId(1L);
-        VehicleDTO vehicleDTO2 = new VehicleDTO();
-        assertThat(vehicleDTO1).isNotEqualTo(vehicleDTO2);
-        vehicleDTO2.setId(vehicleDTO1.getId());
-        assertThat(vehicleDTO1).isEqualTo(vehicleDTO2);
-        vehicleDTO2.setId(2L);
-        assertThat(vehicleDTO1).isNotEqualTo(vehicleDTO2);
-        vehicleDTO1.setId(null);
-        assertThat(vehicleDTO1).isNotEqualTo(vehicleDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(vehicleMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(vehicleMapper.fromId(null)).isNull();
     }
 }

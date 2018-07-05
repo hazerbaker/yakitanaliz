@@ -27,8 +27,8 @@
                 </dd>
                 <dt><span jhiTranslate="yakitanalizApp.fillUp.vehicle">Vehicle</span></dt>
                 <dd>
-                    <div *ngIf="fillUp.vehicleId">
-                        <a [routerLink]="['/vehicle-ya', fillUp.vehicleId, 'view']">{{fillUp.vehicleId}}</a>
+                    <div *ngIf="fillUp.vehicle">
+                        <a [routerLink]="['/vehicle-ya', fillUp.vehicle?.id, 'view']">{{fillUp.vehicle?.id}}</a>
                     </div>
                 </dd>
             </dl>

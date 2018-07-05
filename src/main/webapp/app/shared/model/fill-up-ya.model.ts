@@ -1,4 +1,5 @@
 import { Moment } from 'moment';
+import { IVehicleYa } from 'app/shared/model//vehicle-ya.model';
 
 export interface IFillUpYa {
     id?: number;
@@ -7,7 +8,7 @@ export interface IFillUpYa {
     date?: Moment;
     totalDistance?: number;
     distance?: number;
-    vehicleId?: number;
+    vehicle?: IVehicleYa;
 }
 
 export class FillUpYa implements IFillUpYa {
@@ -18,6 +19,6 @@ export class FillUpYa implements IFillUpYa {
         public date?: Moment,
         public totalDistance?: number,
         public distance?: number,
-        public vehicleId?: number
+        public vehicle?: IVehicleYa
     ) {}
 }

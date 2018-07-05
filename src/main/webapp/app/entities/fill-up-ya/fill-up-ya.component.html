@@ -20,7 +20,7 @@
             <th jhiSortBy="date"><span jhiTranslate="yakitanalizApp.fillUp.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="totalDistance"><span jhiTranslate="yakitanalizApp.fillUp.totalDistance">Total Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="distance"><span jhiTranslate="yakitanalizApp.fillUp.distance">Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="vehicleId"><span jhiTranslate="yakitanalizApp.fillUp.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="vehicle.id"><span jhiTranslate="yakitanalizApp.fillUp.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -33,8 +33,8 @@
                 <td>{{fillUp.totalDistance}}</td>
                 <td>{{fillUp.distance}}</td>
                 <td>
-                    <div *ngIf="fillUp.vehicleId">
-                        <a [routerLink]="['../vehicle-ya', fillUp.vehicleId , 'view' ]" >{{fillUp.vehicleId}}</a>
+                    <div *ngIf="fillUp.vehicle">
+                        <a [routerLink]="['../vehicle-ya', fillUp.vehicle?.id, 'view' ]" >{{fillUp.vehicle?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

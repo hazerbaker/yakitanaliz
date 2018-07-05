@@ -4,9 +4,6 @@ import com.hazerbaker.yakitanaliz.YakitanalizApp;
 
 import com.hazerbaker.yakitanaliz.domain.Enumeration;
 import com.hazerbaker.yakitanaliz.repository.EnumerationRepository;
-import com.hazerbaker.yakitanaliz.service.EnumerationService;
-import com.hazerbaker.yakitanaliz.service.dto.EnumerationDTO;
-import com.hazerbaker.yakitanaliz.service.mapper.EnumerationMapper;
 import com.hazerbaker.yakitanaliz.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -53,13 +50,6 @@ public class EnumerationResourceIntTest {
 
 
     @Autowired
-    private EnumerationMapper enumerationMapper;
-    
-
-    @Autowired
-    private EnumerationService enumerationService;
-
-    @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
 
     @Autowired
@@ -78,7 +68,7 @@ public class EnumerationResourceIntTest {
     @Before
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final EnumerationResource enumerationResource = new EnumerationResource(enumerationService);
+        final EnumerationResource enumerationResource = new EnumerationResource(enumerationRepository);
         this.restEnumerationMockMvc = MockMvcBuilders.standaloneSetup(enumerationResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -110,10 +100,9 @@ public class EnumerationResourceIntTest {
         int databaseSizeBeforeCreate = enumerationRepository.findAll().size();
 
         // Create the Enumeration
-        EnumerationDTO enumerationDTO = enumerationMapper.toDto(enumeration);
         restEnumerationMockMvc.perform(post("/api/enumerations")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(enumerationDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(enumeration)))
             .andExpect(status().isCreated());
 
         // Validate the Enumeration in the database
@@ -131,12 +120,11 @@ public class EnumerationResourceIntTest {
 
         // Create the Enumeration with an existing ID
         enumeration.setId(1L);
-        EnumerationDTO enumerationDTO = enumerationMapper.toDto(enumeration);
 
         // An entity with an existing ID cannot be created, so this API call must fail
         restEnumerationMockMvc.perform(post("/api/enumerations")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(enumerationDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(enumeration)))
             .andExpect(status().isBadRequest());
 
         // Validate the Enumeration in the database
@@ -197,11 +185,10 @@ public class EnumerationResourceIntTest {
         updatedEnumeration
             .name(UPDATED_NAME)
             .description(UPDATED_DESCRIPTION);
-        EnumerationDTO enumerationDTO = enumerationMapper.toDto(updatedEnumeration);
 
         restEnumerationMockMvc.perform(put("/api/enumerations")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(enumerationDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(updatedEnumeration)))
             .andExpect(status().isOk());
 
         // Validate the Enumeration in the database
@@ -218,12 +205,11 @@ public class EnumerationResourceIntTest {
         int databaseSizeBeforeUpdate = enumerationRepository.findAll().size();
 
         // Create the Enumeration
-        EnumerationDTO enumerationDTO = enumerationMapper.toDto(enumeration);
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restEnumerationMockMvc.perform(put("/api/enumerations")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(enumerationDTO)))
+            .content(TestUtil.convertObjectToJsonBytes(enumeration)))
             .andExpect(status().isBadRequest());
 
         // Validate the Enumeration in the database
@@ -262,28 +248,5 @@ public class EnumerationResourceIntTest {
         assertThat(enumeration1).isNotEqualTo(enumeration2);
         enumeration1.setId(null);
         assertThat(enumeration1).isNotEqualTo(enumeration2);
-    }
-
-    @Test
-    @Transactional
-    public void dtoEqualsVerifier() throws Exception {
-        TestUtil.equalsVerifier(EnumerationDTO.class);
-        EnumerationDTO enumerationDTO1 = new EnumerationDTO();
-        enumerationDTO1.setId(1L);
-        EnumerationDTO enumerationDTO2 = new EnumerationDTO();
-        assertThat(enumerationDTO1).isNotEqualTo(enumerationDTO2);
-        enumerationDTO2.setId(enumerationDTO1.getId());
-        assertThat(enumerationDTO1).isEqualTo(enumerationDTO2);
-        enumerationDTO2.setId(2L);
-        assertThat(enumerationDTO1).isNotEqualTo(enumerationDTO2);
-        enumerationDTO1.setId(null);
-        assertThat(enumerationDTO1).isNotEqualTo(enumerationDTO2);
-    }
-
-    @Test
-    @Transactional
-    public void testEntityFromId() {
-        assertThat(enumerationMapper.fromId(42L).getId()).isEqualTo(42);
-        assertThat(enumerationMapper.fromId(null)).isNull();
     }
 }

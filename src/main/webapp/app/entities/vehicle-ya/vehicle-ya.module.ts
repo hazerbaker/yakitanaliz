@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { YakitanalizSharedModule } from 'app/shared';
+import { YakitanalizAdminModule } from 'app/admin/admin.module';
 import {
     VehicleYaComponent,
     VehicleYaDetailComponent,
@@ -15,7 +16,7 @@ import {
 const ENTITY_STATES = [...vehicleRoute, ...vehiclePopupRoute];
 
 @NgModule({
-    imports: [YakitanalizSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [YakitanalizSharedModule, YakitanalizAdminModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         VehicleYaComponent,
         VehicleYaDetailComponent,

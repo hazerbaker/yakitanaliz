@@ -17,8 +17,8 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="name"><span jhiTranslate="yakitanalizApp.enumeration.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="description"><span jhiTranslate="yakitanalizApp.enumeration.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="enumerationTypeId"><span jhiTranslate="yakitanalizApp.enumeration.enumerationType">Enumeration Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="parentId"><span jhiTranslate="yakitanalizApp.enumeration.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="enumerationType.id"><span jhiTranslate="yakitanalizApp.enumeration.enumerationType">Enumeration Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parent.id"><span jhiTranslate="yakitanalizApp.enumeration.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -28,13 +28,13 @@
                 <td>{{enumeration.name}}</td>
                 <td>{{enumeration.description}}</td>
                 <td>
-                    <div *ngIf="enumeration.enumerationTypeId">
-                        <a [routerLink]="['../enumeration-type-ya', enumeration.enumerationTypeId , 'view' ]" >{{enumeration.enumerationTypeId}}</a>
+                    <div *ngIf="enumeration.enumerationType">
+                        <a [routerLink]="['../enumeration-type-ya', enumeration.enumerationType?.id, 'view' ]" >{{enumeration.enumerationType?.id}}</a>
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="enumeration.parentId">
-                        <a [routerLink]="['../enumeration-ya', enumeration.parentId , 'view' ]" >{{enumeration.parentId}}</a>
+                    <div *ngIf="enumeration.parent">
+                        <a [routerLink]="['../enumeration-ya', enumeration.parent?.id, 'view' ]" >{{enumeration.parent?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">

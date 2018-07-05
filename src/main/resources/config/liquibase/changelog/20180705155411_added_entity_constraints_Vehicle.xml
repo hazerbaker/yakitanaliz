@@ -6,7 +6,7 @@
     <!--
         Added the constraints for entity Vehicle.
     -->
-    <changeSet id="20180703174445-2" author="jhipster">
+    <changeSet id="20180705155411-2" author="jhipster">
         
         <addForeignKeyConstraint baseColumnNames="make_id"
                                  baseTableName="vehicle"
@@ -19,6 +19,12 @@
                                  constraintName="fk_vehicle_model_id"
                                  referencedColumnNames="id"
                                  referencedTableName="enumeration"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="vehicle"
+                                 constraintName="fk_vehicle_user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
 
     </changeSet>
 </databaseChangeLog>

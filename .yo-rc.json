@@ -14,19 +14,25 @@
     "cacheProvider": "no",
     "websocket": false,
     "databaseType": "sql",
-    "devDatabaseType": "h2Memory",
+    "devDatabaseType": "h2Disk",
     "prodDatabaseType": "postgresql",
     "searchEngine": false,
     "messageBroker": false,
     "serviceDiscoveryType": false,
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "6ff41a18c40f505e673d806a18cb6ef620715691",
+    "jwtSecretKey": "1f97f5f51318b10821e2e87ee9d5f1362cc5b81a",
     "clientFramework": "angularX",
     "useSass": false,
     "clientPackageManager": "npm",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
+    "otherModules": [
+      {
+        "name": "generator-jhipster-audit-helper",
+        "version": "1.0.3"
+      }
+    ],
     "enableTranslation": true,
     "nativeLanguage": "en",
     "languages": [

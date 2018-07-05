@@ -47,6 +47,10 @@ public class Vehicle extends AbstractAuditingEntity implements Serializable {
     @JsonIgnoreProperties("")
     private Enumeration model;
 
+    @ManyToOne
+    @JsonIgnoreProperties("")
+    private User user;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -132,6 +136,19 @@ public class Vehicle extends AbstractAuditingEntity implements Serializable {
 
     public void setModel(Enumeration enumeration) {
         this.model = enumeration;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Vehicle user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 

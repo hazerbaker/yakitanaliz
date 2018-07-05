@@ -23,15 +23,19 @@
                 </dd>
                 <dt><span jhiTranslate="yakitanalizApp.vehicle.make">Make</span></dt>
                 <dd>
-                    <div *ngIf="vehicle.makeId">
-                        <a [routerLink]="['/enumeration-ya', vehicle.makeId, 'view']">{{vehicle.makeId}}</a>
+                    <div *ngIf="vehicle.make">
+                        <a [routerLink]="['/enumeration-ya', vehicle.make?.id, 'view']">{{vehicle.make?.id}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="yakitanalizApp.vehicle.model">Model</span></dt>
                 <dd>
-                    <div *ngIf="vehicle.modelId">
-                        <a [routerLink]="['/enumeration-ya', vehicle.modelId, 'view']">{{vehicle.modelId}}</a>
+                    <div *ngIf="vehicle.model">
+                        <a [routerLink]="['/enumeration-ya', vehicle.model?.id, 'view']">{{vehicle.model?.id}}</a>
                     </div>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.user">User</span></dt>
+                <dd>
+                    {{vehicle.user?.id}}
                 </dd>
             </dl>
 

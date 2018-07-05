@@ -15,14 +15,14 @@
                 </dd>
                 <dt><span jhiTranslate="yakitanalizApp.enumeration.enumerationType">Enumeration Type</span></dt>
                 <dd>
-                    <div *ngIf="enumeration.enumerationTypeId">
-                        <a [routerLink]="['/enumeration-type-ya', enumeration.enumerationTypeId, 'view']">{{enumeration.enumerationTypeId}}</a>
+                    <div *ngIf="enumeration.enumerationType">
+                        <a [routerLink]="['/enumeration-type-ya', enumeration.enumerationType?.id, 'view']">{{enumeration.enumerationType?.id}}</a>
                     </div>
                 </dd>
                 <dt><span jhiTranslate="yakitanalizApp.enumeration.parent">Parent</span></dt>
                 <dd>
-                    <div *ngIf="enumeration.parentId">
-                        <a [routerLink]="['/enumeration-ya', enumeration.parentId, 'view']">{{enumeration.parentId}}</a>
+                    <div *ngIf="enumeration.parent">
+                        <a [routerLink]="['/enumeration-ya', enumeration.parent?.id, 'view']">{{enumeration.parent?.id}}</a>
                     </div>
                 </dd>
             </dl>

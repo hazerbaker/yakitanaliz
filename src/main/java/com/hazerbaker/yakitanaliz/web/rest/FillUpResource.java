@@ -1,11 +1,11 @@
 package com.hazerbaker.yakitanaliz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.hazerbaker.yakitanaliz.service.FillUpService;
+import com.hazerbaker.yakitanaliz.domain.FillUp;
+import com.hazerbaker.yakitanaliz.repository.FillUpRepository;
 import com.hazerbaker.yakitanaliz.web.rest.errors.BadRequestAlertException;
 import com.hazerbaker.yakitanaliz.web.rest.util.HeaderUtil;
 import com.hazerbaker.yakitanaliz.web.rest.util.PaginationUtil;
-import com.hazerbaker.yakitanaliz.service.dto.FillUpDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,27 +33,27 @@ public class FillUpResource {
 
     private static final String ENTITY_NAME = "fillUp";
 
-    private final FillUpService fillUpService;
+    private final FillUpRepository fillUpRepository;
 
-    public FillUpResource(FillUpService fillUpService) {
-        this.fillUpService = fillUpService;
+    public FillUpResource(FillUpRepository fillUpRepository) {
+        this.fillUpRepository = fillUpRepository;
     }
 
     /**
      * POST  /fill-ups : Create a new fillUp.
      *
-     * @param fillUpDTO the fillUpDTO to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new fillUpDTO, or with status 400 (Bad Request) if the fillUp has already an ID
+     * @param fillUp the fillUp to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new fillUp, or with status 400 (Bad Request) if the fillUp has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/fill-ups")
     @Timed
-    public ResponseEntity<FillUpDTO> createFillUp(@RequestBody FillUpDTO fillUpDTO) throws URISyntaxException {
-        log.debug("REST request to save FillUp : {}", fillUpDTO);
-        if (fillUpDTO.getId() != null) {
+    public ResponseEntity<FillUp> createFillUp(@RequestBody FillUp fillUp) throws URISyntaxException {
+        log.debug("REST request to save FillUp : {}", fillUp);
+        if (fillUp.getId() != null) {
             throw new BadRequestAlertException("A new fillUp cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        FillUpDTO result = fillUpService.save(fillUpDTO);
+        FillUp result = fillUpRepository.save(fillUp);
         return ResponseEntity.created(new URI("/api/fill-ups/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -62,22 +62,22 @@ public class FillUpResource {
     /**
      * PUT  /fill-ups : Updates an existing fillUp.
      *
-     * @param fillUpDTO the fillUpDTO to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated fillUpDTO,
-     * or with status 400 (Bad Request) if the fillUpDTO is not valid,
-     * or with status 500 (Internal Server Error) if the fillUpDTO couldn't be updated
+     * @param fillUp the fillUp to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated fillUp,
+     * or with status 400 (Bad Request) if the fillUp is not valid,
+     * or with status 500 (Internal Server Error) if the fillUp couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/fill-ups")
     @Timed
-    public ResponseEntity<FillUpDTO> updateFillUp(@RequestBody FillUpDTO fillUpDTO) throws URISyntaxException {
-        log.debug("REST request to update FillUp : {}", fillUpDTO);
-        if (fillUpDTO.getId() == null) {
+    public ResponseEntity<FillUp> updateFillUp(@RequestBody FillUp fillUp) throws URISyntaxException {
+        log.debug("REST request to update FillUp : {}", fillUp);
+        if (fillUp.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        FillUpDTO result = fillUpService.save(fillUpDTO);
+        FillUp result = fillUpRepository.save(fillUp);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, fillUpDTO.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, fillUp.getId().toString()))
             .body(result);
     }
 
@@ -89,9 +89,9 @@ public class FillUpResource {
      */
     @GetMapping("/fill-ups")
     @Timed
-    public ResponseEntity<List<FillUpDTO>> getAllFillUps(Pageable pageable) {
+    public ResponseEntity<List<FillUp>> getAllFillUps(Pageable pageable) {
         log.debug("REST request to get a page of FillUps");
-        Page<FillUpDTO> page = fillUpService.findAll(pageable);
+        Page<FillUp> page = fillUpRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/fill-ups");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -99,28 +99,29 @@ public class FillUpResource {
     /**
      * GET  /fill-ups/:id : get the "id" fillUp.
      *
-     * @param id the id of the fillUpDTO to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the fillUpDTO, or with status 404 (Not Found)
+     * @param id the id of the fillUp to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the fillUp, or with status 404 (Not Found)
      */
     @GetMapping("/fill-ups/{id}")
     @Timed
-    public ResponseEntity<FillUpDTO> getFillUp(@PathVariable Long id) {
+    public ResponseEntity<FillUp> getFillUp(@PathVariable Long id) {
         log.debug("REST request to get FillUp : {}", id);
-        Optional<FillUpDTO> fillUpDTO = fillUpService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(fillUpDTO);
+        Optional<FillUp> fillUp = fillUpRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(fillUp);
     }
 
     /**
      * DELETE  /fill-ups/:id : delete the "id" fillUp.
      *
-     * @param id the id of the fillUpDTO to delete
+     * @param id the id of the fillUp to delete
      * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/fill-ups/{id}")
     @Timed
     public ResponseEntity<Void> deleteFillUp(@PathVariable Long id) {
         log.debug("REST request to delete FillUp : {}", id);
-        fillUpService.delete(id);
+
+        fillUpRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

@@ -22,16 +22,16 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="yakitanalizApp.enumeration.enumerationType" for="field_enumerationType">Enumeration Type</label>
-                    <select class="form-control" id="field_enumerationType" name="enumerationType" [(ngModel)]="enumeration.enumerationTypeId" >
+                    <select class="form-control" id="field_enumerationType" name="enumerationType" [(ngModel)]="enumeration.enumerationType" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="enumerationTypeOption.id" *ngFor="let enumerationTypeOption of enumerationtypes; trackBy: trackEnumerationTypeById">{{enumerationTypeOption.id}}</option>
+                        <option [ngValue]="enumerationTypeOption.id === enumeration.enumerationType?.id ? enumeration.enumerationType : enumerationTypeOption" *ngFor="let enumerationTypeOption of enumerationtypes; trackBy: trackEnumerationTypeById">{{enumerationTypeOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="yakitanalizApp.enumeration.parent" for="field_parent">Parent</label>
-                    <select class="form-control" id="field_parent" name="parent" [(ngModel)]="enumeration.parentId" >
+                    <select class="form-control" id="field_parent" name="parent" [(ngModel)]="enumeration.parent" >
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="enumerationOption.id" *ngFor="let enumerationOption of enumerations; trackBy: trackEnumerationById">{{enumerationOption.id}}</option>
+                        <option [ngValue]="enumerationOption.id === enumeration.parent?.id ? enumeration.parent : enumerationOption" *ngFor="let enumerationOption of enumerations; trackBy: trackEnumerationById">{{enumerationOption.id}}</option>
                     </select>
                 </div>
             </div>

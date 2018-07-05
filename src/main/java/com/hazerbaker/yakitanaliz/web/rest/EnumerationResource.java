@@ -1,11 +1,11 @@
 package com.hazerbaker.yakitanaliz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import com.hazerbaker.yakitanaliz.service.EnumerationService;
+import com.hazerbaker.yakitanaliz.domain.Enumeration;
+import com.hazerbaker.yakitanaliz.repository.EnumerationRepository;
 import com.hazerbaker.yakitanaliz.web.rest.errors.BadRequestAlertException;
 import com.hazerbaker.yakitanaliz.web.rest.util.HeaderUtil;
 import com.hazerbaker.yakitanaliz.web.rest.util.PaginationUtil;
-import com.hazerbaker.yakitanaliz.service.dto.EnumerationDTO;
 import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -33,27 +33,27 @@ public class EnumerationResource {
 
     private static final String ENTITY_NAME = "enumeration";
 
-    private final EnumerationService enumerationService;
+    private final EnumerationRepository enumerationRepository;
 
-    public EnumerationResource(EnumerationService enumerationService) {
-        this.enumerationService = enumerationService;
+    public EnumerationResource(EnumerationRepository enumerationRepository) {
+        this.enumerationRepository = enumerationRepository;
     }
 
     /**
      * POST  /enumerations : Create a new enumeration.
      *
-     * @param enumerationDTO the enumerationDTO to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new enumerationDTO, or with status 400 (Bad Request) if the enumeration has already an ID
+     * @param enumeration the enumeration to create
+     * @return the ResponseEntity with status 201 (Created) and with body the new enumeration, or with status 400 (Bad Request) if the enumeration has already an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/enumerations")
     @Timed
-    public ResponseEntity<EnumerationDTO> createEnumeration(@RequestBody EnumerationDTO enumerationDTO) throws URISyntaxException {
-        log.debug("REST request to save Enumeration : {}", enumerationDTO);
-        if (enumerationDTO.getId() != null) {
+    public ResponseEntity<Enumeration> createEnumeration(@RequestBody Enumeration enumeration) throws URISyntaxException {
+        log.debug("REST request to save Enumeration : {}", enumeration);
+        if (enumeration.getId() != null) {
             throw new BadRequestAlertException("A new enumeration cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        EnumerationDTO result = enumerationService.save(enumerationDTO);
+        Enumeration result = enumerationRepository.save(enumeration);
         return ResponseEntity.created(new URI("/api/enumerations/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -62,22 +62,22 @@ public class EnumerationResource {
     /**
      * PUT  /enumerations : Updates an existing enumeration.
      *
-     * @param enumerationDTO the enumerationDTO to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated enumerationDTO,
-     * or with status 400 (Bad Request) if the enumerationDTO is not valid,
-     * or with status 500 (Internal Server Error) if the enumerationDTO couldn't be updated
+     * @param enumeration the enumeration to update
+     * @return the ResponseEntity with status 200 (OK) and with body the updated enumeration,
+     * or with status 400 (Bad Request) if the enumeration is not valid,
+     * or with status 500 (Internal Server Error) if the enumeration couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/enumerations")
     @Timed
-    public ResponseEntity<EnumerationDTO> updateEnumeration(@RequestBody EnumerationDTO enumerationDTO) throws URISyntaxException {
-        log.debug("REST request to update Enumeration : {}", enumerationDTO);
-        if (enumerationDTO.getId() == null) {
+    public ResponseEntity<Enumeration> updateEnumeration(@RequestBody Enumeration enumeration) throws URISyntaxException {
+        log.debug("REST request to update Enumeration : {}", enumeration);
+        if (enumeration.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        EnumerationDTO result = enumerationService.save(enumerationDTO);
+        Enumeration result = enumerationRepository.save(enumeration);
         return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, enumerationDTO.getId().toString()))
+            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, enumeration.getId().toString()))
             .body(result);
     }
 
@@ -89,9 +89,9 @@ public class EnumerationResource {
      */
     @GetMapping("/enumerations")
     @Timed
-    public ResponseEntity<List<EnumerationDTO>> getAllEnumerations(Pageable pageable) {
+    public ResponseEntity<List<Enumeration>> getAllEnumerations(Pageable pageable) {
         log.debug("REST request to get a page of Enumerations");
-        Page<EnumerationDTO> page = enumerationService.findAll(pageable);
+        Page<Enumeration> page = enumerationRepository.findAll(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/enumerations");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -99,28 +99,29 @@ public class EnumerationResource {
     /**
      * GET  /enumerations/:id : get the "id" enumeration.
      *
-     * @param id the id of the enumerationDTO to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the enumerationDTO, or with status 404 (Not Found)
+     * @param id the id of the enumeration to retrieve
+     * @return the ResponseEntity with status 200 (OK) and with body the enumeration, or with status 404 (Not Found)
      */
     @GetMapping("/enumerations/{id}")
     @Timed
-    public ResponseEntity<EnumerationDTO> getEnumeration(@PathVariable Long id) {
+    public ResponseEntity<Enumeration> getEnumeration(@PathVariable Long id) {
         log.debug("REST request to get Enumeration : {}", id);
-        Optional<EnumerationDTO> enumerationDTO = enumerationService.findOne(id);
-        return ResponseUtil.wrapOrNotFound(enumerationDTO);
+        Optional<Enumeration> enumeration = enumerationRepository.findById(id);
+        return ResponseUtil.wrapOrNotFound(enumeration);
     }
 
     /**
      * DELETE  /enumerations/:id : delete the "id" enumeration.
      *
-     * @param id the id of the enumerationDTO to delete
+     * @param id the id of the enumeration to delete
      * @return the ResponseEntity with status 200 (OK)
      */
     @DeleteMapping("/enumerations/{id}")
     @Timed
     public ResponseEntity<Void> deleteEnumeration(@PathVariable Long id) {
         log.debug("REST request to delete Enumeration : {}", id);
-        enumerationService.delete(id);
+
+        enumerationRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

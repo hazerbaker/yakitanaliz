@@ -14,10 +14,10 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Enumeration.
+        Added the entity EnumerationType.
     -->
-    <changeSet id="20180703174444-1" author="jhipster">
-        <createTable tableName="enumeration">
+    <changeSet id="20180705155409-1" author="jhipster">
+        <createTable tableName="enumeration_type">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -29,22 +29,14 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="enumeration_type_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
-            <column name="parent_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
-
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
     </changeSet>
     
     <!-- Added the entity audit columns -->
-    <changeSet id="20180705061738-audit-1" author="jhipster-entity-audit">
-        <addColumn tableName="enumeration">
+    <changeSet id="20180705155632-audit-1" author="jhipster-entity-audit">
+        <addColumn tableName="enumeration_type">
             <column name="created_by" type="varchar(50)">
                 <constraints nullable="false"/>
             </column>
