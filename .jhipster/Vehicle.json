@@ -43,5 +43,6 @@
     "fluentMethods": true,
     "clientRootFolder": "",
     "applications": "*",
-    "angularJSSuffix": "ya"
+    "angularJSSuffix": "ya",
+    "enableEntityAudit": true
 }

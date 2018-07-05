@@ -11,7 +11,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "enumeration_type")
-public class EnumerationType implements Serializable {
+public class EnumerationType extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

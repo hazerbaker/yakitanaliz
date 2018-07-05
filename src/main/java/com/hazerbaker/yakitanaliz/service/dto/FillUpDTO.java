@@ -7,7 +7,7 @@ import java.util.Objects;
 /**
  * A DTO for the FillUp entity.
  */
-public class FillUpDTO implements Serializable {
+public class FillUpDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 

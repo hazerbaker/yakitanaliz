@@ -8,7 +8,7 @@ import com.hazerbaker.yakitanaliz.domain.enumeration.Transmission;
 /**
  * A DTO for the Vehicle entity.
  */
-public class VehicleDTO implements Serializable {
+public class VehicleDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 

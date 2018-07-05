@@ -6,7 +6,7 @@ import java.util.Objects;
 /**
  * A DTO for the Enumeration entity.
  */
-public class EnumerationDTO implements Serializable {
+public class EnumerationDTO extends AbstractAuditingDTO implements Serializable {
 
     private Long id;
 

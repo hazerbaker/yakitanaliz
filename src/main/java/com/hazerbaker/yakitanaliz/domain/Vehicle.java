@@ -16,7 +16,7 @@ import com.hazerbaker.yakitanaliz.domain.enumeration.Transmission;
  */
 @Entity
 @Table(name = "vehicle")
-public class Vehicle implements Serializable {
+public class Vehicle extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
