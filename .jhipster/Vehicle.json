@@ -4,7 +4,7 @@
         {
             "fieldName": "fuelType",
             "fieldType": "FuelType",
-            "fieldValues": "GAS,DIESEL,HYBRID,ELECTRIC"
+            "fieldValues": "GAS,DIESEL,LPG,HYBRID,ELECTRIC"
         },
         {
             "fieldName": "cc",
@@ -49,6 +49,5 @@
     "fluentMethods": true,
     "clientRootFolder": "",
     "applications": "*",
-    "angularJSSuffix": "ya",
-    "enableEntityAudit": true
+    "angularJSSuffix": "ya"
 }

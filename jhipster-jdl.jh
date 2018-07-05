@@ -28,7 +28,7 @@ enum Language {
 }
 
 enum FuelType {
-    GAS, DIESEL, HYBRID, ELECTRIC
+    GAS, DIESEL, LPG, HYBRID, ELECTRIC
 }
 
 enum Transmission {

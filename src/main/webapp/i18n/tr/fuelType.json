@@ -4,6 +4,7 @@
             "null": "",
             "GAS": "GAS",
             "DIESEL": "DIESEL",
+            "LPG": "LPG",
             "HYBRID": "HYBRID",
             "ELECTRIC": "ELECTRIC"
         }

@@ -4,6 +4,7 @@ import { IUser } from 'app/core/user/user.model';
 export const enum FuelType {
     GAS = 'GAS',
     DIESEL = 'DIESEL',
+    LPG = 'LPG',
     HYBRID = 'HYBRID',
     ELECTRIC = 'ELECTRIC'
 }
