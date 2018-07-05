@@ -8,6 +8,7 @@ import java.util.Optional;
 import com.codahale.metrics.annotation.Timed;
 import com.hazerbaker.yakitanaliz.domain.User;
 import com.hazerbaker.yakitanaliz.domain.Vehicle;
+import com.hazerbaker.yakitanaliz.repository.UserRepository;
 import com.hazerbaker.yakitanaliz.repository.VehicleRepository;
 import com.hazerbaker.yakitanaliz.web.rest.errors.BadRequestAlertException;
 import com.hazerbaker.yakitanaliz.web.rest.util.HeaderUtil;
@@ -45,8 +46,11 @@ public class VehicleResource {
 
     private final VehicleRepository vehicleRepository;
 
-    public VehicleResource(VehicleRepository vehicleRepository) {
+    private final UserRepository userRepository;
+
+    public VehicleResource(VehicleRepository vehicleRepository, UserRepository userRepository) {
         this.vehicleRepository = vehicleRepository;
+        this.userRepository = userRepository;
     }
 
     /**
@@ -63,7 +67,7 @@ public class VehicleResource {
         if (vehicle.getId() != null) {
             throw new BadRequestAlertException("A new vehicle cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        vehicle.setUser((User) SecurityContextHolder.getContext().getAuthentication().getPrincipal());
+        vehicle.setUser(userRepository.findOneByLogin(SecurityContextHolder.getContext().getAuthentication().getName()).get());
         Vehicle result = vehicleRepository.save(vehicle);
         return ResponseEntity.created(new URI("/api/vehicles/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
