@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Optional;
 
 import com.codahale.metrics.annotation.Timed;
-import com.hazerbaker.yakitanaliz.domain.User;
 import com.hazerbaker.yakitanaliz.domain.Vehicle;
 import com.hazerbaker.yakitanaliz.repository.UserRepository;
 import com.hazerbaker.yakitanaliz.repository.VehicleRepository;
+import com.hazerbaker.yakitanaliz.security.SecurityUtils;
 import com.hazerbaker.yakitanaliz.web.rest.errors.BadRequestAlertException;
 import com.hazerbaker.yakitanaliz.web.rest.util.HeaderUtil;
 import com.hazerbaker.yakitanaliz.web.rest.util.PaginationUtil;
@@ -21,7 +21,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,7 +66,7 @@ public class VehicleResource {
         if (vehicle.getId() != null) {
             throw new BadRequestAlertException("A new vehicle cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        vehicle.setUser(userRepository.findOneByLogin(SecurityContextHolder.getContext().getAuthentication().getName()).get());
+        vehicle.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
         Vehicle result = vehicleRepository.save(vehicle);
         return ResponseEntity.created(new URI("/api/vehicles/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
