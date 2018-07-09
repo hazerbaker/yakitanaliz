@@ -7,12 +7,14 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+import com.hazerbaker.yakitanaliz.domain.enumeration.EnumerationType;
+
 /**
  * A Enumeration.
  */
 @Entity
 @Table(name = "enumeration")
-public class Enumeration extends AbstractAuditingEntity implements Serializable {
+public class Enumeration implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,9 +29,9 @@ public class Enumeration extends AbstractAuditingEntity implements Serializable 
     @Column(name = "description")
     private String description;
 
-    @ManyToOne
-    @JsonIgnoreProperties("")
-    private EnumerationType enumerationType;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "jhi_type")
+    private EnumerationType type;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -70,17 +72,17 @@ public class Enumeration extends AbstractAuditingEntity implements Serializable 
         this.description = description;
     }
 
-    public EnumerationType getEnumerationType() {
-        return enumerationType;
+    public EnumerationType getType() {
+        return type;
     }
 
-    public Enumeration enumerationType(EnumerationType enumerationType) {
-        this.enumerationType = enumerationType;
+    public Enumeration type(EnumerationType type) {
+        this.type = type;
         return this;
     }
 
-    public void setEnumerationType(EnumerationType enumerationType) {
-        this.enumerationType = enumerationType;
+    public void setType(EnumerationType type) {
+        this.type = type;
     }
 
     public Enumeration getParent() {
@@ -123,6 +125,7 @@ public class Enumeration extends AbstractAuditingEntity implements Serializable 
             "id=" + getId() +
             ", name='" + getName() + "'" +
             ", description='" + getDescription() + "'" +
+            ", type='" + getType() + "'" +
             "}";
     }
 }

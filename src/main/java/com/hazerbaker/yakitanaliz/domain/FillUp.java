@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "fill_up")
-public class FillUp extends AbstractAuditingEntity implements Serializable {
+public class FillUp implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

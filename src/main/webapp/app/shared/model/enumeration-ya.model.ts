@@ -1,11 +1,15 @@
-import { IEnumerationTypeYa } from 'app/shared/model//enumeration-type-ya.model';
 import { IEnumerationYa } from 'app/shared/model//enumeration-ya.model';
+
+export const enum EnumerationType {
+    VEHICLEMAKE = 'VEHICLEMAKE',
+    VEHICLEMODEL = 'VEHICLEMODEL'
+}
 
 export interface IEnumerationYa {
     id?: number;
     name?: string;
     description?: string;
-    enumerationType?: IEnumerationTypeYa;
+    type?: EnumerationType;
     parent?: IEnumerationYa;
 }
 
@@ -14,7 +18,7 @@ export class EnumerationYa implements IEnumerationYa {
         public id?: number,
         public name?: string,
         public description?: string,
-        public enumerationType?: IEnumerationTypeYa,
+        public type?: EnumerationType,
         public parent?: IEnumerationYa
     ) {}
 }

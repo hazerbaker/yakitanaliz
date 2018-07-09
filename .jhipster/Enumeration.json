@@ -8,15 +8,14 @@
         {
             "fieldName": "description",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "type",
+            "fieldType": "EnumerationType",
+            "fieldValues": "VEHICLEMAKE,VEHICLEMODEL"
         }
     ],
     "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "enumerationType",
-            "otherEntityName": "enumerationType",
-            "otherEntityField": "id"
-        },
         {
             "relationshipType": "many-to-one",
             "relationshipName": "parent",
@@ -24,7 +23,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180705155410",
+    "changelogDate": "20180709093617",
     "entityTableName": "enumeration",
     "dto": "no",
     "pagination": "pagination",
@@ -33,6 +32,5 @@
     "fluentMethods": true,
     "clientRootFolder": "",
     "applications": "*",
-    "angularJSSuffix": "ya",
-    "enableEntityAudit": true
+    "angularJSSuffix": "ya"
 }

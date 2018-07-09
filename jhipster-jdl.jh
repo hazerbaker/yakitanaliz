@@ -1,7 +1,7 @@
 entity Enumeration {
 	name String,
     description String,
-    enumType EnumType
+    type EnumerationType
 }
 
 entity Vehicle {
@@ -27,8 +27,8 @@ enum FuelType {
     GAS, DIESEL, LPG, HYBRID, ELECTRIC
 }
 
-enum EnumType {
-    MAKE, MODEL
+enum EnumerationType {
+    VEHICLEMAKE, VEHICLEMODEL
 }
 
 enum Transmission {

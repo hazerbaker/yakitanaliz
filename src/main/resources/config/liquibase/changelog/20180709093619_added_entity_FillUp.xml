@@ -14,54 +14,40 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
 
     <!--
-        Added the entity Vehicle.
+        Added the entity FillUp.
     -->
-    <changeSet id="20180705155411-1" author="jhipster">
-        <createTable tableName="vehicle">
+    <changeSet id="20180709093619-1" author="jhipster">
+        <createTable tableName="fill_up">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="fuel_type" type="varchar(255)">
+            <column name="quantity" type="double">
                 <constraints nullable="true" />
             </column>
 
-            <column name="cc" type="integer">
+            <column name="unit_price" type="double">
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_year" type="integer">
+            <column name="jhi_date" type="date">
                 <constraints nullable="true" />
             </column>
 
-            <column name="transmission" type="varchar(255)">
+            <column name="total_distance" type="integer">
                 <constraints nullable="true" />
             </column>
 
-            <column name="model_id" type="bigint">
+            <column name="distance" type="integer">
                 <constraints nullable="true" />
             </column>
 
-            <column name="user_id" type="bigint">
+            <column name="vehicle_id" type="bigint">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
-    </changeSet>
-    
-    <!-- Added the entity audit columns -->
-    <changeSet id="20180705192704-audit-1" author="jhipster-entity-audit">
-        <addColumn tableName="vehicle">
-            <column name="created_by" type="varchar(50)">
-                <constraints nullable="false"/>
-            </column>
-            <column name="created_date" type="timestamp" defaultValueDate="${now}">
-                <constraints nullable="false"/>
-            </column>
-            <column name="last_modified_by" type="varchar(50)"/>
-            <column name="last_modified_date" type="timestamp"/>
-        </addColumn>
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

@@ -34,7 +34,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180705155411",
+    "changelogDate": "20180709093618",
     "entityTableName": "vehicle",
     "dto": "no",
     "pagination": "pagination",
@@ -43,6 +43,5 @@
     "fluentMethods": true,
     "clientRootFolder": "",
     "applications": "*",
-    "angularJSSuffix": "ya",
-    "enableEntityAudit": true
+    "angularJSSuffix": "ya"
 }

@@ -6,8 +6,6 @@ import { JhiAlertService } from 'ng-jhipster';
 
 import { IEnumerationYa } from 'app/shared/model/enumeration-ya.model';
 import { EnumerationYaService } from './enumeration-ya.service';
-import { IEnumerationTypeYa } from 'app/shared/model/enumeration-type-ya.model';
-import { EnumerationTypeYaService } from 'app/entities/enumeration-type-ya';
 
 @Component({
     selector: 'jhi-enumeration-ya-update',
@@ -17,14 +15,11 @@ export class EnumerationYaUpdateComponent implements OnInit {
     private _enumeration: IEnumerationYa;
     isSaving: boolean;
 
-    enumerationtypes: IEnumerationTypeYa[];
-
     enumerations: IEnumerationYa[];
 
     constructor(
         private jhiAlertService: JhiAlertService,
         private enumerationService: EnumerationYaService,
-        private enumerationTypeService: EnumerationTypeYaService,
         private activatedRoute: ActivatedRoute
     ) {}
 
@@ -33,12 +28,6 @@ export class EnumerationYaUpdateComponent implements OnInit {
         this.activatedRoute.data.subscribe(({ enumeration }) => {
             this.enumeration = enumeration;
         });
-        this.enumerationTypeService.query().subscribe(
-            (res: HttpResponse<IEnumerationTypeYa[]>) => {
-                this.enumerationtypes = res.body;
-            },
-            (res: HttpErrorResponse) => this.onError(res.message)
-        );
         this.enumerationService.query().subscribe(
             (res: HttpResponse<IEnumerationYa[]>) => {
                 this.enumerations = res.body;
@@ -75,10 +64,6 @@ export class EnumerationYaUpdateComponent implements OnInit {
 
     private onError(errorMessage: string) {
         this.jhiAlertService.error(errorMessage, null, null);
-    }
-
-    trackEnumerationTypeById(index: number, item: IEnumerationTypeYa) {
-        return item.id;
     }
 
     trackEnumerationById(index: number, item: IEnumerationYa) {

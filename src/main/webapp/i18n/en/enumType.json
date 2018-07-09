@@ -1,0 +1,9 @@
+{
+    "yakitanalizApp": {
+        "EnumType" : {
+            "null": "",
+            "MAKE": "MAKE",
+            "MODEL": "MODEL"
+        }
+    }
+}

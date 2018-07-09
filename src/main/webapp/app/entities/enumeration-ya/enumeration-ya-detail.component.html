@@ -13,11 +13,9 @@
                 <dd>
                     <span>{{enumeration.description}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.enumeration.enumerationType">Enumeration Type</span></dt>
+                <dt><span jhiTranslate="yakitanalizApp.enumeration.type">Type</span></dt>
                 <dd>
-                    <div *ngIf="enumeration.enumerationType">
-                        <a [routerLink]="['/enumeration-type-ya', enumeration.enumerationType?.id, 'view']">{{enumeration.enumerationType?.id}}</a>
-                    </div>
+                    <span jhiTranslate="{{'yakitanalizApp.EnumerationType.' + enumeration.type}}">{{enumeration.type}}</span>
                 </dd>
                 <dt><span jhiTranslate="yakitanalizApp.enumeration.parent">Parent</span></dt>
                 <dd>

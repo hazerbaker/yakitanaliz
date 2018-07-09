@@ -30,7 +30,7 @@
             "otherEntityField": "id"
         }
     ],
-    "changelogDate": "20180705155412",
+    "changelogDate": "20180709093619",
     "entityTableName": "fill_up",
     "dto": "no",
     "pagination": "pagination",
@@ -39,6 +39,5 @@
     "fluentMethods": true,
     "clientRootFolder": "",
     "applications": "*",
-    "angularJSSuffix": "ya",
-    "enableEntityAudit": true
+    "angularJSSuffix": "ya"
 }

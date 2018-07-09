@@ -21,26 +21,17 @@
     "serviceDiscoveryType": false,
     "buildTool": "maven",
     "enableSwaggerCodegen": false,
-    "jwtSecretKey": "1f97f5f51318b10821e2e87ee9d5f1362cc5b81a",
+    "jwtSecretKey": "90563a29ce7e6d9dd601f2eea0583cd48e57d94a",
     "clientFramework": "angularX",
     "useSass": false,
     "clientPackageManager": "npm",
     "testFrameworks": [],
     "jhiPrefix": "jhi",
-    "otherModules": [
-      {
-        "name": "generator-jhipster-audit-helper",
-        "version": "1.0.3"
-      }
-    ],
     "enableTranslation": true,
     "nativeLanguage": "en",
     "languages": [
       "en",
       "tr"
     ]
-  },
-  "generator-jhipster-entity-audit": {
-    "auditFramework": "custom"
   }
 }
