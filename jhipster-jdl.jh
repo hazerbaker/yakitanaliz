@@ -1,11 +1,7 @@
-entity EnumerationType {
-	name String,
-    description String
-}
-
 entity Enumeration {
 	name String,
-    description String
+    description String,
+    enumType EnumType
 }
 
 entity Vehicle {
@@ -31,18 +27,21 @@ enum FuelType {
     GAS, DIESEL, LPG, HYBRID, ELECTRIC
 }
 
+enum EnumType {
+    MAKE, MODEL
+}
+
 enum Transmission {
     AUTO, MANUAL
 }
 
 relationship ManyToOne {
-	Enumeration{enumerationType} to EnumerationType,
     Vehicle{model} to Enumeration,
     FillUp{vehicle} to Vehicle,
 	Enumeration{parent} to Enumeration,
     Vehicle{user} to User
 }
 
-paginate FillUp, Vehicle, Enumeration, EnumerationType with pagination
+paginate FillUp, Vehicle, Enumeration with pagination
 
 angularSuffix * with ya
