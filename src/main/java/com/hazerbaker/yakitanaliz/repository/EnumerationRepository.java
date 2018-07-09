@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 /**
  * Spring Data  repository for the Enumeration entity.
  */
-@SuppressWarnings("unused")
 @Repository
 public interface EnumerationRepository extends JpaRepository<Enumeration, Long> {
 
