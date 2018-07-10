@@ -1,8 +1,8 @@
 {
   "name": "yakitanaliz",
   "version": "0.0.1",
-  "author": "Ionic Framework",
-  "homepage": "http://ionicframework.com/",
+  "author": "hazerbaker",
+  "homepage": "https://github.com/hazerbaker/yakitanaliz/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",
@@ -38,5 +38,5 @@
     "@ionic/app-scripts": "3.1.10",
     "typescript": "~2.6.2"
   },
-  "description": "An Ionic project"
+  "description": "Fuel Consumption Analyzer"
 }

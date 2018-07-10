@@ -4,6 +4,7 @@
   "NAME": "İsim",
   "PASSWORD": "Şifre",
   "EMAIL": "Email",
+  "USERNAME": "Kullanıcı Adı",
   "LOGIN": "Giriş yap",
   "SIGNUP": "Kayıt ol",
   "TAB1_TITLE": "Öğeler",
