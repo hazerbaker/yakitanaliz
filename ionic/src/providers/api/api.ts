@@ -1,4 +1,4 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 /**
@@ -26,10 +26,32 @@ export class Api {
       }
     }
 
+    let token = localStorage.getItem('jwttoken');
+    if(token !== undefined) {
+      let headers = new HttpHeaders({});
+      headers = headers.append('Content-Type', 'application/json');
+      headers = headers.append('Authorization', 'Bearer ' + token);
+      reqOpts.headers = headers;
+    }
+
     return this.http.get(this.url + '/' + endpoint, reqOpts);
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
+
+    if (!reqOpts) {
+      reqOpts = {
+      };
+    }
+
+    let token = localStorage.getItem('jwttoken');
+    if(token !== undefined) {
+      let headers = new HttpHeaders({});
+      headers = headers.append('Content-Type', 'application/json');
+      headers = headers.append('Authorization', 'Bearer ' + token);
+      reqOpts.headers = headers;
+    }
+
     return this.http.post(this.url + '/' + endpoint, body, reqOpts);
   }
 

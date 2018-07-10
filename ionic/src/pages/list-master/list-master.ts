@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
-import { Items } from '../../providers';
+import { Api } from '../../providers/api/api';
 
 @IonicPage()
 @Component({
@@ -12,8 +12,16 @@ import { Items } from '../../providers';
 export class ListMasterPage {
   currentItems: Item[];
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
-    this.currentItems = this.items.query();
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public api: Api) {
+    this.api.get('vehicles').subscribe((res: any) => {
+      // If the API returned a successful response, mark the user as logged in
+      if (res.status == 'success') {
+        console.log(res)
+        this.currentItems = null;
+      }
+    }, err => {
+      console.error('ERROR', err);
+    });
   }
 
   /**
@@ -30,7 +38,7 @@ export class ListMasterPage {
     let addModal = this.modalCtrl.create('ItemCreatePage');
     addModal.onDidDismiss(item => {
       if (item) {
-        this.items.add(item);
+        //this.items.add(item);
       }
     })
     addModal.present();
@@ -40,7 +48,7 @@ export class ListMasterPage {
    * Delete an item from the list of items.
    */
   deleteItem(item) {
-    this.items.delete(item);
+    //this.items.delete(item);
   }
 
   /**

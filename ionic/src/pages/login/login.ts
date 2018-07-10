@@ -27,6 +27,8 @@ export class LoginPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
 
+    localStorage.removeItem('jwttoken');
+
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
     })
@@ -36,7 +38,7 @@ export class LoginPage {
   doLogin() {
     this.user.login(this.account).subscribe((resp) => {
       this.navCtrl.push(MainPage);
-      sessionStorage.setItem('jhi-authenticationtoken', resp['id_token']);
+      localStorage.setItem('jwttoken', resp['id_token']);
     }, (err) => {
       // Unable to log in
       let toast = this.toastCtrl.create({

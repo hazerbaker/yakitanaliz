@@ -27,7 +27,7 @@ import { Settings } from '../providers';
   <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = FirstRunPage;
+  rootPage = 'LoginPage'; //FirstRunPage
 
   @ViewChild(Nav) nav: Nav;
 
@@ -82,8 +82,6 @@ export class MyApp {
   }
 
   openPage(page) {
-    if(page.component === 'LoginPage') sessionStorage.removeItem('jhi-authenticationtoken');
-
     this.nav.setRoot(page.component);
   }
 }
