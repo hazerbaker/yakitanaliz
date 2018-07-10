@@ -36,6 +36,7 @@ export class LoginPage {
   doLogin() {
     this.user.login(this.account).subscribe((resp) => {
       this.navCtrl.push(MainPage);
+      sessionStorage.setItem('jhi-authenticationtoken', resp['id_token']);
     }, (err) => {
       // Unable to log in
       let toast = this.toastCtrl.create({
