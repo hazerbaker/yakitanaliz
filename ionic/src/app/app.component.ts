@@ -27,8 +27,7 @@ import { Settings } from '../providers';
   <ion-nav #content [root]="rootPage"></ion-nav>`
 })
 export class MyApp {
-  rootPage = 'LoginPage'; //FirstRunPage
-
+  rootPage = localStorage.getItem('jwttoken') !== null ? 'TabsPage': 'LoginPage'; //FirstRunPage
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
@@ -82,6 +81,7 @@ export class MyApp {
   }
 
   openPage(page) {
+    if(page.component == 'LoginPage') localStorage.removeItem('jwttoken')
     this.nav.setRoot(page.component);
   }
 }

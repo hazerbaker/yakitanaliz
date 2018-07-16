@@ -27,7 +27,9 @@ export class LoginPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService) {
 
-    localStorage.removeItem('jwttoken');
+    if (localStorage.getItem('jwttoken') !== null) {
+      this.navCtrl.push(MainPage);
+    }
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
       this.loginErrorString = value;
