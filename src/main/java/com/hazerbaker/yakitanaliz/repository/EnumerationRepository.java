@@ -1,7 +1,11 @@
 package com.hazerbaker.yakitanaliz.repository;
 
 import com.hazerbaker.yakitanaliz.domain.Enumeration;
-import org.springframework.data.jpa.repository.*;
+import com.hazerbaker.yakitanaliz.domain.enumeration.EnumerationType;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 
@@ -11,4 +15,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EnumerationRepository extends JpaRepository<Enumeration, Long> {
 
+    Page<Enumeration> findByType(Pageable pageable, EnumerationType type);
 }

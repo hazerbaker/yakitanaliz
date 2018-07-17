@@ -2,6 +2,7 @@ package com.hazerbaker.yakitanaliz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.hazerbaker.yakitanaliz.domain.Enumeration;
+import com.hazerbaker.yakitanaliz.domain.enumeration.EnumerationType;
 import com.hazerbaker.yakitanaliz.repository.EnumerationRepository;
 import com.hazerbaker.yakitanaliz.web.rest.errors.BadRequestAlertException;
 import com.hazerbaker.yakitanaliz.web.rest.util.HeaderUtil;
@@ -92,6 +93,15 @@ public class EnumerationResource {
     public ResponseEntity<List<Enumeration>> getAllEnumerations(Pageable pageable) {
         log.debug("REST request to get a page of Enumerations");
         Page<Enumeration> page = enumerationRepository.findAll(pageable);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/enumerations");
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
+    @GetMapping("/enumerations/type/{type}")
+    @Timed
+    public ResponseEntity<List<Enumeration>> getEnumerationsByType(Pageable pageable, @PathVariable String type) {
+        log.debug("REST request to get a page of Enumerations By Type");
+        Page<Enumeration> page = enumerationRepository.findByType(pageable, EnumerationType.valueOf(type));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/enumerations");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

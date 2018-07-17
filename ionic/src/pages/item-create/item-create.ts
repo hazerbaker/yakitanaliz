@@ -31,11 +31,8 @@ export class ItemCreatePage {
       this.isReadyToSave = this.form.valid;
     });
     
-    this.api.get('enumerations').subscribe((res: any) => {
+    this.api.get('enumerations/type/VEHICLEMAKE').subscribe((res: any) => {
       console.log(res)
-      if (res.status == 'success') {
-        console.log(res)
-      }
     }, err => {
       console.error('ERROR', err);
     });
