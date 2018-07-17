@@ -66,7 +66,7 @@
   "SEARCH_TITLE": "Search",
   "SEARCH_PLACEHOLDER": "Search the items list, e.g. \"Donald Duck\"",
 
-  "REGISTER_BUTTON": "Sign Up",
   "SIGNUP_SUCCESS": "User Creation Successful",
-  "SIGNUP_EXISTS": "User or Email Already Exists"
+  "SIGNUP_EXISTS": "User or Email Already Exists",
+  "NOT_MEMBER": "Not a member yet?"
 }

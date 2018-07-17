@@ -4,8 +4,7 @@
     <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
 
     <ion-buttons end>
-      <button ion-button color="primary" (click)="register()">
-        <ion-icon name="register">{{ 'REGISTER_BUTTON' | translate }}</ion-icon>
+      <button>
       </button>
     </ion-buttons>
   </ion-navbar>
@@ -33,4 +32,10 @@
 
     </ion-list>
   </form>
+
+  <div padding>
+    <button ion-button color="primary" clear block (click)="register()">
+      {{ 'NOT_MEMBER' | translate }} {{ 'SIGNUP' | translate }}
+    </button>
+  </div>
 </ion-content>
