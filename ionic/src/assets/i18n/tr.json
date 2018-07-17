@@ -43,6 +43,8 @@
   "ITEM_CC_PLACEHOLDER": "Motor Hacmi (cc)",
   "ITEM_YEAR_PLACEHOLDER": "Model Yılı",
   "ITEM_TRANSMISSION_PLACEHOLDER": "Vites Tipi",
+  "ITEM_MAKE_PLACEHOLDER": "Marka",
+  "ITEM_MODEL_PLACEHOLDER": "Model",
   "GAS": "Benzinli",
   "DIESEL": "Dizel",
   "LPG": "LPG",

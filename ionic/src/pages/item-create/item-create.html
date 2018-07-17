@@ -39,11 +39,11 @@
       <ion-item>
         <ion-label>{{ 'ITEM_FUELTYPE_PLACEHOLDER' | translate }}</ion-label>
         <ion-select formControlName="fuelType">
-          <ion-option value="GAS" checked="true">{{ 'GAS' | translate }}</ion-option>
-          <ion-option value="DIESEL" checked="true">{{ 'DIESEL' | translate }}</ion-option>
-          <ion-option value="LPG" checked="true">{{ 'LPG' | translate }}</ion-option>
-          <ion-option value="HYBRID" checked="true">{{ 'HYBRID' | translate }}</ion-option>
-          <ion-option value="ELECTRIC" checked="true">{{ 'ELECTRIC' | translate }}</ion-option>
+          <ion-option value="GAS">{{ 'GAS' | translate }}</ion-option>
+          <ion-option value="DIESEL">{{ 'DIESEL' | translate }}</ion-option>
+          <ion-option value="LPG">{{ 'LPG' | translate }}</ion-option>
+          <ion-option value="HYBRID">{{ 'HYBRID' | translate }}</ion-option>
+          <ion-option value="ELECTRIC">{{ 'ELECTRIC' | translate }}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
@@ -57,8 +57,20 @@
       <ion-item>
         <ion-label>{{ 'ITEM_TRANSMISSION_PLACEHOLDER' | translate }}</ion-label>
         <ion-select formControlName="fuelType">
-          <ion-option value="AUTO" checked="true">{{ 'AUTO' | translate }}</ion-option>
-          <ion-option value="MANUAL" checked="true">{{ 'MANUAL' | translate }}</ion-option>
+          <ion-option value="AUTO">{{ 'AUTO' | translate }}</ion-option>
+          <ion-option value="MANUAL">{{ 'MANUAL' | translate }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_MAKE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="fuelType">
+          <ion-option value=" ">{{ 'AUTO' | translate }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_MODEL_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="fuelType">
+          <ion-option value=" ">{{ 'AUTO' | translate }}</ion-option>
         </ion-select>
       </ion-item>
     </ion-list>

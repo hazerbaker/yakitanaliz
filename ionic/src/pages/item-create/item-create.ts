@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController } from 'ionic-angular';
+import { Api } from '../../providers/api/api';
 
 @IonicPage()
 @Component({
@@ -17,7 +18,7 @@ export class ItemCreatePage {
 
   form: FormGroup;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, public api: Api) {
     this.form = formBuilder.group({
       profilePic: [''],
       fuelType: ['', Validators.required],
@@ -28,6 +29,15 @@ export class ItemCreatePage {
     // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
+    });
+    
+    this.api.get('enumerations').subscribe((res: any) => {
+      console.log(res)
+      if (res.status == 'success') {
+        console.log(res)
+      }
+    }, err => {
+      console.error('ERROR', err);
     });
   }
 

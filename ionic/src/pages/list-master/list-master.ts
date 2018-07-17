@@ -14,7 +14,6 @@ export class ListMasterPage {
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public api: Api) {
     this.api.get('vehicles').subscribe((res: any) => {
-      // If the API returned a successful response, mark the user as logged in
       if (res.status == 'success') {
         console.log(res)
         this.currentItems = null;
