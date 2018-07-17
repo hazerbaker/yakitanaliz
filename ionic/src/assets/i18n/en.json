@@ -68,5 +68,16 @@
 
   "SIGNUP_SUCCESS": "User Creation Successful",
   "SIGNUP_EXISTS": "User or Email Already Exists",
-  "NOT_MEMBER": "Not a member yet?"
+  "NOT_MEMBER": "Not a member yet?",
+  "ITEM_FUELTYPE_PLACEHOLDER": "Fuel Type",
+  "ITEM_CC_PLACEHOLDER": "Engine Capacity (cc)",
+  "ITEM_YEAR_PLACEHOLDER": "Model Year",
+  "ITEM_TRANSMISSION_PLACEHOLDER": "Transmission",
+  "GAS": "Gas",
+  "DIESEL": "Diesel",
+  "LPG": "LPG",
+  "HYBRID": "Hybrid",
+  "ELECTRIC": "Electric",
+  "AUTO": "Automatic",
+  "MANUAL": "Manual"
 }

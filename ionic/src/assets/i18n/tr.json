@@ -38,5 +38,16 @@
 ,
   "SIGNUP_SUCCESS": "Kullanıcı kaydı başarılı. Giriş yapabilirsiniz.",
   "SIGNUP_EXISTS": "Kullanıcı adı veya email kullanımda",
-  "NOT_MEMBER": "Üye değil misiniz?"
+  "NOT_MEMBER": "Üye değil misiniz?",
+  "ITEM_FUELTYPE_PLACEHOLDER": "Yakıt Tipi",
+  "ITEM_CC_PLACEHOLDER": "Motor Hacmi (cc)",
+  "ITEM_YEAR_PLACEHOLDER": "Model Yılı",
+  "ITEM_TRANSMISSION_PLACEHOLDER": "Vites Tipi",
+  "GAS": "Benzinli",
+  "DIESEL": "Dizel",
+  "LPG": "LPG",
+  "HYBRID": "Hibrit",
+  "ELECTRIC": "Elektrikli",
+  "AUTO": "Automatic",
+  "MANUAL": "Manual"
 }

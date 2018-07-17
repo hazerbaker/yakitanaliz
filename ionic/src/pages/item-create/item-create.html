@@ -7,7 +7,7 @@
         <span color="primary" showWhen="ios">
           {{ 'CANCEL_BUTTON' | translate }}
         </span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        <ion-icon name="md-close" showWhen="core,android,windows"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end>
@@ -37,10 +37,29 @@
     </div>
     <ion-list>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_NAME_PLACEHOLDER' | translate }}" formControlName="name"></ion-input>
+        <ion-label>{{ 'ITEM_FUELTYPE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="fuelType">
+          <ion-option value="GAS" checked="true">{{ 'GAS' | translate }}</ion-option>
+          <ion-option value="DIESEL" checked="true">{{ 'DIESEL' | translate }}</ion-option>
+          <ion-option value="LPG" checked="true">{{ 'LPG' | translate }}</ion-option>
+          <ion-option value="HYBRID" checked="true">{{ 'HYBRID' | translate }}</ion-option>
+          <ion-option value="ELECTRIC" checked="true">{{ 'ELECTRIC' | translate }}</ion-option>
+        </ion-select>
       </ion-item>
       <ion-item>
-        <ion-input type="text" placeholder="{{ 'ITEM_ABOUT_PLACEHOLDER' | translate }}" formControlName="about"></ion-input>
+        <ion-label>{{ 'ITEM_CC_PLACEHOLDER' | translate }}</ion-label>
+        <ion-input type="text" formControlName="cc"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_YEAR_PLACEHOLDER' | translate }}</ion-label>
+        <ion-input type="text" formControlName="year"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'ITEM_TRANSMISSION_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="fuelType">
+          <ion-option value="AUTO" checked="true">{{ 'AUTO' | translate }}</ion-option>
+          <ion-option value="MANUAL" checked="true">{{ 'MANUAL' | translate }}</ion-option>
+        </ion-select>
       </ion-item>
     </ion-list>
   </form>
