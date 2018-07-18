@@ -63,14 +63,14 @@
       </ion-item>
       <ion-item>
         <ion-label>{{ 'ITEM_MAKE_PLACEHOLDER' | translate }}</ion-label>
-        <ion-select formControlName="fuelType">
-          <ion-option value=" ">{{ 'AUTO' | translate }}</ion-option>
+        <ion-select formControlName="make" (ionChange)="getModels($event)">
+          <ion-option *ngFor="let item of makes" [value]="item.id">{{ item.name }}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
         <ion-label>{{ 'ITEM_MODEL_PLACEHOLDER' | translate }}</ion-label>
-        <ion-select formControlName="fuelType">
-          <ion-option value=" ">{{ 'AUTO' | translate }}</ion-option>
+        <ion-select formControlName="model">
+          <ion-option *ngFor="let item of models" [value]="item.id">{{ item.name }}</ion-option>
         </ion-select>
       </ion-item>
     </ion-list>

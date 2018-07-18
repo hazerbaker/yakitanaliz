@@ -13,17 +13,19 @@ export class ItemCreatePage {
   @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;
-
   item: any;
-
   form: FormGroup;
+  makes: any;
+  models: any;
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, public api: Api) {
     this.form = formBuilder.group({
       profilePic: [''],
       fuelType: ['', Validators.required],
       cc: [''],
-      year: ['']
+      year: [''],
+      make: [''],
+      model: [''],
     });
 
     // Watch the form for changes, and
@@ -31,15 +33,20 @@ export class ItemCreatePage {
       this.isReadyToSave = this.form.valid;
     });
     
-    this.api.get('enumerations/type/VEHICLEMAKE').subscribe((res: any) => {
-      console.log(res)
+    this.api.get('enumerations/bytype/VEHICLEMAKE').subscribe((res: any) => {
+      this.makes = res;
     }, err => {
       console.error('ERROR', err);
     });
   }
 
-  ionViewDidLoad() {
-
+  getModels(e) {
+    this.api.get('enumerations/byparent/'+e).subscribe((res: any) => {
+      this.models = res;
+      console.log(res)
+    }, err => {
+      console.error('ERROR', err);
+    });
   }
 
   getPicture() {
@@ -80,11 +87,8 @@ export class ItemCreatePage {
     this.viewCtrl.dismiss();
   }
 
-  /**
-   * The user is done and wants to create the item, so return it
-   * back to the presenter.
-   */
   done() {
+    console.log("done")
     if (!this.form.valid) { return; }
     this.viewCtrl.dismiss(this.form.value);
   }
