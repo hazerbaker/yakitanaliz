@@ -23,6 +23,7 @@ export class ItemCreatePage {
       profilePic: [''],
       fuelType: ['', Validators.required],
       cc: [''],
+      transmission: [''],
       year: [''],
       make: [''],
       model: [''],
@@ -89,7 +90,13 @@ export class ItemCreatePage {
 
   done() {
     console.log("done")
+    console.log(this.form.value)
+    this.api.post('vehicles',this.form.value).subscribe((res: any) => {
+      console.log(res)
+    }, err => {
+      console.error('ERROR', err);
+    });
     if (!this.form.valid) { return; }
-    this.viewCtrl.dismiss(this.form.value);
+    //this.viewCtrl.dismiss(this.form.value);
   }
 }
