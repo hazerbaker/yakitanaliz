@@ -6,14 +6,14 @@ import { Api } from '../../providers/api/api';
 
 @IonicPage()
 @Component({
-  selector: 'page-item-create',
-  templateUrl: 'item-create.html'
+  selector: 'page-vehicle-create',
+  templateUrl: 'vehicle-create.html'
 })
-export class ItemCreatePage {
+export class VehicleCreatePage {
   @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;
-  item: any;
+  vehicle: any;
   form: FormGroup;
   makes: any;
   models: any;
@@ -89,8 +89,6 @@ export class ItemCreatePage {
   }
 
   done() {
-    console.log("done")
-    console.log(this.form.value)
     this.api.post('vehicles',this.form.value).subscribe((res: any) => {
       console.log(res)
     }, err => {

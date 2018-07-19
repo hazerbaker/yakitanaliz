@@ -3,8 +3,6 @@ import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
 import { User } from '../../providers';
-import { MainPage } from '../';
-import { LoginPage } from '../login/login';
 
 @IonicPage()
 @Component({
@@ -42,11 +40,11 @@ export class SignupPage {
 
   doSignup() {
     // Attempt to login in through our User service
-    this.user.signup(this.account).subscribe((resp) => {
+    this.user.signup(this.account).subscribe(() => {
       let toast = this.toastCtrl.create({
         message: this.signupSuccessString,
         duration: 3000,
-        cssClass: 'toast-success', // @TODO: green css class
+        cssClass: 'toast-success',
         position: 'top'
       });
       toast.present();

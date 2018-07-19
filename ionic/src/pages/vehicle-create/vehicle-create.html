@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'ITEM_CREATE_TITLE' | translate }}</ion-title>
+    <ion-title>{{ 'VEHICLE_CREATE_TITLE' | translate }}</ion-title>
     <ion-buttons start>
       <button ion-button (click)="cancel()">
         <span color="primary" showWhen="ios">
@@ -24,20 +24,20 @@
 
 
 <ion-content>
-  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createItem()">
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createVehicle()">
     <input type="file" #fileInput style="visibility: hidden; height: 0px" name="files[]" (change)="processWebImage($event)" />
     <div class="profile-image-wrapper" (click)="getPicture()">
       <div class="profile-image-placeholder" *ngIf="!this.form.controls.profilePic.value">
         <ion-icon name="add"></ion-icon>
         <div>
-          {{ 'ITEM_CREATE_CHOOSE_IMAGE' | translate }}
+          {{ 'VEHICLE_CREATE_CHOOSE_IMAGE' | translate }}
         </div>
       </div>
       <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.profilePic.value"></div>
     </div>
     <ion-list>
       <ion-item>
-        <ion-label>{{ 'ITEM_FUELTYPE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label>{{ 'VEHICLE_FUELTYPE_PLACEHOLDER' | translate }}</ion-label>
         <ion-select formControlName="fuelType">
           <ion-option value="GAS">{{ 'GAS' | translate }}</ion-option>
           <ion-option value="DIESEL">{{ 'DIESEL' | translate }}</ion-option>
@@ -47,28 +47,28 @@
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'ITEM_CC_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label>{{ 'VEHICLE_CC_PLACEHOLDER' | translate }}</ion-label>
         <ion-input type="text" formControlName="cc"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'ITEM_YEAR_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label>{{ 'VEHICLE_YEAR_PLACEHOLDER' | translate }}</ion-label>
         <ion-input type="text" formControlName="year"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'ITEM_TRANSMISSION_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label>{{ 'VEHICLE_TRANSMISSION_PLACEHOLDER' | translate }}</ion-label>
         <ion-select formControlName="transmission">
           <ion-option value="AUTO">{{ 'AUTO' | translate }}</ion-option>
           <ion-option value="MANUAL">{{ 'MANUAL' | translate }}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'ITEM_MAKE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label>{{ 'VEHICLE_MAKE_PLACEHOLDER' | translate }}</ion-label>
         <ion-select formControlName="make" (ionChange)="getModels($event)">
           <ion-option *ngFor="let item of makes" [value]="item.id">{{ item.name }}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'ITEM_MODEL_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label>{{ 'VEHICLE_MODEL_PLACEHOLDER' | translate }}</ion-label>
         <ion-select formControlName="model">
           <ion-option *ngFor="let item of models" [value]="item.id">{{ item.name }}</ion-option>
         </ion-select>
