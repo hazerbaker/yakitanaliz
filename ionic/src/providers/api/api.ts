@@ -18,7 +18,6 @@ export class Api {
       };
     }
 
-    // Support easy query params for GET requests
     if (params) {
       reqOpts.params = new HttpParams();
       for (let k in params) {
@@ -34,7 +33,7 @@ export class Api {
       reqOpts.headers = headers;
     }
 
-    return this.http.get(this.url + '/' + endpoint, reqOpts);
+    return this.track(this.http.get(this.url + '/' + endpoint, reqOpts));
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
@@ -52,7 +51,7 @@ export class Api {
       reqOpts.headers = headers;
     }
 
-    return this.http.post(this.url + '/' + endpoint, body, reqOpts);
+    return this.track(this.http.post(this.url + '/' + endpoint, body, reqOpts));
   }
 
   put(endpoint: string, body: any, reqOpts?: any) {
@@ -65,5 +64,19 @@ export class Api {
 
   patch(endpoint: string, body: any, reqOpts?: any) {
     return this.http.patch(this.url + '/' + endpoint, body, reqOpts);
+  }
+
+  track(request) {
+    request.subscribe((res: any) => {
+    }, err => {
+      if(err.status === 401) {
+        localStorage.removeItem('jwttoken');
+        location.reload();
+      }
+      else {
+        console.error('ERROR', err);
+      }
+    });
+    return request;
   }
 }
