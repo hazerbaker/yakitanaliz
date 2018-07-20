@@ -1,5 +1,6 @@
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import 'rxjs/add/operator/catch';
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -12,46 +13,62 @@ export class Api {
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
+
+    let _this = this;
+
     if (!reqOpts) {
       reqOpts = {
-        params: new HttpParams()
       };
     }
 
-    if (params) {
-      reqOpts.params = new HttpParams();
-      for (let k in params) {
-        reqOpts.params = reqOpts.params.set(k, params[k]);
-      }
-    }
-
     let token = localStorage.getItem('jwttoken');
-    if(token !== undefined) {
+    if (token !== undefined) {
       let headers = new HttpHeaders({});
       headers = headers.append('Content-Type', 'application/json');
       headers = headers.append('Authorization', 'Bearer ' + token);
       reqOpts.headers = headers;
     }
 
-    return this.track(this.http.get(this.url + '/' + endpoint, reqOpts));
+    let request = this.http.get(this.url + '/' + endpoint, reqOpts)
+      .map(
+        response => {
+          return response;
+        })
+      .catch(
+        error => this.track(error)
+      )
+
+    return request;
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
 
+    let _this = this;
+
     if (!reqOpts) {
       reqOpts = {
       };
     }
 
     let token = localStorage.getItem('jwttoken');
-    if(token !== undefined) {
-      let headers = new HttpHeaders({});
-      headers = headers.append('Content-Type', 'application/json');
-      headers = headers.append('Authorization', 'Bearer ' + token);
+    if (token !== undefined) {
+      let headers = new Headers({});
+      headers.append('Content-Type', 'application/json');
+      headers.append('Authorization', 'Bearer ' + token);
       reqOpts.headers = headers;
     }
 
-    return this.track(this.http.post(this.url + '/' + endpoint, body, reqOpts));
+    let request = this.http.post(this.url + '/' + endpoint, body, reqOpts)
+      .map(
+        response => {
+          console.log("map response", response)
+          return response;
+        })
+      .catch(
+        error => this.track(error)
+      )
+
+    return request;
   }
 
   put(endpoint: string, body: any, reqOpts?: any) {
@@ -66,17 +83,14 @@ export class Api {
     return this.http.patch(this.url + '/' + endpoint, body, reqOpts);
   }
 
-  track(request) {
-    request.subscribe((res: any) => {
-    }, err => {
-      if(err.status === 401) {
-        localStorage.removeItem('jwttoken');
-        location.reload();
-      }
-      else {
-        console.error('ERROR', err);
-      }
-    });
-    return request;
+  track(err) {
+    if (err.status === 401) {
+      localStorage.removeItem('jwttoken');
+      location.reload();
+    }
+    else {
+      console.error('ERROR', err);
+    }
+    return err;
   }
 }

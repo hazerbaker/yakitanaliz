@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, ModalController, NavController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
@@ -9,17 +9,16 @@ import { Api } from '../../providers/api/api';
   selector: 'page-list-master',
   templateUrl: 'list-master.html'
 })
-export class ListMasterPage {
+export class ListMasterPage implements OnInit {
   currentItems: Item[];
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public api: Api) {
-    this.api.get('vehicles').subscribe((res: any) => {
-      if (res.status == 'success') {
-        console.log(res)
-        this.currentItems = null;
-      }
-    }, err => {
-      console.error('ERROR', err);
+
+  }
+
+  ngOnInit() {
+    this.api.get('vehicles').subscribe((data: any) => {
+      console.log("vehicles", data)
     });
   }
 

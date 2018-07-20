@@ -36,6 +36,7 @@ export class VehicleCreatePage {
     
     this.api.get('enumerations/bytype/VEHICLEMAKE').subscribe((res: any) => {
       this.makes = res;
+      console.log(res)
     }, err => {
       console.error('ERROR', err);
     });
@@ -90,11 +91,9 @@ export class VehicleCreatePage {
 
   done() {
     this.api.post('vehicles',this.form.value).subscribe((res: any) => {
-      console.log(res)
-    }, err => {
-      console.error('ERROR', err);
+      //console.log(res)
     });
-    if (!this.form.valid) { return; }
+    //if (!this.form.valid) { return; }
     //this.viewCtrl.dismiss(this.form.value);
   }
 }
