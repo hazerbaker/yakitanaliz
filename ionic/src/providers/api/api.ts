@@ -52,9 +52,9 @@ export class Api {
 
     let token = localStorage.getItem('jwttoken');
     if (token !== undefined) {
-      let headers = new Headers({});
-      headers.append('Content-Type', 'application/json');
-      headers.append('Authorization', 'Bearer ' + token);
+      let headers = new HttpHeaders({});
+      headers = headers.append('Content-Type', 'application/json');
+      headers = headers.append('Authorization', 'Bearer ' + token);
       reqOpts.headers = headers;
     }
 
