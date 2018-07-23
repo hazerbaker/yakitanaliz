@@ -97,7 +97,7 @@ public class VehicleResource {
     @Timed
     public ResponseEntity<List<Vehicle>> getAllVehicles(Pageable pageable) {
         log.debug("REST request to get a page of Vehicles");
-        Page<Vehicle> page = vehicleRepository.findAll(pageable);
+        Page<Vehicle> page = vehicleRepository.findByUserIsCurrentUser(pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/vehicles");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

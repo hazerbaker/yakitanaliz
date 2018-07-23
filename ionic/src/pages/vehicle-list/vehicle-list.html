@@ -20,7 +20,7 @@
         <ion-avatar item-start>
           <img [src]="item.profilePic" />
         </ion-avatar>
-        <h2>{{item.make}} {{item.model}} {{item.year}}</h2>
+        <h2>{{item.model ? item.model.parent.name : ""}} {{item.model ? item.model.name : ""}} {{item.year}}</h2>
         <ion-note item-end>{{ api.roundcc(item.cc) }} {{item.fuelType}} {{item.transmission}}</ion-note>
       </button>
 
