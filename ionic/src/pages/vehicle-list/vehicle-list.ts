@@ -6,10 +6,10 @@ import { Api } from '../../providers/api/api';
 
 @IonicPage()
 @Component({
-  selector: 'page-list-master',
-  templateUrl: 'list-master.html'
+  selector: 'page-vehicle-list',
+  templateUrl: 'vehicle-list.html'
 })
-export class ListMasterPage implements OnInit {
+export class VehicleListPage implements OnInit {
   currentItems: Item[];
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public api: Api) {
@@ -18,13 +18,11 @@ export class ListMasterPage implements OnInit {
 
   ngOnInit() {
     this.api.get('vehicles').subscribe((data: any) => {
-      console.log("vehicles", data)
+      this.currentItems = data;
+      console.log(data)
     });
   }
 
-  /**
-   * The view loaded, let's query our items for the list
-   */
   ionViewDidLoad() {
   }
 

@@ -30,7 +30,7 @@
   "SIGNUP_TITLE": "Kayıt ol",
   "SIGNUP_ERROR": "Hesap oluşturulamadı. Lütfen hesap bilgilerinizi kontrol edip tekrar deneyin.",
   "SIGNUP_BUTTON": "Kayıt ol",
-  "LIST_MASTER_TITLE": "Araçlar",
+  "VEHICLE_LIST_TITLE": "Araçlar",
   "VEHICLE_CREATE_TITLE": "Yeni Araç",
   "VEHICLE_CREATE_CHOOSE_IMAGE": "Yeni Görsel",
   "CARDS_TITLE": "Sosyal",

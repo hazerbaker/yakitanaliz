@@ -93,4 +93,8 @@ export class Api {
     }
     return err;
   }
+
+  roundcc(cc) {
+    return Math.round(cc / 100)/10
+  }
 }

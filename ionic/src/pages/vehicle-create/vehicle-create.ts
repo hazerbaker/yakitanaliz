@@ -93,18 +93,17 @@ export class VehicleCreatePage {
   }
 
   done() {
-    let _this = this;
-    if (!_this.form.valid) { return; }
-    let values = _this.form.value;
+    if (!this.form.valid) { return; }
+    let values = this.form.value;
     values.model = { id: values.model }
-    _this.api.post('vehicles', values).subscribe((res: any) => {
-      let toast = _this.toastCtrl.create({
-        message: _this.createSuccessString,
+    this.api.post('vehicles', values).subscribe((res: any) => {
+      let toast = this.toastCtrl.create({
+        message: this.createSuccessString,
         duration: 2000,
         position: 'middle'
       });
       toast.present();
-      this.viewCtrl.dismiss(_this.form.value);
+      this.viewCtrl.dismiss(this.form.value);
     });
   }
 }
