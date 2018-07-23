@@ -44,6 +44,7 @@
   "VEHICLE_TRANSMISSION_PLACEHOLDER": "Vites Tipi",
   "VEHICLE_MAKE_PLACEHOLDER": "Marka",
   "VEHICLE_MODEL_PLACEHOLDER": "Model",
+  "VEHICLE_CREATE_SUCCESS": "Yeni Araç Oluşturuldu",
   "GAS": "Benzinli",
   "DIESEL": "Dizel",
   "LPG": "LPG",

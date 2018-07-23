@@ -75,6 +75,7 @@
   "VEHICLE_TRANSMISSION_PLACEHOLDER": "Transmission",
   "VEHICLE_MAKE_PLACEHOLDER": "Make",
   "VEHICLE_MODEL_PLACEHOLDER": "Model",
+  "VEHICLE_CREATE_SUCCESS": "New Vehicle Created",
   "GAS": "Gas",
   "DIESEL": "Diesel",
   "LPG": "LPG",

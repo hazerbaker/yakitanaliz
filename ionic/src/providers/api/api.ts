@@ -29,13 +29,13 @@ export class Api {
       reqOpts.headers = headers;
     }
 
-    let request = this.http.get(this.url + '/' + endpoint, reqOpts)
+    let request = _this.http.get(_this.url + '/' + endpoint, reqOpts)
       .map(
         response => {
           return response;
         })
       .catch(
-        error => this.track(error)
+        error => _this.track(error)
       )
 
     return request;
@@ -58,14 +58,14 @@ export class Api {
       reqOpts.headers = headers;
     }
 
-    let request = this.http.post(this.url + '/' + endpoint, body, reqOpts)
+    let request = _this.http.post(_this.url + '/' + endpoint, body, reqOpts)
       .map(
         response => {
           console.log("map response", response)
           return response;
         })
       .catch(
-        error => this.track(error)
+        error => _this.track(error)
       )
 
     return request;
