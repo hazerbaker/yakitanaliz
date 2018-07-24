@@ -17,21 +17,23 @@ export class VehicleListPage implements OnInit {
   }
 
   ngOnInit() {
-    this.api.get('vehicles').subscribe((data: any) => {
-      this.currentItems = data;
-      console.log(data)
-    });
+    this.getVehicles();
   }
 
   ionViewDidLoad() {
+  }
+
+  getVehicles() {
+    this.api.get('vehicles').subscribe((data: any) => {
+      this.currentItems = data;
+    });
   }
 
   addItem() {
     let addModal = this.modalCtrl.create('VehicleCreatePage');
     addModal.onDidDismiss(item => {
       if (item) {
-        console.log("item: ", item)
-        //this.items.add(item);
+        this.getVehicles();
       }
     })
     addModal.present();
