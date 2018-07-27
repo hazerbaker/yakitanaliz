@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{ vehicle.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="vehicle-profile" text-center #profilePic [style.background-image]="vehicle.profilePic != undefined ? 'url(' + vehicle.profilePic + ')' : 'url(../assets/img/car.png)'">
+  </div>
+
+  <div class="vehicle-detail" padding>
+    <h2>{{vehicle.name}}</h2>
+    <p>{{vehicle.about}}</p>
+  </div>
+</ion-content>
