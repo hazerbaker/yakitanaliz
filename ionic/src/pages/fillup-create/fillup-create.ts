@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController, ToastController } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
@@ -19,6 +19,7 @@ export class FillUpCreatePage {
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, public api: Api, public toastCtrl: ToastController, public translateService: TranslateService) {
     this.form = formBuilder.group({
+      date: new Date().toISOString()
     });
 
     // Watch the form for changes, and

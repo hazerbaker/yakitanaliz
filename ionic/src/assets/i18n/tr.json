@@ -53,5 +53,6 @@
   "AUTO": "Automatic",
   "MANUAL": "Manual",
   "FILLUP_CREATE_TITLE": "Yeni Yakıt Alımı",
-  "FILLUP_CREATE_SUCCESS": "Yakıt Alımı Oluşturuldu"
+  "FILLUP_CREATE_SUCCESS": "Yakıt Alımı Oluşturuldu",
+  "FILLUP_DATE_PLACEHOLDER": "Tarih"
 }

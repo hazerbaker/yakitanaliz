@@ -26,6 +26,10 @@
 <ion-content>
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="createFillUp()">
     <ion-list>
+      <ion-item>
+        <ion-label>{{ 'FILLUP_DATE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" formControlName="date"></ion-datetime>
+      </ion-item>
     </ion-list>
   </form>
 </ion-content>
