@@ -51,5 +51,7 @@
   "HYBRID": "Hibrit",
   "ELECTRIC": "Elektrikli",
   "AUTO": "Automatic",
-  "MANUAL": "Manual"
+  "MANUAL": "Manual",
+  "FILLUP_CREATE_TITLE": "Yeni Yakıt Alımı",
+  "FILLUP_CREATE_SUCCESS": "Yakıt Alımı Oluşturuldu"
 }

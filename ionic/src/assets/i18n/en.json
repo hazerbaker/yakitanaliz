@@ -82,5 +82,7 @@
   "HYBRID": "Hybrid",
   "ELECTRIC": "Electric",
   "AUTO": "Automatic",
-  "MANUAL": "Manual"
+  "MANUAL": "Manual",
+  "FILLUP_CREATE_TITLE": "New FillUp",
+  "FILLUP_CREATE_SUCCESS": "New FillUp Created"
 }
