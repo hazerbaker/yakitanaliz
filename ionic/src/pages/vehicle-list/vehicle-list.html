@@ -13,17 +13,16 @@
 </ion-header>
 
 <ion-content>
-
   <ion-list>
     <ion-item-sliding *ngFor="let item of currentItems">
       <button ion-item (click)="openItem(item)">
         <ion-avatar item-start>
-          <img [src]="item.profilePic" />
+          <img *ngIf="item.profilePic != undefined" [src]="item.profilePic" />
+          <img *ngIf="item.profilePic == undefined" src="../assets/img/no-image.png" />
         </ion-avatar>
         <h2>{{item.model ? item.model.parent.name : ""}} {{item.model ? item.model.name : ""}} {{item.year}}</h2>
         <ion-note item-end>{{ api.roundcc(item.cc) }} {{item.fuelType}} {{item.transmission}}</ion-note>
       </button>
-
       <ion-item-options>
         <button ion-button color="danger" (click)="deleteItem(item)">
           {{ 'DELETE_BUTTON' | translate }}

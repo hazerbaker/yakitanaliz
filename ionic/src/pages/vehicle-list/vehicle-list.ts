@@ -21,6 +21,7 @@ export class VehicleListPage implements OnInit {
   }
 
   ionViewDidLoad() {
+
   }
 
   getVehicles() {
