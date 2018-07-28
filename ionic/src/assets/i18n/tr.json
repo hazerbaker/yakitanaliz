@@ -53,7 +53,7 @@
   "AUTO": "Automatic",
   "MANUAL": "Manual",
   "FILLUP_CREATE_TITLE": "Yeni Yakıt Alımı",
-  "FILLUP_CREATE_SUCCESS": "Yakıt Alımı Oluşturuldu",
+  "FILLUP_CREATE_SUCCESS": "Yakıt Alımı Kaydedildi",
   "FILLUP_DATE_PLACEHOLDER": "Tarih",
   "FILLUP_AMOUNT_PLACEHOLDER": "Miktar (LT)",
   "FILLUP_TOTALPRICE_PLACEHOLDER": "Ödenen Tutar (TL)",

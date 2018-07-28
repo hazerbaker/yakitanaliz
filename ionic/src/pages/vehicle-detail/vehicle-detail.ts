@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
+import { Api } from '../../providers/api/api';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -8,16 +10,37 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 })
 export class VehicleDetailPage {
   vehicle: any;
+  createSuccessString: any;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, 
+    navParams: NavParams, 
+    public modalCtrl: ModalController, 
+    public api: Api, 
+    public toastCtrl: ToastController, 
+    public translateService: TranslateService
+  ) {
     this.vehicle = navParams.get('vehicle');
+
+    this.translateService.get('FILLUP_CREATE_SUCCESS').subscribe((value) => {
+      this.createSuccessString = value;
+    })
   }
 
   addItem() {
+    console.log(this.vehicle)
     let addModal = this.modalCtrl.create('FillUpCreatePage');
     addModal.onDidDismiss(item => {
+      item.vehicle = this.vehicle;
       if (item) {
-        this.getFillUps();
+        this.api.post('fill-ups', item).subscribe((res: any) => {
+          let toast = this.toastCtrl.create({
+            message: this.createSuccessString,
+            duration: 2000,
+            position: 'middle'
+          });
+          toast.present();
+          this.getFillUps();
+        });
       }
     })
     addModal.present();

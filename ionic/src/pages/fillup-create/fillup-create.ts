@@ -17,7 +17,7 @@ export class FillUpCreatePage {
   form: FormGroup;
   createSuccessString: any;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, public api: Api, public toastCtrl: ToastController, public translateService: TranslateService) {
+  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, public api: Api, public translateService: TranslateService) {
     this.form = formBuilder.group({
       date: new Date().toISOString(),
       quantity: "",
@@ -41,16 +41,6 @@ export class FillUpCreatePage {
 
   done() {
     if (!this.form.valid) { return; }
-    let values = this.form.value;
-    //values.model = { id: values.model }
-    this.api.post('fillups', values).subscribe((res: any) => {
-      let toast = this.toastCtrl.create({
-        message: this.createSuccessString,
-        duration: 2000,
-        position: 'middle'
-      });
-      toast.present();
-      this.viewCtrl.dismiss(this.form.value);
-    });
+    this.viewCtrl.dismiss(this.form.value);
   }
 }
