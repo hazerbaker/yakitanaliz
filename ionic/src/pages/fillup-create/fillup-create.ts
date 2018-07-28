@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
-import { IonicPage, NavController, ViewController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -20,9 +20,10 @@ export class FillUpCreatePage {
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, public api: Api, public translateService: TranslateService) {
     this.form = formBuilder.group({
       date: new Date().toISOString(),
-      quantity: "",
-      totalPrice: "",
-      totalDistance: ""
+      quantity: undefined,
+      totalPrice: undefined,
+      totalDistance: undefined,
+      unitPrice: undefined
     });
 
     // Watch the form for changes, and
@@ -42,5 +43,32 @@ export class FillUpCreatePage {
   done() {
     if (!this.form.valid) { return; }
     this.viewCtrl.dismiss(this.form.value);
+  }
+  
+  totalPriceChange() {
+    setTimeout(function(){ 
+      if(this.form.value.totalPrice > 0 && this.form.value.quantity > 0) {
+        this.form.value.unitPrice = Math.round((this.form.value.totalPrice / this.form.value.quantity)*100) / 100;
+        this.form.setValue(this.form.value);
+      }
+    }.bind(this), 0);
+  }
+  
+  quantityChange() {
+    setTimeout(function(){ 
+      if(this.form.value.totalPrice > 0 && this.form.value.quantity > 0) {
+        this.form.value.unitPrice = Math.round((this.form.value.totalPrice / this.form.value.quantity)*100) / 100;
+        this.form.setValue(this.form.value);
+      }
+    }.bind(this), 0);
+  }
+  
+  unitPriceChange() {
+    setTimeout(function(){ 
+      if(this.form.value.unitPrice > 0 && this.form.value.quantity > 0) {
+        this.form.value.totalPrice = Math.round((this.form.value.unitPrice * this.form.value.quantity)*100) / 100;
+        this.form.setValue(this.form.value);
+      }
+    }.bind(this), 0);
   }
 }

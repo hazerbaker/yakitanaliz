@@ -27,11 +27,11 @@ export class VehicleDetailPage {
   }
 
   addItem() {
-    console.log(this.vehicle)
     let addModal = this.modalCtrl.create('FillUpCreatePage');
     addModal.onDidDismiss(item => {
-      item.vehicle = this.vehicle;
       if (item) {
+        item.vehicle = this.vehicle;
+        console.log("item",item)
         this.api.post('fill-ups', item).subscribe((res: any) => {
           let toast = this.toastCtrl.create({
             message: this.createSuccessString,

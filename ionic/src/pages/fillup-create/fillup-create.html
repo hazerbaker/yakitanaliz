@@ -29,15 +29,19 @@
       </ion-item>
       <ion-item>
         <ion-label>{{ 'FILLUP_TOTALPRICE_PLACEHOLDER' | translate }}</ion-label>
-        <ion-input type="text" formControlName="totalPrice"></ion-input>
+        <ion-input type="number" formControlName="totalPrice" (keydown)="totalPriceChange()"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>{{ 'FILLUP_AMOUNT_PLACEHOLDER' | translate }}</ion-label>
-        <ion-input type="text" formControlName="quantity"></ion-input>
+        <ion-input type="number" formControlName="quantity" (keydown)="quantityChange()"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>{{ 'FILLUP_UNITPRICE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-input type="number" formControlName="unitPrice" (keydown)="unitPriceChange()"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label>{{ 'FILLUP_TOTALDISTANCE_PLACEHOLDER' | translate }}</ion-label>
-        <ion-input type="text" formControlName="totalDistance"></ion-input>
+        <ion-input type="number" formControlName="totalDistance"></ion-input>
       </ion-item>
     </ion-list>
   </form>
