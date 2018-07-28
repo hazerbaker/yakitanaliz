@@ -19,7 +19,10 @@ export class FillUpCreatePage {
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, public api: Api, public toastCtrl: ToastController, public translateService: TranslateService) {
     this.form = formBuilder.group({
-      date: new Date().toISOString()
+      date: new Date().toISOString(),
+      quantity: "",
+      totalPrice: "",
+      totalDistance: ""
     });
 
     // Watch the form for changes, and
@@ -39,7 +42,7 @@ export class FillUpCreatePage {
   done() {
     if (!this.form.valid) { return; }
     let values = this.form.value;
-    values.model = { id: values.model }
+    //values.model = { id: values.model }
     this.api.post('fillups', values).subscribe((res: any) => {
       let toast = this.toastCtrl.create({
         message: this.createSuccessString,

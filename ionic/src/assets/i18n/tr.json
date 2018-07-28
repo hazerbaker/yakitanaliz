@@ -54,5 +54,8 @@
   "MANUAL": "Manual",
   "FILLUP_CREATE_TITLE": "Yeni Yakıt Alımı",
   "FILLUP_CREATE_SUCCESS": "Yakıt Alımı Oluşturuldu",
-  "FILLUP_DATE_PLACEHOLDER": "Tarih"
+  "FILLUP_DATE_PLACEHOLDER": "Tarih",
+  "FILLUP_AMOUNT_PLACEHOLDER": "Miktar (LT)",
+  "FILLUP_TOTALPRICE_PLACEHOLDER": "Ödenen Tutar (TL)",
+  "FILLUP_TOTALDISTANCE_PLACEHOLDER": "Son Km"
 }
