@@ -2,7 +2,7 @@
 
   <ion-navbar>
     <ion-title>{{ vehicle.name }}</ion-title>
-    
+
     <ion-buttons end>
       <button ion-button icon-only (click)="addItem()">
         <ion-icon name="add"></ion-icon>
@@ -17,8 +17,22 @@
   <div class="vehicle-profile" text-center #profilePic [style.background-image]="vehicle.profilePic != undefined ? 'url(' + vehicle.profilePic + ')' : 'url(../assets/img/car.png)'">
   </div>
 
-  <div class="vehicle-detail" padding>
-    <h2>{{vehicle.name}}</h2>
-    <p>{{vehicle.about}}</p>
+  <div padding>
+    <h3>{{vehicle.model ? vehicle.model.parent.name : ""}} {{vehicle.model ? vehicle.model.name : ""}}</h3>
+    <ion-note item-end>{{vehicle.year}} {{ api.roundcc(vehicle.cc) }} {{vehicle.fuelType}} {{vehicle.transmission}}</ion-note>
   </div>
+
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of fillUps">
+      <button ion-item (click)="openItem(item)">
+        <h2>{{(item.unitPrice * item.quantity)}} TL</h2>
+        <ion-note item-end>{{ item.date }}</ion-note>
+      </button>
+      <ion-item-options>
+        <button ion-button color="danger" (click)="deleteItem(item)">
+          {{ 'DELETE_BUTTON' | translate }}
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 </ion-content>

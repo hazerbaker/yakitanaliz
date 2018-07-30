@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
@@ -8,9 +8,10 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'page-vehicle-detail',
   templateUrl: 'vehicle-detail.html'
 })
-export class VehicleDetailPage {
+export class VehicleDetailPage implements OnInit {
   vehicle: any;
   createSuccessString: any;
+  fillUps = [];
 
   constructor(public navCtrl: NavController, 
     navParams: NavParams, 
@@ -20,10 +21,21 @@ export class VehicleDetailPage {
     public translateService: TranslateService
   ) {
     this.vehicle = navParams.get('vehicle');
+    console.log(this.vehicle)
 
     this.translateService.get('FILLUP_CREATE_SUCCESS').subscribe((value) => {
       this.createSuccessString = value;
     })
+  }
+
+  ngOnInit() {
+    this.getFillups();
+  }
+
+  getFillups() {
+    this.api.get('fill-ups').subscribe((data: any) => {
+      this.fillUps = data;
+    });
   }
 
   addItem() {
