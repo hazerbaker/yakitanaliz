@@ -11,6 +11,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class VehicleDetailPage implements OnInit {
   vehicle: any;
   createSuccessString: any;
+  deleteSuccessString: any;
   fillUps = [];
 
   constructor(public navCtrl: NavController, 
@@ -21,18 +22,20 @@ export class VehicleDetailPage implements OnInit {
     public translateService: TranslateService
   ) {
     this.vehicle = navParams.get('vehicle');
-    console.log(this.vehicle)
 
     this.translateService.get('FILLUP_CREATE_SUCCESS').subscribe((value) => {
       this.createSuccessString = value;
     })
+    this.translateService.get('FILLUP_DELETE_SUCCESS').subscribe((value) => {
+      this.deleteSuccessString = value;
+    })
   }
 
   ngOnInit() {
-    this.getFillups();
+    this.getItems();
   }
 
-  getFillups() {
+  getItems() {
     this.api.get('fill-ups/byvehicle/'+this.vehicle.id).subscribe((data: any) => {
       this.fillUps = data;
     });
@@ -43,7 +46,6 @@ export class VehicleDetailPage implements OnInit {
     addModal.onDidDismiss(item => {
       if (item) {
         item.vehicle = this.vehicle;
-        console.log("item",item)
         this.api.post('fill-ups', item).subscribe((res: any) => {
           let toast = this.toastCtrl.create({
             message: this.createSuccessString,
@@ -51,14 +53,23 @@ export class VehicleDetailPage implements OnInit {
             position: 'middle'
           });
           toast.present();
-          this.getFillUps();
+          this.getItems();
         });
       }
     })
     addModal.present();
   }
 
-  getFillUps() {
-
+  deleteItem(item) {
+    this.api.delete('fill-ups/' + item.id).subscribe((res: any) => {
+      let toast = this.toastCtrl.create({
+        message: this.deleteSuccessString,
+        duration: 2000,
+        position: 'middle'
+      });
+      toast.present();
+      this.getItems();
+    });
   }
+
 }

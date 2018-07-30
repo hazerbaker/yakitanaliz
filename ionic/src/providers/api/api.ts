@@ -76,7 +76,31 @@ export class Api {
   }
 
   delete(endpoint: string, reqOpts?: any) {
-    return this.http.delete(this.url + '/' + endpoint, reqOpts);
+    let _this = this;
+
+    if (!reqOpts) {
+      reqOpts = {
+      };
+    }
+
+    let token = localStorage.getItem('jwttoken');
+    if (token !== undefined) {
+      let headers = new HttpHeaders({});
+      headers = headers.append('Content-Type', 'application/json');
+      headers = headers.append('Authorization', 'Bearer ' + token);
+      reqOpts.headers = headers;
+    }
+
+    let request = _this.http.delete(_this.url + '/' + endpoint, reqOpts)
+      .map(
+        response => {
+          return response;
+        })
+      .catch(
+        error => _this.track(error)
+      )
+
+    return request;
   }
 
   patch(endpoint: string, body: any, reqOpts?: any) {
