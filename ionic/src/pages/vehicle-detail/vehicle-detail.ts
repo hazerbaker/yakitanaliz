@@ -33,7 +33,7 @@ export class VehicleDetailPage implements OnInit {
   }
 
   getFillups() {
-    this.api.get('fill-ups').subscribe((data: any) => {
+    this.api.get('fill-ups/byvehicle/'+this.vehicle.id).subscribe((data: any) => {
       this.fillUps = data;
     });
   }

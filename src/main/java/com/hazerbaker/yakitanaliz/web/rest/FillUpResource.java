@@ -22,9 +22,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * REST controller for managing FillUp.
- */
 @RestController
 @RequestMapping("/api")
 public class FillUpResource {
@@ -39,13 +36,6 @@ public class FillUpResource {
         this.fillUpRepository = fillUpRepository;
     }
 
-    /**
-     * POST  /fill-ups : Create a new fillUp.
-     *
-     * @param fillUp the fillUp to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new fillUp, or with status 400 (Bad Request) if the fillUp has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
     @PostMapping("/fill-ups")
     @Timed
     public ResponseEntity<FillUp> createFillUp(@RequestBody FillUp fillUp) throws URISyntaxException {
@@ -59,15 +49,6 @@ public class FillUpResource {
             .body(result);
     }
 
-    /**
-     * PUT  /fill-ups : Updates an existing fillUp.
-     *
-     * @param fillUp the fillUp to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated fillUp,
-     * or with status 400 (Bad Request) if the fillUp is not valid,
-     * or with status 500 (Internal Server Error) if the fillUp couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
     @PutMapping("/fill-ups")
     @Timed
     public ResponseEntity<FillUp> updateFillUp(@RequestBody FillUp fillUp) throws URISyntaxException {
@@ -81,12 +62,6 @@ public class FillUpResource {
             .body(result);
     }
 
-    /**
-     * GET  /fill-ups : get all the fillUps.
-     *
-     * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of fillUps in body
-     */
     @GetMapping("/fill-ups")
     @Timed
     public ResponseEntity<List<FillUp>> getAllFillUps(Pageable pageable) {
@@ -96,12 +71,15 @@ public class FillUpResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
-    /**
-     * GET  /fill-ups/:id : get the "id" fillUp.
-     *
-     * @param id the id of the fillUp to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the fillUp, or with status 404 (Not Found)
-     */
+    @GetMapping("/fill-ups/byvehicle/{id}")
+    @Timed
+    public ResponseEntity<List<FillUp>> getAllFillUpsByVehicle(Pageable pageable, @PathVariable Long id) {
+        log.debug("REST request to get a page of FillUps By Vehicle");
+        Page<FillUp> page = fillUpRepository.findByVehicleId(pageable, id);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/fill-ups/vehicle/"+id);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
     @GetMapping("/fill-ups/{id}")
     @Timed
     public ResponseEntity<FillUp> getFillUp(@PathVariable Long id) {
@@ -110,12 +88,6 @@ public class FillUpResource {
         return ResponseUtil.wrapOrNotFound(fillUp);
     }
 
-    /**
-     * DELETE  /fill-ups/:id : delete the "id" fillUp.
-     *
-     * @param id the id of the fillUp to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
     @DeleteMapping("/fill-ups/{id}")
     @Timed
     public ResponseEntity<Void> deleteFillUp(@PathVariable Long id) {

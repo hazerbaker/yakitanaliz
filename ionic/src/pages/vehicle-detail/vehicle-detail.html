@@ -18,11 +18,15 @@
   </div>
 
   <div padding>
-    <h3>{{vehicle.model ? vehicle.model.parent.name : ""}} {{vehicle.model ? vehicle.model.name : ""}}</h3>
+    <h4>{{vehicle.model ? vehicle.model.parent.name : ""}} {{vehicle.model ? vehicle.model.name : ""}}</h4>
     <ion-note item-end>{{vehicle.year}} {{ api.roundcc(vehicle.cc) }} {{vehicle.fuelType}} {{vehicle.transmission}}</ion-note>
   </div>
 
-  <ion-list>
+  <div padding *ngIf="fillUps.length == 0" text-center>
+    Henüz yakıt alımınız yok. Sağ üstteki + butonuyla yakıt alımı ekleyebilirsiniz.
+  </div>
+
+  <ion-list *ngIf="fillUps.length > 0">
     <ion-item-sliding *ngFor="let item of fillUps">
       <button ion-item (click)="openItem(item)">
         <h2>{{(item.unitPrice * item.quantity)}} TL</h2>
