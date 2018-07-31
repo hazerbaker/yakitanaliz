@@ -34,10 +34,6 @@ export class VehicleListPage implements OnInit {
     this.getItems();
   }
 
-  ionViewDidLoad() {
-
-  }
-
   getItems() {
     this.api.get('vehicles').subscribe((data: any) => {
       this.currentItems = data;
@@ -55,15 +51,16 @@ export class VehicleListPage implements OnInit {
   }
 
   deleteItem(item) {
-    this.api.delete('vehicles/' + item.id).subscribe((res: any) => {
-      let toast = this.toastCtrl.create({
-        message: this.deleteSuccessString,
-        duration: 2000,
-        position: 'bottom'
-      });
-      toast.present();
-      this.getItems();
-    },
+    this.api.delete('vehicles/' + item.id).subscribe(
+      (res: any) => {
+        let toast = this.toastCtrl.create({
+          message: this.deleteSuccessString,
+          duration: 2000,
+          position: 'bottom'
+        });
+        toast.present();
+        this.getItems();
+      },
       error => {
         let toast = this.toastCtrl.create({
           message: this.deleteFailureString,

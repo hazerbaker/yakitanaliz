@@ -1,5 +1,7 @@
 package com.hazerbaker.yakitanaliz.repository;
 
+import java.util.List;
+
 import com.hazerbaker.yakitanaliz.domain.FillUp;
 
 import org.springframework.data.domain.Page;
@@ -15,4 +17,6 @@ import org.springframework.stereotype.Repository;
 public interface FillUpRepository extends JpaRepository<FillUp, Long> {
 
     Page<FillUp> findByVehicleId(Pageable pageable, Long id);
+
+    List<FillUp> findByVehicleId(Long id);
 }

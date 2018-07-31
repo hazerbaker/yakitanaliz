@@ -1,8 +1,10 @@
 package com.hazerbaker.yakitanaliz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
+import com.hazerbaker.yakitanaliz.domain.FillUp;
 import com.hazerbaker.yakitanaliz.domain.Vehicle;
 import com.hazerbaker.yakitanaliz.repository.VehicleRepository;
+import com.hazerbaker.yakitanaliz.repository.FillUpRepository;
 import com.hazerbaker.yakitanaliz.repository.UserRepository;
 import com.hazerbaker.yakitanaliz.security.SecurityUtils;
 import com.hazerbaker.yakitanaliz.web.rest.errors.BadRequestAlertException;
@@ -39,16 +41,22 @@ public class VehicleResource {
 
     private final UserRepository userRepository;
 
-    public VehicleResource(VehicleRepository vehicleRepository, UserRepository userRepository) {
+    private final FillUpRepository fillUpRepository;
+
+    public VehicleResource(VehicleRepository vehicleRepository, UserRepository userRepository,
+            FillUpRepository fillUpRepository) {
         this.vehicleRepository = vehicleRepository;
         this.userRepository = userRepository;
+        this.fillUpRepository = fillUpRepository;
     }
 
     /**
-     * POST  /vehicles : Create a new vehicle.
+     * POST /vehicles : Create a new vehicle.
      *
      * @param vehicle the vehicle to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new vehicle, or with status 400 (Bad Request) if the vehicle has already an ID
+     * @return the ResponseEntity with status 201 (Created) and with body the new
+     *         vehicle, or with status 400 (Bad Request) if the vehicle has already
+     *         an ID
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PostMapping("/vehicles")
@@ -61,17 +69,17 @@ public class VehicleResource {
         vehicle.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
         Vehicle result = vehicleRepository.save(vehicle);
         return ResponseEntity.created(new URI("/api/vehicles/" + result.getId()))
-            .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
-            .body(result);
+                .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString())).body(result);
     }
 
     /**
-     * PUT  /vehicles : Updates an existing vehicle.
+     * PUT /vehicles : Updates an existing vehicle.
      *
      * @param vehicle the vehicle to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated vehicle,
-     * or with status 400 (Bad Request) if the vehicle is not valid,
-     * or with status 500 (Internal Server Error) if the vehicle couldn't be updated
+     * @return the ResponseEntity with status 200 (OK) and with body the updated
+     *         vehicle, or with status 400 (Bad Request) if the vehicle is not
+     *         valid, or with status 500 (Internal Server Error) if the vehicle
+     *         couldn't be updated
      * @throws URISyntaxException if the Location URI syntax is incorrect
      */
     @PutMapping("/vehicles")
@@ -82,16 +90,16 @@ public class VehicleResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         Vehicle result = vehicleRepository.save(vehicle);
-        return ResponseEntity.ok()
-            .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, vehicle.getId().toString()))
-            .body(result);
+        return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, vehicle.getId().toString()))
+                .body(result);
     }
 
     /**
-     * GET  /vehicles : get all the vehicles.
+     * GET /vehicles : get all the vehicles.
      *
      * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of vehicles in body
+     * @return the ResponseEntity with status 200 (OK) and the list of vehicles in
+     *         body
      */
     @GetMapping("/vehicles")
     @Timed
@@ -103,10 +111,11 @@ public class VehicleResource {
     }
 
     /**
-     * GET  /vehicles/:id : get the "id" vehicle.
+     * GET /vehicles/:id : get the "id" vehicle.
      *
      * @param id the id of the vehicle to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the vehicle, or with status 404 (Not Found)
+     * @return the ResponseEntity with status 200 (OK) and with body the vehicle, or
+     *         with status 404 (Not Found)
      */
     @GetMapping("/vehicles/{id}")
     @Timed
@@ -117,7 +126,7 @@ public class VehicleResource {
     }
 
     /**
-     * DELETE  /vehicles/:id : delete the "id" vehicle.
+     * DELETE /vehicles/:id : delete the "id" vehicle.
      *
      * @param id the id of the vehicle to delete
      * @return the ResponseEntity with status 200 (OK)
@@ -127,6 +136,11 @@ public class VehicleResource {
     public ResponseEntity<Void> deleteVehicle(@PathVariable Long id) {
         log.debug("REST request to delete Vehicle : {}", id);
 
+        List<FillUp> fillUps = fillUpRepository.findByVehicleId(id);
+        for(FillUp fillUp : fillUps) {
+            fillUpRepository.delete(fillUp);
+        }
+        
         vehicleRepository.deleteById(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
