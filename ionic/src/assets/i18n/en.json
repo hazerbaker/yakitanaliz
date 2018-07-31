@@ -76,6 +76,8 @@
   "VEHICLE_MAKE_PLACEHOLDER": "Make",
   "VEHICLE_MODEL_PLACEHOLDER": "Model",
   "VEHICLE_CREATE_SUCCESS": "New Vehicle Created",
+  "VEHICLE_DELETE_SUCCESS": "Vehicle Deleted",
+  "VEHICLE_DELETE_FAILURE": "Vehicle Delete Failure",
   "GAS": "Gas",
   "DIESEL": "Diesel",
   "LPG": "LPG",

@@ -97,7 +97,9 @@ export class Api {
           return response;
         })
       .catch(
-        error => _this.track(error)
+        error => {
+          return _this.track(error);
+        }
       )
 
     return request;

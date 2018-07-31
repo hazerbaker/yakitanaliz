@@ -45,6 +45,8 @@
   "VEHICLE_MAKE_PLACEHOLDER": "Marka",
   "VEHICLE_MODEL_PLACEHOLDER": "Model",
   "VEHICLE_CREATE_SUCCESS": "Yeni Araç Oluşturuldu",
+  "VEHICLE_DELETE_SUCCESS": "Araç Silindi",
+  "VEHICLE_DELETE_FAILURE": "Araç Silinemedi",
   "GAS": "Benzinli",
   "DIESEL": "Dizel",
   "LPG": "LPG",

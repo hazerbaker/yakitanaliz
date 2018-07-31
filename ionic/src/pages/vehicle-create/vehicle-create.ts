@@ -100,7 +100,7 @@ export class VehicleCreatePage {
       let toast = this.toastCtrl.create({
         message: this.createSuccessString,
         duration: 2000,
-        position: 'middle'
+        position: 'bottom'
       });
       toast.present();
       this.viewCtrl.dismiss(this.form.value);

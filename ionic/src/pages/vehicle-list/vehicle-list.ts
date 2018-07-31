@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, ModalController, NavController } from 'ionic-angular';
+import { IonicPage, ModalController, NavController, ToastController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { Api } from '../../providers/api/api';
+import { TranslateService } from '@ngx-translate/core';
 
 @IonicPage()
 @Component({
@@ -11,20 +12,33 @@ import { Api } from '../../providers/api/api';
 })
 export class VehicleListPage implements OnInit {
   currentItems: Item[];
+  deleteSuccessString: any;
+  deleteFailureString: any;
 
-  constructor(public navCtrl: NavController, public modalCtrl: ModalController, public api: Api) {
+  constructor(
+    public navCtrl: NavController,
+    public modalCtrl: ModalController,
+    public api: Api,
+    public toastCtrl: ToastController,
+    public translateService: TranslateService) {
 
+    this.translateService.get('VEHICLE_DELETE_SUCCESS').subscribe((value) => {
+      this.deleteSuccessString = value;
+    })
+    this.translateService.get('VEHICLE_DELETE_FAILURE').subscribe((value) => {
+      this.deleteFailureString = value;
+    })
   }
 
   ngOnInit() {
-    this.getVehicles();
+    this.getItems();
   }
 
   ionViewDidLoad() {
 
   }
 
-  getVehicles() {
+  getItems() {
     this.api.get('vehicles').subscribe((data: any) => {
       this.currentItems = data;
     });
@@ -34,22 +48,34 @@ export class VehicleListPage implements OnInit {
     let addModal = this.modalCtrl.create('VehicleCreatePage');
     addModal.onDidDismiss(item => {
       if (item) {
-        this.getVehicles();
+        this.getItems();
       }
     })
     addModal.present();
   }
 
-  /**
-   * Delete an item from the list of items.
-   */
   deleteItem(item) {
-    //this.items.delete(item);
+    this.api.delete('vehicles/' + item.id).subscribe((res: any) => {
+      let toast = this.toastCtrl.create({
+        message: this.deleteSuccessString,
+        duration: 2000,
+        position: 'bottom'
+      });
+      toast.present();
+      this.getItems();
+    },
+      error => {
+        let toast = this.toastCtrl.create({
+          message: this.deleteFailureString,
+          duration: 2000,
+          position: 'bottom'
+        });
+        toast.present();
+        this.getItems();
+      }
+    );
   }
 
-  /**
-   * Navigate to the detail page for this item.
-   */
   openItem(item: Item) {
     this.navCtrl.push('VehicleDetailPage', {
       vehicle: item

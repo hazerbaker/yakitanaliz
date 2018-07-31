@@ -50,7 +50,7 @@ export class VehicleDetailPage implements OnInit {
           let toast = this.toastCtrl.create({
             message: this.createSuccessString,
             duration: 2000,
-            position: 'middle'
+            position: 'bottom'
           });
           toast.present();
           this.getItems();
@@ -65,7 +65,7 @@ export class VehicleDetailPage implements OnInit {
       let toast = this.toastCtrl.create({
         message: this.deleteSuccessString,
         duration: 2000,
-        position: 'middle'
+        position: 'bottom'
       });
       toast.present();
       this.getItems();
