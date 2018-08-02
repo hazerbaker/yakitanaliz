@@ -22,7 +22,8 @@ export class VehicleCreatePage {
 
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, public api: Api, public toastCtrl: ToastController, public translateService: TranslateService) {
     this.form = formBuilder.group({
-      profilePic: [''],
+      photo: [''],
+      photoContentType: [''],
       fuelType: ['', Validators.required],
       cc: [''],
       transmission: [''],
@@ -64,7 +65,8 @@ export class VehicleCreatePage {
         targetWidth: 96,
         targetHeight: 96
       }).then((data) => {
-        this.form.patchValue({ 'profilePic': 'data:image/jpg;base64,' + data });
+        this.form.patchValue({ 'photo': data });
+        this.form.patchValue({ 'photoContentType': 'image/jpg' });
       }, (err) => {
         alert('Unable to take photo');
       })
@@ -76,16 +78,25 @@ export class VehicleCreatePage {
   processWebImage(event) {
     let reader = new FileReader();
     reader.onload = (readerEvent) => {
-
       let imageData = (readerEvent.target as any).result;
-      this.form.patchValue({ 'profilePic': imageData });
+      let split1 = imageData.split(":");
+      if(split1.length == 2) {
+        let split2 = split1[1].split(";");
+        if(split2.length == 2) {
+          this.form.patchValue({ 'photoContentType': split2[0] });
+          let split3 = split2[1].split(",");
+          if(split3.length == 2) {
+            this.form.patchValue({ 'photo': split3[1] });
+          }
+        }
+      }
     };
-
     reader.readAsDataURL(event.target.files[0]);
   }
 
   getProfileImageStyle() {
-    return 'url(' + this.form.controls['profilePic'].value + ')'
+    return 'url(data:' + this.form.controls['photoContentType'].value + ';base64,' + this.form.controls['photo'].value + ')'
+    //return 'url(' + this.form.controls['photo'].value + ')'
   }
 
   cancel() {
