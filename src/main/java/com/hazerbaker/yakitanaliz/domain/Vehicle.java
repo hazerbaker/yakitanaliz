@@ -39,6 +39,13 @@ public class Vehicle implements Serializable {
     @Column(name = "transmission")
     private Transmission transmission;
 
+    @Lob
+    @Column(name = "photo")
+    private byte[] photo;
+
+    @Column(name = "photo_content_type")
+    private String photoContentType;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Enumeration model;
@@ -108,6 +115,32 @@ public class Vehicle implements Serializable {
         this.transmission = transmission;
     }
 
+    public byte[] getPhoto() {
+        return photo;
+    }
+
+    public Vehicle photo(byte[] photo) {
+        this.photo = photo;
+        return this;
+    }
+
+    public void setPhoto(byte[] photo) {
+        this.photo = photo;
+    }
+
+    public String getPhotoContentType() {
+        return photoContentType;
+    }
+
+    public Vehicle photoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
+        return this;
+    }
+
+    public void setPhotoContentType(String photoContentType) {
+        this.photoContentType = photoContentType;
+    }
+
     public Enumeration getModel() {
         return model;
     }
@@ -163,6 +196,8 @@ public class Vehicle implements Serializable {
             ", cc=" + getCc() +
             ", year=" + getYear() +
             ", transmission='" + getTransmission() + "'" +
+            ", photo='" + getPhoto() + "'" +
+            ", photoContentType='" + getPhotoContentType() + "'" +
             "}";
     }
 }

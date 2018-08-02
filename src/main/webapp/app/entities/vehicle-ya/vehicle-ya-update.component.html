@@ -36,6 +36,24 @@
                         <option value="MANUAL">{{'yakitanalizApp.Transmission.MANUAL' | translate}}</option>
                     </select>
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.photo" for="field_photo">Photo</label>
+                    <div>
+                        <div *ngIf="vehicle.photo" class="form-text text-danger clearfix">
+                            <a class="pull-left" (click)="openFile(vehicle.photoContentType, vehicle.photo)" jhiTranslate="entity.action.open">open</a><br>
+                            <span class="pull-left">{{vehicle.photoContentType}}, {{byteSize(vehicle.photo)}}</span>
+                            <button type="button" (click)="vehicle.photo=null;vehicle.photoContentType=null;"
+                                    class="btn btn-secondary btn-xs pull-right">
+                                <fa-icon [icon]="'times'"></fa-icon>
+                            </button>
+                        </div>
+                        <input type="file" id="file_photo" (change)="setFileData($event, vehicle, 'photo', false)" jhiTranslate="entity.action.addblob"/>
+                    </div>
+                    <input type="hidden" class="form-control" name="photo" id="field_photo"
+                        [(ngModel)]="vehicle.photo" />
+                    <input type="hidden" class="form-control" name="photoContentType" id="field_photoContentType"
+                        [(ngModel)]="vehicle.photoContentType" />
+                </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.model" for="field_model">Model</label>

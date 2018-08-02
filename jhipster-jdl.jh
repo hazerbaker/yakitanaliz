@@ -8,7 +8,8 @@ entity Vehicle {
 	fuelType FuelType,
     cc Integer,
     year Integer,
-    transmission Transmission
+    transmission Transmission,
+    photo Blob
 }
 
 entity FillUp {

@@ -20,6 +20,8 @@ export interface IVehicleYa {
     cc?: number;
     year?: number;
     transmission?: Transmission;
+    photoContentType?: string;
+    photo?: any;
     model?: IEnumerationYa;
     user?: IUser;
 }
@@ -31,6 +33,8 @@ export class VehicleYa implements IVehicleYa {
         public cc?: number,
         public year?: number,
         public transmission?: Transmission,
+        public photoContentType?: string,
+        public photo?: any,
         public model?: IEnumerationYa,
         public user?: IUser
     ) {}

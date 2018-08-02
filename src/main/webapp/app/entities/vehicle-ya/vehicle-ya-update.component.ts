@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { JhiAlertService } from 'ng-jhipster';
+import { JhiAlertService, JhiDataUtils } from 'ng-jhipster';
 
 import { IVehicleYa } from 'app/shared/model/vehicle-ya.model';
 import { VehicleYaService } from './vehicle-ya.service';
@@ -23,6 +23,7 @@ export class VehicleYaUpdateComponent implements OnInit {
     users: IUser[];
 
     constructor(
+        private dataUtils: JhiDataUtils,
         private jhiAlertService: JhiAlertService,
         private vehicleService: VehicleYaService,
         private enumerationService: EnumerationYaService,
@@ -47,6 +48,18 @@ export class VehicleYaUpdateComponent implements OnInit {
             },
             (res: HttpErrorResponse) => this.onError(res.message)
         );
+    }
+
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
+    setFileData(event, entity, field, isImage) {
+        this.dataUtils.setFileData(event, entity, field, isImage);
     }
 
     previousState() {

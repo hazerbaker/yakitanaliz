@@ -20,6 +20,7 @@
             "cc": "Cc",
             "year": "Year",
             "transmission": "Transmission",
+            "photo": "Photo",
             "model": "Model",
             "user": "User"
         }

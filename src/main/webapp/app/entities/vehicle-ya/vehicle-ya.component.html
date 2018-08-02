@@ -19,6 +19,7 @@
             <th jhiSortBy="cc"><span jhiTranslate="yakitanalizApp.vehicle.cc">Cc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="year"><span jhiTranslate="yakitanalizApp.vehicle.year">Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="transmission"><span jhiTranslate="yakitanalizApp.vehicle.transmission">Transmission</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="photo"><span jhiTranslate="yakitanalizApp.vehicle.photo">Photo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="model.id"><span jhiTranslate="yakitanalizApp.vehicle.model">Model</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="user.id"><span jhiTranslate="yakitanalizApp.vehicle.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
@@ -31,6 +32,10 @@
                 <td>{{vehicle.cc}}</td>
                 <td>{{vehicle.year}}</td>
                 <td jhiTranslate="{{'yakitanalizApp.Transmission.' + vehicle.transmission}}">{{vehicle.transmission}}</td>
+                <td>
+                    <a *ngIf="vehicle.photo" (click)="openFile(vehicle.photoContentType, vehicle.photo)" jhiTranslate="entity.action.open">open</a>
+                    <span *ngIf="vehicle.photo">{{vehicle.photoContentType}}, {{byteSize(vehicle.photo)}}</span>
+                </td>
                 <td>
                     <div *ngIf="vehicle.model">
                         <a [routerLink]="['../enumeration-ya', vehicle.model?.id, 'view' ]" >{{vehicle.model?.id}}</a>

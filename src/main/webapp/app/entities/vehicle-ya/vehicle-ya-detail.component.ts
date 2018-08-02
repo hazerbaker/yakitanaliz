@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { JhiDataUtils } from 'ng-jhipster';
 
 import { IVehicleYa } from 'app/shared/model/vehicle-ya.model';
 
@@ -10,7 +11,7 @@ import { IVehicleYa } from 'app/shared/model/vehicle-ya.model';
 export class VehicleYaDetailComponent implements OnInit {
     vehicle: IVehicleYa;
 
-    constructor(private activatedRoute: ActivatedRoute) {}
+    constructor(private dataUtils: JhiDataUtils, private activatedRoute: ActivatedRoute) {}
 
     ngOnInit() {
         this.activatedRoute.data.subscribe(({ vehicle }) => {
@@ -18,6 +19,13 @@ export class VehicleYaDetailComponent implements OnInit {
         });
     }
 
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
     previousState() {
         window.history.back();
     }

@@ -18,6 +18,11 @@
             "fieldName": "transmission",
             "fieldType": "Transmission",
             "fieldValues": "AUTO,MANUAL"
+        },
+        {
+            "fieldName": "photo",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "any"
         }
     ],
     "relationships": [

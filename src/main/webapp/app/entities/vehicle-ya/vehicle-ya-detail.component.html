@@ -21,6 +21,13 @@
                 <dd>
                     <span jhiTranslate="{{'yakitanalizApp.Transmission.' + vehicle.transmission}}">{{vehicle.transmission}}</span>
                 </dd>
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.photo">Photo</span></dt>
+                <dd>
+                    <div *ngIf="vehicle.photo">
+                        <a (click)="openFile(vehicle.photoContentType, vehicle.photo)" jhiTranslate="entity.action.open">open</a>
+                        {{vehicle.photoContentType}}, {{byteSize(vehicle.photo)}}
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="yakitanalizApp.vehicle.model">Model</span></dt>
                 <dd>
                     <div *ngIf="vehicle.model">
