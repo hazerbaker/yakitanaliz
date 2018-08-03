@@ -61,7 +61,6 @@ export class Api {
     let request = _this.http.post(_this.url + '/' + endpoint, body, reqOpts)
       .map(
         response => {
-          console.log("map response", response)
           return response;
         })
       .catch(

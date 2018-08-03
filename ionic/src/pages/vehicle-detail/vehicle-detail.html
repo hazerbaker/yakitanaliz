@@ -14,7 +14,7 @@
 
 
 <ion-content>
-  <div class="vehicle-profile" text-center #profilePic [style.background-image]="vehicle.profilePic != undefined ? 'url(' + vehicle.profilePic + ')' : 'url(../assets/img/car.png)'">
+  <div class="vehicle-profile" text-center #profilePic [style.background-image]="vehicle.photo != undefined ? 'url(data:' + vehicle.photoContentType + ';base64,' + vehicle.photo + ')' : 'url(../assets/img/car.png)'">
   </div>
 
   <div padding>

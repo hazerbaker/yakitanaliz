@@ -39,7 +39,6 @@ export class VehicleCreatePage {
 
     this.api.get('enumerations/bytype/VEHICLEMAKE').subscribe((res: any) => {
       this.makes = res;
-      console.log(res)
     }, err => {
       console.error('ERROR', err);
     });
@@ -52,7 +51,6 @@ export class VehicleCreatePage {
   getModels(e) {
     this.api.get('enumerations/byparent/' + e).subscribe((res: any) => {
       this.models = res;
-      console.log(res)
     }, err => {
       console.error('ERROR', err);
     });
