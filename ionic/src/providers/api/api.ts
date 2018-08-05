@@ -111,7 +111,8 @@ export class Api {
   track(err) {
     if (err.status === 401) {
       localStorage.removeItem('jwttoken');
-      location.reload();
+      location.href = "/";
+      //location.reload();
     }
     else {
       console.error('ERROR', err);

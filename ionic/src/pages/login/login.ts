@@ -28,7 +28,8 @@ export class LoginPage {
     public translateService: TranslateService) {
 
     if (localStorage.getItem('jwttoken') !== null) {
-      this.navCtrl.push(MainPage);
+      this.navCtrl.setRoot(MainPage);
+      this.navCtrl.popToRoot();
     }
 
     this.translateService.get('LOGIN_ERROR').subscribe((value) => {
@@ -39,7 +40,8 @@ export class LoginPage {
   // Attempt to login in through our User service
   doLogin() {
     this.user.login(this.account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
+      this.navCtrl.setRoot(MainPage);
+      this.navCtrl.popToRoot();
       localStorage.setItem('jwttoken', resp['id_token']);
     }, (err) => {
       // Unable to log in
