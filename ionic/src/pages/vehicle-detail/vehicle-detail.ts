@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
+import { Item } from '../../models/item';
 
 @IonicPage()
 @Component({
@@ -70,6 +71,28 @@ export class VehicleDetailPage implements OnInit {
       toast.present();
       this.getItems();
     });
+  }
+
+  openItem(item?) {
+    console.log(item)
+    let editModal = this.modalCtrl.create('FillUpCreatePage', {
+      fillUp: item
+    });
+    editModal.onDidDismiss(item => {
+      if (item) {
+        item.vehicle = this.vehicle;
+        this.api.post('fill-ups', item).subscribe((res: any) => {
+          let toast = this.toastCtrl.create({
+            message: this.createSuccessString,
+            duration: 2000,
+            position: 'bottom'
+          });
+          toast.present();
+          this.getItems();
+        });
+      }
+    })
+    editModal.present();
   }
 
 }

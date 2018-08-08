@@ -58,20 +58,23 @@ export class Api {
       reqOpts.headers = headers;
     }
 
-    let request = _this.http.post(_this.url + '/' + endpoint, body, reqOpts)
-      .map(
-        response => {
-          return response;
-        })
+    let request;
+    
+    if(body.id) {
+      request = _this.http.put(_this.url + '/' + endpoint, body, reqOpts);
+    } else {
+      request = _this.http.post(_this.url + '/' + endpoint, body, reqOpts);
+    }
+
+    request.map(
+      response => {
+        return response;
+      })
       .catch(
         error => _this.track(error)
       )
 
     return request;
-  }
-
-  put(endpoint: string, body: any, reqOpts?: any) {
-    return this.http.put(this.url + '/' + endpoint, body, reqOpts);
   }
 
   delete(endpoint: string, reqOpts?: any) {
@@ -121,6 +124,10 @@ export class Api {
   }
 
   roundcc(cc) {
-    return Math.round(cc / 100)/10
+    return Math.round(cc / 100) / 10
+  }
+
+  round(number) {
+    return Math.round(number * 100) / 100
   }
 }
