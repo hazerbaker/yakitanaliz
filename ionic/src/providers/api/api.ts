@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/catch';
+import { MainPage } from '../../pages';
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -129,5 +130,10 @@ export class Api {
 
   round(number) {
     return Math.round(number * 100) / 100
+  }
+
+  goRoot(navCtrl) {
+    navCtrl.setRoot(MainPage);
+    navCtrl.popToRoot();
   }
 }

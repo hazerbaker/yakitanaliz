@@ -33,32 +33,16 @@ export class VehicleDetailPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getItems();
+    if(this.vehicle) this.getItems();
+    else {
+      this.api.goRoot(this.navCtrl);
+    }
   }
 
   getItems() {
     this.api.get('fill-ups/byvehicle/'+this.vehicle.id).subscribe((data: any) => {
       this.fillUps = data;
     });
-  }
-
-  addItem() {
-    let addModal = this.modalCtrl.create('FillUpCreatePage');
-    addModal.onDidDismiss(item => {
-      if (item) {
-        item.vehicle = this.vehicle;
-        this.api.post('fill-ups', item).subscribe((res: any) => {
-          let toast = this.toastCtrl.create({
-            message: this.createSuccessString,
-            duration: 2000,
-            position: 'bottom'
-          });
-          toast.present();
-          this.getItems();
-        });
-      }
-    })
-    addModal.present();
   }
 
   deleteItem(item) {
@@ -74,7 +58,6 @@ export class VehicleDetailPage implements OnInit {
   }
 
   openItem(item?) {
-    console.log(item)
     let editModal = this.modalCtrl.create('FillUpCreatePage', {
       fillUp: item
     });
