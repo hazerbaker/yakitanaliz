@@ -55,11 +55,13 @@
   "AUTO": "Automatic",
   "MANUAL": "Manual",
   "FILLUP_CREATE_TITLE": "Yeni Yakıt Alımı",
+  "FILLUP_EDIT_TITLE": "Yakıt Alımı Düzenle",
   "FILLUP_CREATE_SUCCESS": "Yakıt Alımı Kaydedildi",
   "FILLUP_DELETE_SUCCESS": "Yakıt Alımı Silindi",
   "FILLUP_DATE_PLACEHOLDER": "Tarih",
   "FILLUP_AMOUNT_PLACEHOLDER": "Miktar (LT)",
   "FILLUP_TOTALPRICE_PLACEHOLDER": "Ödenen Tutar (TL)",
   "FILLUP_UNITPRICE_PLACEHOLDER": "Birim Fiyat (TL)",
-  "FILLUP_TOTALDISTANCE_PLACEHOLDER": "Son Km"
+  "FILLUP_TOTALDISTANCE_PLACEHOLDER": "Son Km",
+  "EDIT_SUCCESS": "Değişiklikler Kaydedildi"
 }

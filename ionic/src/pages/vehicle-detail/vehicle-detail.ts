@@ -13,6 +13,7 @@ export class VehicleDetailPage implements OnInit {
   vehicle: any;
   createSuccessString: any;
   deleteSuccessString: any;
+  editSuccessString: any;
   fillUps = [];
 
   constructor(public navCtrl: NavController, 
@@ -29,6 +30,9 @@ export class VehicleDetailPage implements OnInit {
     })
     this.translateService.get('FILLUP_DELETE_SUCCESS').subscribe((value) => {
       this.deleteSuccessString = value;
+    })
+    this.translateService.get('EDIT_SUCCESS').subscribe((value) => {
+      this.editSuccessString = value;
     })
   }
 
@@ -57,16 +61,16 @@ export class VehicleDetailPage implements OnInit {
     });
   }
 
-  openItem(item?) {
+  openItem(editItem?) {
     let editModal = this.modalCtrl.create('FillUpCreatePage', {
-      fillUp: item
+      fillUp: editItem
     });
     editModal.onDidDismiss(item => {
       if (item) {
         item.vehicle = this.vehicle;
         this.api.post('fill-ups', item).subscribe((res: any) => {
           let toast = this.toastCtrl.create({
-            message: this.createSuccessString,
+            message: editItem ? this.editSuccessString : this.createSuccessString,
             duration: 2000,
             position: 'bottom'
           });
