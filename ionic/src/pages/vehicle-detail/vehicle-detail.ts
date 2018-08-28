@@ -61,7 +61,7 @@ export class VehicleDetailPage implements OnInit {
     });
   }
 
-  openItem(editItem?) {
+  editFillUp(editItem?) {
     let editModal = this.modalCtrl.create('FillUpCreatePage', {
       fillUp: editItem
     });
@@ -76,6 +76,27 @@ export class VehicleDetailPage implements OnInit {
           });
           toast.present();
           this.getItems();
+        });
+      }
+    })
+    editModal.present();
+  }
+
+  editVehicle(editItem?) {
+    let editModal = this.modalCtrl.create('VehicleCreatePage', {
+      vehicle: editItem
+    });
+    editModal.onDidDismiss(item => {
+      if (item) {
+        item.vehicle = this.vehicle;
+        this.api.post('vehicles', item).subscribe((res: any) => {
+          let toast = this.toastCtrl.create({
+            message: editItem ? this.editSuccessString : this.createSuccessString,
+            duration: 2000,
+            position: 'bottom'
+          });
+          toast.present();
+          console.log(res);
         });
       }
     })

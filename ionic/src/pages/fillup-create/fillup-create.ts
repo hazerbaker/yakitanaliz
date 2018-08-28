@@ -28,7 +28,7 @@ export class FillUpCreatePage {
     this.fillUp = navParams.get('fillUp');
     
     this.form = formBuilder.group({
-      date: new Date().toISOString(),
+      date: this.fillUp ? this.fillUp.date : new Date().toISOString(),
       quantity: this.fillUp ? this.fillUp.quantity : undefined,
       totalPrice: this.fillUp ? this.api.round(this.fillUp.unitPrice * this.fillUp.quantity) : undefined,
       totalDistance: this.fillUp ? this.fillUp.totalDistance : undefined,
@@ -36,7 +36,6 @@ export class FillUpCreatePage {
       id: this.fillUp ? this.fillUp.id : undefined
     });
 
-    // Watch the form for changes, and
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });

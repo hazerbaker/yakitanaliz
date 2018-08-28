@@ -1,7 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
-import { IonicPage, NavController, ViewController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ViewController, ToastController, NavParams } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -20,16 +20,27 @@ export class VehicleCreatePage {
   models: any;
   createSuccessString: any;
 
-  constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera, public api: Api, public toastCtrl: ToastController, public translateService: TranslateService) {
+  constructor(
+    public navCtrl: NavController,
+    navParams: NavParams,
+    public viewCtrl: ViewController,
+    formBuilder: FormBuilder,
+    public camera: Camera,
+    public api: Api,
+    public toastCtrl: ToastController,
+    public translateService: TranslateService
+  ) {
+    this.vehicle = navParams.get('vehicle');
+    console.log(this.vehicle);
     this.form = formBuilder.group({
-      photo: [''],
-      photoContentType: [''],
-      fuelType: ['', Validators.required],
-      cc: [''],
-      transmission: [''],
-      year: [''],
-      make: [''],
-      model: [''],
+      photo: this.vehicle ? this.vehicle.photo : undefined,
+      photoContentType: this.vehicle ? this.vehicle.photoContentType : undefined,
+      fuelType: [this.vehicle ? this.vehicle.fuelType : undefined, Validators.required],
+      cc: this.vehicle ? this.vehicle.cc : undefined,
+      transmission: [this.vehicle ? this.vehicle.transmission : undefined],
+      year: this.vehicle ? this.vehicle.year : undefined,
+      make: this.vehicle ? this.vehicle.make : undefined,
+      model: this.vehicle ? this.vehicle.model : undefined,
     });
 
     // Watch the form for changes, and
@@ -78,12 +89,12 @@ export class VehicleCreatePage {
     reader.onload = (readerEvent) => {
       let imageData = (readerEvent.target as any).result;
       let split1 = imageData.split(":");
-      if(split1.length == 2) {
+      if (split1.length == 2) {
         let split2 = split1[1].split(";");
-        if(split2.length == 2) {
+        if (split2.length == 2) {
           this.form.patchValue({ 'photoContentType': split2[0] });
           let split3 = split2[1].split(",");
-          if(split3.length == 2) {
+          if (split3.length == 2) {
             this.form.patchValue({ 'photo': split3[1] });
           }
         }

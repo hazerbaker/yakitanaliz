@@ -52,6 +52,7 @@
   "VEHICLE_LIST_TITLE": "Vehicles",
 
   "VEHICLE_CREATE_TITLE": "New Vehicle",
+  "VEHICLE_EDIT_TITLE": "Edit Vehicle",
   "VEHICLE_CREATE_CHOOSE_IMAGE": "Add Image",
 
   "VEHICLE_NAME_PLACEHOLDER": "Name",

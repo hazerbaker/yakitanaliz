@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>{{ 'VEHICLE_CREATE_TITLE' | translate }}</ion-title>
+    <ion-title>{{ (vehicle ? 'VEHICLE_EDIT_TITLE' : 'VEHICLE_CREATE_TITLE') | translate }}</ion-title>
     <ion-buttons start>
       <button ion-button (click)="cancel()">
         <span color="primary" showWhen="ios">
