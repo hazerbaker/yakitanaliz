@@ -32,7 +32,7 @@
           {{ 'VEHICLE_CREATE_CHOOSE_IMAGE' | translate }}
         </div>
       </div>
-      <div class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.photo.value"></div>
+      <div style="width:100%;height:140px;border-radius:unset;background-repeat: no-repeat;background-position: center;background-size:90%" class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.photo.value"></div>
     </div>
     <ion-list>
       <ion-item>
