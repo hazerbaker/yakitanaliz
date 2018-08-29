@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
-import { Item } from '../../models/item';
 
 @IonicPage()
 @Component({
