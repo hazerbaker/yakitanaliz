@@ -19,6 +19,7 @@ export class VehicleCreatePage implements OnInit {
   makes: any;
   models: any;
   createSuccessString: any;
+  editSuccessString: any;
 
   constructor(
     public navCtrl: NavController,
@@ -41,6 +42,7 @@ export class VehicleCreatePage implements OnInit {
       year: '',
       make: '',
       model: '',
+      id: ''
     });
     /*
           photo: [undefined],
@@ -64,6 +66,9 @@ export class VehicleCreatePage implements OnInit {
     this.translateService.get('VEHICLE_CREATE_SUCCESS').subscribe((value) => {
       this.createSuccessString = value;
     })
+    this.translateService.get('EDIT_SUCCESS').subscribe((value) => {
+      this.editSuccessString = value;
+    })
   }
 
   ngOnInit() {
@@ -73,18 +78,19 @@ export class VehicleCreatePage implements OnInit {
 
       setTimeout(function () {
         if (this.vehicle) {
-          this.form.value.photo = this.vehicle ? this.vehicle.photo : '';
-          this.form.value.photoContentType = this.vehicle ? this.vehicle.photoContentType : '';
-          this.form.value.fuelType = this.vehicle ? this.vehicle.fuelType : '';
-          this.form.value.cc = this.vehicle ? this.vehicle.cc : '';
-          this.form.value.transmission = this.vehicle ? this.vehicle.transmission : '';
-          this.form.value.year = this.vehicle ? this.vehicle.year : '';
-          this.form.value.make = this.vehicle ? this.vehicle.model.parent.id : '';
-          this.form.value.model = this.vehicle ? this.vehicle.model.id : '';
+          this.form.value.photo = this.vehicle.photo;
+          this.form.value.photoContentType = this.vehicle.photoContentType;
+          this.form.value.fuelType = this.vehicle.fuelType;
+          this.form.value.cc = this.vehicle.cc;
+          this.form.value.transmission = this.vehicle.transmission;
+          this.form.value.year = this.vehicle.year;
+          this.form.value.make = this.vehicle.model.parent.id;
+          this.form.value.model = this.vehicle.model.id;
+          this.form.value.id = this.vehicle.id;
           this.form.setValue(this.form.value);
         }
       }.bind(this), 0);
-      
+
     }
   }
 
@@ -147,7 +153,7 @@ export class VehicleCreatePage implements OnInit {
     values.model = { id: values.model }
     this.api.post('vehicles', values).subscribe((res: any) => {
       let toast = this.toastCtrl.create({
-        message: this.createSuccessString,
+        message: values.id ? this.editSuccessString : this.createSuccessString,
         duration: 2000,
         position: 'bottom'
       });

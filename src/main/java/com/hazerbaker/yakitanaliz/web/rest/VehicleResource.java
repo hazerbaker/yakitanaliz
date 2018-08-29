@@ -89,6 +89,7 @@ public class VehicleResource {
         if (vehicle.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
+        vehicle.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
         Vehicle result = vehicleRepository.save(vehicle);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, vehicle.getId().toString()))
                 .body(result);
