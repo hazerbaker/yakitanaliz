@@ -16,7 +16,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface FillUpRepository extends JpaRepository<FillUp, Long> {
 
-    Page<FillUp> findByVehicleId(Pageable pageable, Long id);
+    Page<FillUp> findByVehicleIdOrderByTotalDistanceDesc(Pageable pageable, Long id);
 
     List<FillUp> findByVehicleId(Long id);
 }
