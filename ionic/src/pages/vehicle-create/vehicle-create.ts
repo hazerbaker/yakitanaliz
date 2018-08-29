@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, ViewController, ToastController, NavParams } from 'ionic-angular';
@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'page-vehicle-create',
   templateUrl: 'vehicle-create.html'
 })
-export class VehicleCreatePage {
+export class VehicleCreatePage implements OnInit {
   @ViewChild('fileInput') fileInput;
 
   isReadyToSave: boolean;
@@ -33,17 +33,24 @@ export class VehicleCreatePage {
     this.vehicle = navParams.get('vehicle');
     console.log(this.vehicle);
     this.form = formBuilder.group({
-      photo: this.vehicle ? this.vehicle.photo : undefined,
-      photoContentType: this.vehicle ? this.vehicle.photoContentType : undefined,
-      fuelType: [this.vehicle ? this.vehicle.fuelType : undefined, Validators.required],
-      cc: this.vehicle ? this.vehicle.cc : undefined,
-      transmission: [this.vehicle ? this.vehicle.transmission : undefined],
-      year: this.vehicle ? this.vehicle.year : undefined,
-      make: this.vehicle ? this.vehicle.make : undefined,
-      model: this.vehicle ? this.vehicle.model : undefined,
+      photo: '',
+      photoContentType: '',
+      fuelType: ['', Validators.required],
+      cc: '',
+      transmission: '',
+      year: '',
+      make: '',
+      model: '',
     });
-
-    // Watch the form for changes, and
+    /*
+          photo: [undefined],
+          photoContentType: [undefined],
+          fuelType: [undefined, Validators.required],
+          cc: [undefined],
+          transmission: '',
+          year: [undefined],
+          make: [undefined],
+          model: [undefined], */
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
@@ -57,6 +64,28 @@ export class VehicleCreatePage {
     this.translateService.get('VEHICLE_CREATE_SUCCESS').subscribe((value) => {
       this.createSuccessString = value;
     })
+  }
+
+  ngOnInit() {
+    if(this.vehicle) {
+
+      this.getModels(this.vehicle.model.parent.id);
+
+      setTimeout(function () {
+        if (this.vehicle) {
+          this.form.value.photo = this.vehicle ? this.vehicle.photo : '';
+          this.form.value.photoContentType = this.vehicle ? this.vehicle.photoContentType : '';
+          this.form.value.fuelType = this.vehicle ? this.vehicle.fuelType : '';
+          this.form.value.cc = this.vehicle ? this.vehicle.cc : '';
+          this.form.value.transmission = this.vehicle ? this.vehicle.transmission : '';
+          this.form.value.year = this.vehicle ? this.vehicle.year : '';
+          this.form.value.make = this.vehicle ? this.vehicle.model.parent.id : '';
+          this.form.value.model = this.vehicle ? this.vehicle.model.id : '';
+          this.form.setValue(this.form.value);
+        }
+      }.bind(this), 0);
+      
+    }
   }
 
   getModels(e) {
