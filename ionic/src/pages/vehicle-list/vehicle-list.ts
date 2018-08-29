@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController, ToastController } from 'ionic-angular';
 
 import { Item } from '../../models/item';
@@ -10,7 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'page-vehicle-list',
   templateUrl: 'vehicle-list.html'
 })
-export class VehicleListPage implements OnInit {
+export class VehicleListPage {
   currentItems: Item[];
   deleteSuccessString: any;
   deleteFailureString: any;
@@ -30,13 +30,15 @@ export class VehicleListPage implements OnInit {
     })
   }
 
-  ngOnInit() {
-    this.getItems();
-  }
-
   getItems() {
     this.api.get('vehicles').subscribe((data: any) => {
       this.currentItems = data;
+    });
+  }
+
+  myCallbackFunction(_params) {
+    return new Promise((resolve, reject) => {
+      resolve();
     });
   }
 
@@ -77,5 +79,9 @@ export class VehicleListPage implements OnInit {
     this.navCtrl.push('VehicleDetailPage', {
       vehicle: item
     });
+  }
+
+  ionViewWillEnter() {
+    this.getItems();
   }
 }
