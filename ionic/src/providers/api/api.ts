@@ -8,7 +8,7 @@ import { MainPage } from '../../pages';
  */
 @Injectable()
 export class Api {
-  url: string = 'http://localhost:8080/api';
+  url: string = 'https://yakitanaliz.herokuapp.com/api';
 
   constructor(public http: HttpClient) {
   }
