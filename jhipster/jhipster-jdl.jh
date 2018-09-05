@@ -17,7 +17,37 @@ entity FillUp {
     unitPrice Double,
     date LocalDate,
     totalDistance Integer,
-	distance Integer
+	distance Integer,
+    partial Boolean,
+    missed Boolean,
+    note String
+}
+
+entity Service {
+    date LocalDate,
+    totalDistance Integer,
+	paidAmount Double,
+    note String
+}
+
+entity Expense {
+    date LocalDate,
+    totalDistance Integer,
+	paidAmount Double,
+    note String
+}
+
+entity Note {
+    date LocalDate,
+    totalDistance Integer,
+    note String
+}
+
+entity Reminder {
+    firstDate LocalDate,
+    recurDate LocalDate,
+    firstDistance Integer,
+    recurDistance String
 }
 
 enum Language {
@@ -39,10 +69,14 @@ enum Transmission {
 relationship ManyToOne {
     Vehicle{model} to Enumeration,
     FillUp{vehicle} to Vehicle,
+    Service{vehicle} to Vehicle,
+    Expense{vehicle} to Vehicle,
+    Note{vehicle} to Vehicle,
+    Reminder{vehicle} to Vehicle,
 	Enumeration{parent} to Enumeration,
     Vehicle{user} to User
 }
 
-paginate FillUp, Vehicle, Enumeration with pagination
+paginate FillUp, Service, Expense, Note, Reminder, Vehicle, Enumeration with pagination
 
 angularSuffix * with ya
