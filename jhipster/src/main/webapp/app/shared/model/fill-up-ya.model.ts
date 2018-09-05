@@ -8,6 +8,9 @@ export interface IFillUpYa {
     date?: Moment;
     totalDistance?: number;
     distance?: number;
+    partial?: boolean;
+    missed?: boolean;
+    note?: string;
     vehicle?: IVehicleYa;
 }
 
@@ -19,6 +22,12 @@ export class FillUpYa implements IFillUpYa {
         public date?: Moment,
         public totalDistance?: number,
         public distance?: number,
+        public partial?: boolean,
+        public missed?: boolean,
+        public note?: string,
         public vehicle?: IVehicleYa
-    ) {}
+    ) {
+        this.partial = false;
+        this.missed = false;
+    }
 }

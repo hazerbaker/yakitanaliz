@@ -37,6 +37,15 @@ public class FillUp implements Serializable {
     @Column(name = "distance")
     private Integer distance;
 
+    @Column(name = "partial")
+    private Boolean partial;
+
+    @Column(name = "missed")
+    private Boolean missed;
+
+    @Column(name = "note")
+    private String note;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Vehicle vehicle;
@@ -115,6 +124,45 @@ public class FillUp implements Serializable {
         this.distance = distance;
     }
 
+    public Boolean isPartial() {
+        return partial;
+    }
+
+    public FillUp partial(Boolean partial) {
+        this.partial = partial;
+        return this;
+    }
+
+    public void setPartial(Boolean partial) {
+        this.partial = partial;
+    }
+
+    public Boolean isMissed() {
+        return missed;
+    }
+
+    public FillUp missed(Boolean missed) {
+        this.missed = missed;
+        return this;
+    }
+
+    public void setMissed(Boolean missed) {
+        this.missed = missed;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
+    public FillUp note(String note) {
+        this.note = note;
+        return this;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     public Vehicle getVehicle() {
         return vehicle;
     }
@@ -158,6 +206,9 @@ public class FillUp implements Serializable {
             ", date='" + getDate() + "'" +
             ", totalDistance=" + getTotalDistance() +
             ", distance=" + getDistance() +
+            ", partial='" + isPartial() + "'" +
+            ", missed='" + isMissed() + "'" +
+            ", note='" + getNote() + "'" +
             "}";
     }
 }

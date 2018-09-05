@@ -1,0 +1,39 @@
+{
+    "name": "Service",
+    "fields": [
+        {
+            "fieldName": "date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "totalDistance",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "paidAmount",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "vehicle",
+            "otherEntityName": "vehicle",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180905130552",
+    "entityTableName": "service",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "ya"
+}

@@ -1,0 +1,39 @@
+{
+    "name": "Reminder",
+    "fields": [
+        {
+            "fieldName": "firstDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "recurDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "firstDistance",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "recurDistance",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "vehicle",
+            "otherEntityName": "vehicle",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20180905130555",
+    "entityTableName": "reminder",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*",
+    "angularJSSuffix": "ya"
+}

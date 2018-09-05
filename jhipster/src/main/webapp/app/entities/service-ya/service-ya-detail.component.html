@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="service">
+            <h2><span jhiTranslate="yakitanalizApp.service.detail.title">Service</span> {{service.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="yakitanalizApp.service.date">Date</span></dt>
+                <dd>
+                    <span>{{service.date}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.service.totalDistance">Total Distance</span></dt>
+                <dd>
+                    <span>{{service.totalDistance}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.service.paidAmount">Paid Amount</span></dt>
+                <dd>
+                    <span>{{service.paidAmount}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.service.note">Note</span></dt>
+                <dd>
+                    <span>{{service.note}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.service.vehicle">Vehicle</span></dt>
+                <dd>
+                    <div *ngIf="service.vehicle">
+                        <a [routerLink]="['/vehicle-ya', service.vehicle?.id, 'view']">{{service.vehicle?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/service-ya', service.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

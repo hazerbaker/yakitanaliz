@@ -21,6 +21,9 @@
             "date": "Date",
             "totalDistance": "Total Distance",
             "distance": "Distance",
+            "partial": "Partial",
+            "missed": "Missed",
+            "note": "Note",
             "vehicle": "Vehicle"
         }
     }

@@ -41,6 +41,18 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="partial" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="missed" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="note" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
             <column name="vehicle_id" type="bigint">
                 <constraints nullable="true" />
             </column>

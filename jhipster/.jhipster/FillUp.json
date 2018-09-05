@@ -20,6 +20,18 @@
         {
             "fieldName": "distance",
             "fieldType": "Integer"
+        },
+        {
+            "fieldName": "partial",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "missed",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
         }
     ],
     "relationships": [

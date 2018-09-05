@@ -39,6 +39,21 @@
                     <input type="number" class="form-control" name="distance" id="field_distance"
                         [(ngModel)]="fillUp.distance" />
                 </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.partial" for="field_partial">Partial</label>
+                    <input type="checkbox" class="form-control" name="partial" id="field_partial"
+                        [(ngModel)]="fillUp.partial" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.missed" for="field_missed">Missed</label>
+                    <input type="checkbox" class="form-control" name="missed" id="field_missed"
+                        [(ngModel)]="fillUp.missed" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.note" for="field_note">Note</label>
+                    <input type="text" class="form-control" name="note" id="field_note"
+                        [(ngModel)]="fillUp.note" />
+                </div>
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.vehicle" for="field_vehicle">Vehicle</label>

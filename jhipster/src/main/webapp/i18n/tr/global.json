@@ -10,6 +10,10 @@
                 "enumerationYa": "Enumeration",
                 "vehicleYa": "Vehicle",
                 "fillUpYa": "Fill Up",
+                "serviceYa": "Service",
+                "expenseYa": "Expense",
+                "noteYa": "Note",
+                "reminderYa": "Reminder",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
