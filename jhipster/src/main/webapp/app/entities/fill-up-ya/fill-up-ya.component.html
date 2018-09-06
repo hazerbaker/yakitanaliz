@@ -19,10 +19,11 @@
             <th jhiSortBy="unitPrice"><span jhiTranslate="yakitanalizApp.fillUp.unitPrice">Unit Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="date"><span jhiTranslate="yakitanalizApp.fillUp.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="totalDistance"><span jhiTranslate="yakitanalizApp.fillUp.totalDistance">Total Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="distance"><span jhiTranslate="yakitanalizApp.fillUp.distance">Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="partial"><span jhiTranslate="yakitanalizApp.fillUp.partial">Partial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="missed"><span jhiTranslate="yakitanalizApp.fillUp.missed">Missed</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="note"><span jhiTranslate="yakitanalizApp.fillUp.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="statsDistance"><span jhiTranslate="yakitanalizApp.fillUp.statsDistance">Stats Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="statsQuantity"><span jhiTranslate="yakitanalizApp.fillUp.statsQuantity">Stats Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="vehicle.id"><span jhiTranslate="yakitanalizApp.fillUp.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
@@ -34,10 +35,11 @@
                 <td>{{fillUp.unitPrice}}</td>
                 <td>{{fillUp.date | date:'mediumDate'}}</td>
                 <td>{{fillUp.totalDistance}}</td>
-                <td>{{fillUp.distance}}</td>
                 <td>{{fillUp.partial}}</td>
                 <td>{{fillUp.missed}}</td>
                 <td>{{fillUp.note}}</td>
+                <td>{{fillUp.statsDistance}}</td>
+                <td>{{fillUp.statsQuantity}}</td>
                 <td>
                     <div *ngIf="fillUp.vehicle">
                         <a [routerLink]="['../vehicle-ya', fillUp.vehicle?.id, 'view' ]" >{{fillUp.vehicle?.id}}</a>

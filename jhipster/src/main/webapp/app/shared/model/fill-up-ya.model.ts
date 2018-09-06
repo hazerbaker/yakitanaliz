@@ -7,10 +7,11 @@ export interface IFillUpYa {
     unitPrice?: number;
     date?: Moment;
     totalDistance?: number;
-    distance?: number;
     partial?: boolean;
     missed?: boolean;
     note?: string;
+    statsDistance?: number;
+    statsQuantity?: number;
     vehicle?: IVehicleYa;
 }
 
@@ -21,10 +22,11 @@ export class FillUpYa implements IFillUpYa {
         public unitPrice?: number,
         public date?: Moment,
         public totalDistance?: number,
-        public distance?: number,
         public partial?: boolean,
         public missed?: boolean,
         public note?: string,
+        public statsDistance?: number,
+        public statsQuantity?: number,
         public vehicle?: IVehicleYa
     ) {
         this.partial = false;

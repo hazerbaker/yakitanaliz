@@ -17,10 +17,11 @@ entity FillUp {
     unitPrice Double,
     date LocalDate,
     totalDistance Integer,
-	distance Integer,
     partial Boolean,
     missed Boolean,
-    note String
+    note String,
+	statsDistance Integer,
+    statsQuantity Double
 }
 
 entity Service {

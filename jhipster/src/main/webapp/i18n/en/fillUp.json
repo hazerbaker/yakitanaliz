@@ -20,10 +20,11 @@
             "unitPrice": "Unit Price",
             "date": "Date",
             "totalDistance": "Total Distance",
-            "distance": "Distance",
             "partial": "Partial",
             "missed": "Missed",
             "note": "Note",
+            "statsDistance": "Stats Distance",
+            "statsQuantity": "Stats Quantity",
             "vehicle": "Vehicle"
         }
     }

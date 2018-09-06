@@ -34,9 +34,6 @@ public class FillUp implements Serializable {
     @Column(name = "total_distance")
     private Integer totalDistance;
 
-    @Column(name = "distance")
-    private Integer distance;
-
     @Column(name = "partial")
     private Boolean partial;
 
@@ -45,6 +42,12 @@ public class FillUp implements Serializable {
 
     @Column(name = "note")
     private String note;
+
+    @Column(name = "stats_distance")
+    private Integer statsDistance;
+
+    @Column(name = "stats_quantity")
+    private Double statsQuantity;
 
     @ManyToOne
     @JsonIgnoreProperties("")
@@ -111,19 +114,6 @@ public class FillUp implements Serializable {
         this.totalDistance = totalDistance;
     }
 
-    public Integer getDistance() {
-        return distance;
-    }
-
-    public FillUp distance(Integer distance) {
-        this.distance = distance;
-        return this;
-    }
-
-    public void setDistance(Integer distance) {
-        this.distance = distance;
-    }
-
     public Boolean isPartial() {
         return partial;
     }
@@ -161,6 +151,32 @@ public class FillUp implements Serializable {
 
     public void setNote(String note) {
         this.note = note;
+    }
+
+    public Integer getStatsDistance() {
+        return statsDistance;
+    }
+
+    public FillUp statsDistance(Integer statsDistance) {
+        this.statsDistance = statsDistance;
+        return this;
+    }
+
+    public void setStatsDistance(Integer statsDistance) {
+        this.statsDistance = statsDistance;
+    }
+
+    public Double getStatsQuantity() {
+        return statsQuantity;
+    }
+
+    public FillUp statsQuantity(Double statsQuantity) {
+        this.statsQuantity = statsQuantity;
+        return this;
+    }
+
+    public void setStatsQuantity(Double statsQuantity) {
+        this.statsQuantity = statsQuantity;
     }
 
     public Vehicle getVehicle() {
@@ -205,10 +221,11 @@ public class FillUp implements Serializable {
             ", unitPrice=" + getUnitPrice() +
             ", date='" + getDate() + "'" +
             ", totalDistance=" + getTotalDistance() +
-            ", distance=" + getDistance() +
             ", partial='" + isPartial() + "'" +
             ", missed='" + isMissed() + "'" +
             ", note='" + getNote() + "'" +
+            ", statsDistance=" + getStatsDistance() +
+            ", statsQuantity=" + getStatsQuantity() +
             "}";
     }
 }

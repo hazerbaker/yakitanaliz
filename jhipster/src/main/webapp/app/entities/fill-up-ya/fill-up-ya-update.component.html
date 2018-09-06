@@ -35,11 +35,6 @@
                         [(ngModel)]="fillUp.totalDistance" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.distance" for="field_distance">Distance</label>
-                    <input type="number" class="form-control" name="distance" id="field_distance"
-                        [(ngModel)]="fillUp.distance" />
-                </div>
-                <div class="form-group">
                     <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.partial" for="field_partial">Partial</label>
                     <input type="checkbox" class="form-control" name="partial" id="field_partial"
                         [(ngModel)]="fillUp.partial" />
@@ -53,6 +48,16 @@
                     <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.note" for="field_note">Note</label>
                     <input type="text" class="form-control" name="note" id="field_note"
                         [(ngModel)]="fillUp.note" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.statsDistance" for="field_statsDistance">Stats Distance</label>
+                    <input type="number" class="form-control" name="statsDistance" id="field_statsDistance"
+                        [(ngModel)]="fillUp.statsDistance" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.statsQuantity" for="field_statsQuantity">Stats Quantity</label>
+                    <input type="number" class="form-control" name="statsQuantity" id="field_statsQuantity"
+                        [(ngModel)]="fillUp.statsQuantity" />
                 </div>
 
                 <div class="form-group">

@@ -37,10 +37,6 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="distance" type="integer">
-                <constraints nullable="true" />
-            </column>
-
             <column name="partial" type="boolean">
                 <constraints nullable="true" />
             </column>
@@ -50,6 +46,14 @@
             </column>
 
             <column name="note" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="stats_distance" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="stats_quantity" type="double">
                 <constraints nullable="true" />
             </column>
 
