@@ -33,6 +33,9 @@ export class FillUpCreatePage {
       totalPrice: this.fillUp ? this.api.round(this.fillUp.unitPrice * this.fillUp.quantity) : undefined,
       totalDistance: this.fillUp ? this.fillUp.totalDistance : undefined,
       unitPrice: this.fillUp ? this.fillUp.unitPrice : undefined,
+      missed: this.fillUp ? this.fillUp.missed : undefined,
+      partial: this.fillUp ? this.fillUp.partial : undefined,
+      note: this.fillUp ? this.fillUp.note : undefined,
       id: this.fillUp ? this.fillUp.id : undefined
     });
 

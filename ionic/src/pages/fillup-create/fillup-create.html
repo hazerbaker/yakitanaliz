@@ -24,24 +24,36 @@
   <form *ngIf="form" [formGroup]="form" (ngSubmit)="createFillUp()">
     <ion-list>
       <ion-item>
-        <ion-label>{{ 'FILLUP_DATE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label color="primary" floating>{{ 'FILLUP_DATE_PLACEHOLDER' | translate }}</ion-label>
         <ion-datetime displayFormat="MM/DD/YYYY" formControlName="date"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'FILLUP_TOTALPRICE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label color="primary" floating>{{ 'FILLUP_TOTALPRICE_PLACEHOLDER' | translate }}</ion-label>
         <ion-input type="number" formControlName="totalPrice" (keydown)="totalPriceChange()"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'FILLUP_AMOUNT_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label color="primary" floating>{{ 'FILLUP_AMOUNT_PLACEHOLDER' | translate }}</ion-label>
         <ion-input type="number" formControlName="quantity" (keydown)="quantityChange()"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'FILLUP_UNITPRICE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label color="primary" floating>{{ 'FILLUP_UNITPRICE_PLACEHOLDER' | translate }}</ion-label>
         <ion-input type="number" formControlName="unitPrice" (keydown)="unitPriceChange()"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'FILLUP_TOTALDISTANCE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label color="primary" floating>{{ 'FILLUP_TOTALDISTANCE_PLACEHOLDER' | translate }}</ion-label>
         <ion-input type="number" formControlName="totalDistance"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>{{ 'FILLUP_NOTE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-textarea formControlName="note"></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">{{ 'FILLUP_PARTIAL_PLACEHOLDER' | translate }}</ion-label>
+        <ion-checkbox formControlName="partial"></ion-checkbox>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary">{{ 'FILLUP_MISSED_PLACEHOLDER' | translate }}</ion-label>
+        <ion-checkbox formControlName="missed"></ion-checkbox>
       </ion-item>
     </ion-list>
   </form>
