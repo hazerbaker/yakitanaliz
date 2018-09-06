@@ -2,6 +2,9 @@ package com.hazerbaker.yakitanaliz;
 
 import com.hazerbaker.yakitanaliz.config.ApplicationProperties;
 import com.hazerbaker.yakitanaliz.config.DefaultProfileUtil;
+import com.hazerbaker.yakitanaliz.domain.Enumeration;
+import com.hazerbaker.yakitanaliz.repository.EnumerationRepository;
+import com.hazerbaker.yakitanaliz.service.util.DataInitializer;
 
 import io.github.jhipster.config.JHipsterConstants;
 
@@ -25,9 +28,11 @@ public class YakitanalizApp {
     private static final Logger log = LoggerFactory.getLogger(YakitanalizApp.class);
 
     private final Environment env;
+    private final EnumerationRepository enumerationRepository;
 
-    public YakitanalizApp(Environment env) {
+    public YakitanalizApp(Environment env, EnumerationRepository enumerationRepository) {
         this.env = env;
+        this.enumerationRepository = enumerationRepository;
     }
 
     /**
@@ -48,6 +53,8 @@ public class YakitanalizApp {
             log.error("You have misconfigured your application! It should not " +
                 "run with both the 'dev' and 'cloud' profiles at the same time.");
         }
+        DataInitializer dataInitializer = new DataInitializer(enumerationRepository);
+        dataInitializer.run();
     }
 
     /**

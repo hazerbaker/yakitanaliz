@@ -18,4 +18,6 @@ public interface EnumerationRepository extends JpaRepository<Enumeration, Long> 
     Page<Enumeration> findByType(Pageable pageable, EnumerationType type);
 
     Page<Enumeration> findByParent(Pageable pageable, Enumeration parent);
+
+    Enumeration findByName(String name);
 }
