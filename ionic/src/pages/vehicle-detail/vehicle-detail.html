@@ -36,9 +36,6 @@
 
           <div padding>
             <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
-              <ion-segment-button value="all">
-                Tümü
-              </ion-segment-button>
               <ion-segment-button value="fillups">
                 Yakıt
               </ion-segment-button>
@@ -52,23 +49,6 @@
           </div>
 
           <div [ngSwitch]="segment">
-            <ion-list *ngSwitchCase="'all'">
-              <div padding *ngIf="fillUps.length == 0" text-center>
-                Henüz kayıt yok. Sağ üstteki + butonuyla kayıt ekleyebilirsiniz.
-              </div>
-              <ion-item-sliding *ngFor="let item of fillUps">
-                <button ion-item (click)="editFillUp(item)">
-                  <h2>{{(item.unitPrice * item.quantity)}} TL {{ item.statsDistance }} {{ item.statsQuantity }} {{ item.totalDistance
-                    }} {{ item.quantity }}</h2>
-                  <ion-note item-end>{{ item.date }}</ion-note>
-                </button>
-                <ion-item-options>
-                  <button ion-button color="danger" (click)="deleteItem(item)">
-                    {{ 'DELETE_BUTTON' | translate }}
-                  </button>
-                </ion-item-options>
-              </ion-item-sliding>
-            </ion-list>
             <ion-list *ngSwitchCase="'fillups'">
               <div padding *ngIf="fillUps.length == 0" text-center>
                 Henüz kayıt yok. Sağ üstteki + butonuyla kayıt ekleyebilirsiniz.

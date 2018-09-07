@@ -14,7 +14,7 @@ export class VehicleDetailPage {
   deleteSuccessString: any;
   editSuccessString: any;
   fillUps = [];
-  segment = 'all';
+  segment = 'fillups';
 
   constructor(public navCtrl: NavController,
     navParams: NavParams,
