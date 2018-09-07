@@ -21,6 +21,9 @@
             "year": "Year",
             "transmission": "Transmission",
             "photo": "Photo",
+            "statsDistance": "Stats Distance",
+            "statsQuantity": "Stats Quantity",
+            "totalExpense": "Total Expense",
             "model": "Model",
             "user": "User"
         }

@@ -78,7 +78,7 @@ public class FillUpResource {
     @Timed
     public ResponseEntity<List<FillUp>> getAllFillUpsByVehicle(Pageable pageable, @PathVariable Long id) {
         log.debug("REST request to get a page of FillUps By Vehicle");
-        Page<FillUp> page = fillUpRepository.findByVehicleIdOrderByTotalDistanceDesc(pageable, id);
+        Page<FillUp> page = fillUpRepository.findByVehicleIdOrderByOdometerDesc(pageable, id);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/fill-ups/vehicle/"+id);
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

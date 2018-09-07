@@ -44,6 +44,18 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="stats_distance" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="stats_quantity" type="double">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="total_expense" type="double">
+                <constraints nullable="true" />
+            </column>
+
             <column name="model_id" type="bigint">
                 <constraints nullable="true" />
             </column>

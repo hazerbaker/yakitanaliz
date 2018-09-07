@@ -33,7 +33,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="total_distance" type="integer">
+            <column name="odometer" type="integer">
                 <constraints nullable="true" />
             </column>
 

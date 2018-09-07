@@ -19,7 +19,7 @@
             "quantity": "Quantity",
             "unitPrice": "Unit Price",
             "date": "Date",
-            "totalDistance": "Total Distance",
+            "odometer": "Odometer",
             "partial": "Partial",
             "missed": "Missed",
             "note": "Note",

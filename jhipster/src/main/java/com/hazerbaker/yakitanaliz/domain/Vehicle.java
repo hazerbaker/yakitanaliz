@@ -46,6 +46,15 @@ public class Vehicle implements Serializable {
     @Column(name = "photo_content_type")
     private String photoContentType;
 
+    @Column(name = "stats_distance")
+    private Integer statsDistance;
+
+    @Column(name = "stats_quantity")
+    private Double statsQuantity;
+
+    @Column(name = "total_expense")
+    private Double totalExpense;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Enumeration model;
@@ -141,6 +150,45 @@ public class Vehicle implements Serializable {
         this.photoContentType = photoContentType;
     }
 
+    public Integer getStatsDistance() {
+        return statsDistance;
+    }
+
+    public Vehicle statsDistance(Integer statsDistance) {
+        this.statsDistance = statsDistance;
+        return this;
+    }
+
+    public void setStatsDistance(Integer statsDistance) {
+        this.statsDistance = statsDistance;
+    }
+
+    public Double getStatsQuantity() {
+        return statsQuantity;
+    }
+
+    public Vehicle statsQuantity(Double statsQuantity) {
+        this.statsQuantity = statsQuantity;
+        return this;
+    }
+
+    public void setStatsQuantity(Double statsQuantity) {
+        this.statsQuantity = statsQuantity;
+    }
+
+    public Double getTotalExpense() {
+        return totalExpense;
+    }
+
+    public Vehicle totalExpense(Double totalExpense) {
+        this.totalExpense = totalExpense;
+        return this;
+    }
+
+    public void setTotalExpense(Double totalExpense) {
+        this.totalExpense = totalExpense;
+    }
+
     public Enumeration getModel() {
         return model;
     }
@@ -198,6 +246,9 @@ public class Vehicle implements Serializable {
             ", transmission='" + getTransmission() + "'" +
             ", photo='" + getPhoto() + "'" +
             ", photoContentType='" + getPhotoContentType() + "'" +
+            ", statsDistance=" + getStatsDistance() +
+            ", statsQuantity=" + getStatsQuantity() +
+            ", totalExpense=" + getTotalExpense() +
             "}";
     }
 }

@@ -23,6 +23,18 @@
             "fieldName": "photo",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "any"
+        },
+        {
+            "fieldName": "statsDistance",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "statsQuantity",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "totalExpense",
+            "fieldType": "Double"
         }
     ],
     "relationships": [

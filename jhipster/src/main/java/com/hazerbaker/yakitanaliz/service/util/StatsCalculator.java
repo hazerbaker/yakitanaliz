@@ -16,7 +16,7 @@ public class StatsCalculator {
     }
 
     public static void calculateDistances(Vehicle vehicle, FillUpRepository fillUpRepository) {
-        List<FillUp> fillUps = fillUpRepository.findByVehicleIdOrderByTotalDistanceAsc(vehicle.getId());
+        List<FillUp> fillUps = fillUpRepository.findByVehicleIdOrderByOdometerAsc(vehicle.getId());
         FillUp prevFillUp = null;
         FillUp partialFillUp = null;
         for(FillUp fillUp: fillUps) {
@@ -28,7 +28,7 @@ public class StatsCalculator {
             }
             if(prevFillUp != null) {
                 if(!fillUp.isMissed() && !fillUp.isPartial()) {
-                    fillUp.setStatsDistance(fillUp.getTotalDistance() - prevFillUp.getTotalDistance());
+                    fillUp.setStatsDistance(fillUp.getOdometer() - prevFillUp.getOdometer());
                     fillUp.setStatsQuantity(fillUp.getQuantity() + (partialFillUp != null ? partialFillUp.getQuantity() : 0));
                 }
             }

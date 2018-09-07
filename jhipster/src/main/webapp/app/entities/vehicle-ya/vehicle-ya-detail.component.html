@@ -28,6 +28,18 @@
                         {{vehicle.photoContentType}}, {{byteSize(vehicle.photo)}}
                     </div>
                 </dd>
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.statsDistance">Stats Distance</span></dt>
+                <dd>
+                    <span>{{vehicle.statsDistance}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.statsQuantity">Stats Quantity</span></dt>
+                <dd>
+                    <span>{{vehicle.statsQuantity}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.vehicle.totalExpense">Total Expense</span></dt>
+                <dd>
+                    <span>{{vehicle.totalExpense}}</span>
+                </dd>
                 <dt><span jhiTranslate="yakitanalizApp.vehicle.model">Model</span></dt>
                 <dd>
                     <div *ngIf="vehicle.model">

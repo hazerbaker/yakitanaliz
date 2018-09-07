@@ -31,8 +31,8 @@ public class FillUp implements Serializable {
     @Column(name = "jhi_date")
     private LocalDate date;
 
-    @Column(name = "total_distance")
-    private Integer totalDistance;
+    @Column(name = "odometer")
+    private Integer odometer;
 
     @Column(name = "partial")
     private Boolean partial;
@@ -101,17 +101,17 @@ public class FillUp implements Serializable {
         this.date = date;
     }
 
-    public Integer getTotalDistance() {
-        return totalDistance;
+    public Integer getOdometer() {
+        return odometer;
     }
 
-    public FillUp totalDistance(Integer totalDistance) {
-        this.totalDistance = totalDistance;
+    public FillUp odometer(Integer odometer) {
+        this.odometer = odometer;
         return this;
     }
 
-    public void setTotalDistance(Integer totalDistance) {
-        this.totalDistance = totalDistance;
+    public void setOdometer(Integer odometer) {
+        this.odometer = odometer;
     }
 
     public Boolean isPartial() {
@@ -220,7 +220,7 @@ public class FillUp implements Serializable {
             ", quantity=" + getQuantity() +
             ", unitPrice=" + getUnitPrice() +
             ", date='" + getDate() + "'" +
-            ", totalDistance=" + getTotalDistance() +
+            ", odometer=" + getOdometer() +
             ", partial='" + isPartial() + "'" +
             ", missed='" + isMissed() + "'" +
             ", note='" + getNote() + "'" +

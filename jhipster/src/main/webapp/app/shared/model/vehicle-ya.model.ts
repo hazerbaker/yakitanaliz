@@ -22,6 +22,9 @@ export interface IVehicleYa {
     transmission?: Transmission;
     photoContentType?: string;
     photo?: any;
+    statsDistance?: number;
+    statsQuantity?: number;
+    totalExpense?: number;
     model?: IEnumerationYa;
     user?: IUser;
 }
@@ -35,6 +38,9 @@ export class VehicleYa implements IVehicleYa {
         public transmission?: Transmission,
         public photoContentType?: string,
         public photo?: any,
+        public statsDistance?: number,
+        public statsQuantity?: number,
+        public totalExpense?: number,
         public model?: IEnumerationYa,
         public user?: IUser
     ) {}

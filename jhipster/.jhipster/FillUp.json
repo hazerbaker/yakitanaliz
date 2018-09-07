@@ -14,7 +14,7 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "totalDistance",
+            "fieldName": "odometer",
             "fieldType": "Integer"
         },
         {

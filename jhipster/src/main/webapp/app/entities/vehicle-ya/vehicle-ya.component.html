@@ -20,6 +20,9 @@
             <th jhiSortBy="year"><span jhiTranslate="yakitanalizApp.vehicle.year">Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="transmission"><span jhiTranslate="yakitanalizApp.vehicle.transmission">Transmission</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="photo"><span jhiTranslate="yakitanalizApp.vehicle.photo">Photo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="statsDistance"><span jhiTranslate="yakitanalizApp.vehicle.statsDistance">Stats Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="statsQuantity"><span jhiTranslate="yakitanalizApp.vehicle.statsQuantity">Stats Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="totalExpense"><span jhiTranslate="yakitanalizApp.vehicle.totalExpense">Total Expense</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="model.id"><span jhiTranslate="yakitanalizApp.vehicle.model">Model</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="user.id"><span jhiTranslate="yakitanalizApp.vehicle.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
@@ -36,6 +39,9 @@
                     <a *ngIf="vehicle.photo" (click)="openFile(vehicle.photoContentType, vehicle.photo)" jhiTranslate="entity.action.open">open</a>
                     <span *ngIf="vehicle.photo">{{vehicle.photoContentType}}, {{byteSize(vehicle.photo)}}</span>
                 </td>
+                <td>{{vehicle.statsDistance}}</td>
+                <td>{{vehicle.statsQuantity}}</td>
+                <td>{{vehicle.totalExpense}}</td>
                 <td>
                     <div *ngIf="vehicle.model">
                         <a [routerLink]="['../enumeration-ya', vehicle.model?.id, 'view' ]" >{{vehicle.model?.id}}</a>

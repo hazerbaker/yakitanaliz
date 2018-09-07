@@ -18,7 +18,7 @@
             <th jhiSortBy="quantity"><span jhiTranslate="yakitanalizApp.fillUp.quantity">Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="unitPrice"><span jhiTranslate="yakitanalizApp.fillUp.unitPrice">Unit Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="date"><span jhiTranslate="yakitanalizApp.fillUp.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="totalDistance"><span jhiTranslate="yakitanalizApp.fillUp.totalDistance">Total Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="odometer"><span jhiTranslate="yakitanalizApp.fillUp.odometer">Odometer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="partial"><span jhiTranslate="yakitanalizApp.fillUp.partial">Partial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="missed"><span jhiTranslate="yakitanalizApp.fillUp.missed">Missed</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="note"><span jhiTranslate="yakitanalizApp.fillUp.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -34,7 +34,7 @@
                 <td>{{fillUp.quantity}}</td>
                 <td>{{fillUp.unitPrice}}</td>
                 <td>{{fillUp.date | date:'mediumDate'}}</td>
-                <td>{{fillUp.totalDistance}}</td>
+                <td>{{fillUp.odometer}}</td>
                 <td>{{fillUp.partial}}</td>
                 <td>{{fillUp.missed}}</td>
                 <td>{{fillUp.note}}</td>

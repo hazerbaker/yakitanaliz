@@ -9,14 +9,17 @@ entity Vehicle {
     cc Integer,
     year Integer,
     transmission Transmission,
-    photo Blob
+    photo Blob,
+    statsDistance Integer,
+    statsQuantity Double,
+    totalExpense Double
 }
 
 entity FillUp {
 	quantity Double,
     unitPrice Double,
     date LocalDate,
-    totalDistance Integer,
+    odometer Integer,
     partial Boolean,
     missed Boolean,
     note String,

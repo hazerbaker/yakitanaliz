@@ -6,7 +6,7 @@ export interface IFillUpYa {
     quantity?: number;
     unitPrice?: number;
     date?: Moment;
-    totalDistance?: number;
+    odometer?: number;
     partial?: boolean;
     missed?: boolean;
     note?: string;
@@ -21,7 +21,7 @@ export class FillUpYa implements IFillUpYa {
         public quantity?: number,
         public unitPrice?: number,
         public date?: Moment,
-        public totalDistance?: number,
+        public odometer?: number,
         public partial?: boolean,
         public missed?: boolean,
         public note?: string,
