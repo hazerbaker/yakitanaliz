@@ -2,7 +2,7 @@
   <ion-navbar>
     <ion-title>{{ (fillUp ? 'FILLUP_EDIT_TITLE' : 'FILLUP_CREATE_TITLE') | translate }}</ion-title>
     <ion-buttons start>
-      <button ion-button (click)="cancel()">
+      <button ion-button icon-only (click)="cancel()">
         <span color="primary" showWhen="ios">
           {{ 'CANCEL_BUTTON' | translate }}
         </span>
@@ -10,7 +10,7 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+      <button ion-button icon-only (click)="done()" [disabled]="!isReadyToSave" strong>
         <span color="primary" showWhen="ios">
           {{ 'DONE_BUTTON' | translate }}
         </span>
