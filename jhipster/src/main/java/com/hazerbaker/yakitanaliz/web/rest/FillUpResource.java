@@ -3,6 +3,7 @@ package com.hazerbaker.yakitanaliz.web.rest;
 import com.codahale.metrics.annotation.Timed;
 import com.hazerbaker.yakitanaliz.domain.FillUp;
 import com.hazerbaker.yakitanaliz.repository.FillUpRepository;
+import com.hazerbaker.yakitanaliz.service.util.StatsCalculator;
 import com.hazerbaker.yakitanaliz.web.rest.errors.BadRequestAlertException;
 import com.hazerbaker.yakitanaliz.web.rest.util.HeaderUtil;
 import com.hazerbaker.yakitanaliz.web.rest.util.PaginationUtil;
@@ -44,6 +45,7 @@ public class FillUpResource {
             throw new BadRequestAlertException("A new fillUp cannot already have an ID", ENTITY_NAME, "idexists");
         }
         FillUp result = fillUpRepository.save(fillUp);
+        StatsCalculator.calculateDistances(fillUp.getVehicle(), fillUpRepository);
         return ResponseEntity.created(new URI("/api/fill-ups/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -57,6 +59,7 @@ public class FillUpResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         FillUp result = fillUpRepository.save(fillUp);
+        StatsCalculator.calculateDistances(fillUp.getVehicle(), fillUpRepository);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, fillUp.getId().toString()))
             .body(result);

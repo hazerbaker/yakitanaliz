@@ -18,7 +18,7 @@ public interface FillUpRepository extends JpaRepository<FillUp, Long> {
 
     Page<FillUp> findByVehicleIdOrderByTotalDistanceDesc(Pageable pageable, Long id);
 
-    List<FillUp> findByVehicleIdOrderByTotalDistanceDesc(Long id);
+    List<FillUp> findByVehicleIdOrderByTotalDistanceAsc(Long id);
 
     List<FillUp> findByVehicleId(Long id);
 }

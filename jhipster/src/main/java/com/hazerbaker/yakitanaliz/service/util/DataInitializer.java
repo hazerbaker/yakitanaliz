@@ -8,14 +8,16 @@ import com.hazerbaker.yakitanaliz.repository.EnumerationRepository;
  * Utility class for generating random Strings.
  */
 public class DataInitializer {
-    
-    private final EnumerationRepository enumerationRepository;
 
-    public DataInitializer(EnumerationRepository enumerationRepository) {
-        this.enumerationRepository = enumerationRepository;
+    private static EnumerationRepository enumerationRepository;
+
+    public DataInitializer() {
+        
     }
 
-    public void run() {
+    public static void run(EnumerationRepository enumRepo) {
+
+        enumerationRepository = enumRepo;
         
         System.out.println("------------------------------- Initializing data start -------------------------");
         
@@ -27,7 +29,7 @@ public class DataInitializer {
         System.out.println("------------------------------- Initializing data end ---------------------------");
     }
 
-    public void brandMaker(String make, String[] models) {
+    private static void brandMaker(String make, String[] models) {
         if(enumerationRepository.findByName(make) == null) {
             Enumeration enum1 = new Enumeration();
             enum1.setName(make);

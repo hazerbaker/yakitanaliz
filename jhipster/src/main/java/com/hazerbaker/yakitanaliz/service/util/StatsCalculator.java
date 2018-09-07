@@ -16,10 +16,16 @@ public class StatsCalculator {
     }
 
     public static void calculateDistances(Vehicle vehicle, FillUpRepository fillUpRepository) {
-        List<FillUp> fillUps = fillUpRepository.findByVehicleIdOrderByTotalDistanceDesc(vehicle.getId());
+        List<FillUp> fillUps = fillUpRepository.findByVehicleIdOrderByTotalDistanceAsc(vehicle.getId());
         FillUp prevFillUp = null;
         FillUp partialFillUp = null;
         for(FillUp fillUp: fillUps) {
+            fillUp.setStatsDistance(0);
+            fillUp.setStatsQuantity(Double.parseDouble("0"));
+            if(fillUp.isMissed()) {
+                prevFillUp = null;
+                partialFillUp = null;
+            }
             if(prevFillUp != null) {
                 if(!fillUp.isMissed() && !fillUp.isPartial()) {
                     fillUp.setStatsDistance(fillUp.getTotalDistance() - prevFillUp.getTotalDistance());
@@ -28,6 +34,7 @@ public class StatsCalculator {
             }
             if(!fillUp.isPartial()) {
                 prevFillUp = fillUp;
+                partialFillUp = null;
             }
             else {
                 if(partialFillUp == null) partialFillUp = fillUp;
@@ -35,6 +42,7 @@ public class StatsCalculator {
                     partialFillUp.setQuantity(partialFillUp.getQuantity() + fillUp.getQuantity());
                 }
             }
+            fillUpRepository.save(fillUp);
         }
     }
 }

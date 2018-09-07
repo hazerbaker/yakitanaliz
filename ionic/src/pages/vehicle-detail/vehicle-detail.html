@@ -33,7 +33,7 @@
     <ion-list *ngIf="fillUps.length > 0">
       <ion-item-sliding *ngFor="let item of fillUps">
         <button ion-item (click)="editFillUp(item)">
-          <h2>{{(item.unitPrice * item.quantity)}} TL</h2>
+          <h2>{{(item.unitPrice * item.quantity)}} TL {{ item.statsDistance }} {{ item.statsQuantity }} {{ item.totalDistance }} {{ item.quantity }}</h2>
           <ion-note item-end>{{ item.date }}</ion-note>
         </button>
         <ion-item-options>
