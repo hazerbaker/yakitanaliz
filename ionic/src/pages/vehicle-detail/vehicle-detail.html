@@ -18,31 +18,90 @@
 
 
   <ion-content>
-    <div style="border-radius:unset;background-repeat: no-repeat;background-position: center;background-size:90%" class="vehicle-profile" text-center #profilePic [style.background-image]="vehicle.photo != '' ? 'url(data:' + vehicle.photoContentType + ';base64,' + vehicle.photo + ')' : 'url(../assets/img/car.png)'">
-    </div>
 
-    <div padding>
-      <h4>{{vehicle.model ? vehicle.model.parent.name : ""}} {{vehicle.model ? vehicle.model.name : ""}}</h4>
-      <ion-note item-end>{{vehicle.year}} {{ api.roundcc(vehicle.cc) }} {{vehicle.fuelType}} {{vehicle.transmission}}</ion-note>
-    </div>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6>
+          <div style="border-radius:unset;background-repeat: no-repeat;background-position: center;background-size:90%;width: 100%;height: 100px;"
+            text-center #profilePic [style.background-image]="vehicle.photo != '' ? 'url(data:' + vehicle.photoContentType + ';base64,' + vehicle.photo + ')' : 'url(../assets/img/car.png)'">
+          </div>
+        </ion-col>
+        <ion-col col-6>
+          <h4>{{vehicle.model ? vehicle.model.parent.name : ""}} {{vehicle.model ? vehicle.model.name : ""}}</h4>
+          <ion-note item-end>{{ api.roundcc(vehicle.cc) }} {{vehicle.fuelType}} {{vehicle.transmission}} {{vehicle.year}}</ion-note>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col col-12>
 
-    <div padding *ngIf="fillUps.length == 0" text-center>
-      Henüz yakıt alımınız yok. Sağ üstteki + butonuyla yakıt alımı ekleyebilirsiniz.
-    </div>
+          <div padding>
+            <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
+              <ion-segment-button value="all">
+                Tümü
+              </ion-segment-button>
+              <ion-segment-button value="fillups">
+                Yakıt
+              </ion-segment-button>
+              <ion-segment-button value="services">
+                Servis
+              </ion-segment-button>
+              <ion-segment-button value="expenses">
+                Masraf
+              </ion-segment-button>
+            </ion-segment>
+          </div>
 
-    <ion-list *ngIf="fillUps.length > 0">
-      <ion-item-sliding *ngFor="let item of fillUps">
-        <button ion-item (click)="editFillUp(item)">
-          <h2>{{(item.unitPrice * item.quantity)}} TL {{ item.statsDistance }} {{ item.statsQuantity }} {{ item.totalDistance }} {{ item.quantity }}</h2>
-          <ion-note item-end>{{ item.date }}</ion-note>
-        </button>
-        <ion-item-options>
-          <button ion-button color="danger" (click)="deleteItem(item)">
-            {{ 'DELETE_BUTTON' | translate }}
-          </button>
-        </ion-item-options>
-      </ion-item-sliding>
-    </ion-list>
+          <div [ngSwitch]="segment">
+            <ion-list *ngSwitchCase="'all'">
+              <div padding *ngIf="fillUps.length == 0" text-center>
+                Henüz kayıt yok. Sağ üstteki + butonuyla kayıt ekleyebilirsiniz.
+              </div>
+              <ion-item-sliding *ngFor="let item of fillUps">
+                <button ion-item (click)="editFillUp(item)">
+                  <h2>{{(item.unitPrice * item.quantity)}} TL {{ item.statsDistance }} {{ item.statsQuantity }} {{ item.totalDistance
+                    }} {{ item.quantity }}</h2>
+                  <ion-note item-end>{{ item.date }}</ion-note>
+                </button>
+                <ion-item-options>
+                  <button ion-button color="danger" (click)="deleteItem(item)">
+                    {{ 'DELETE_BUTTON' | translate }}
+                  </button>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-list>
+            <ion-list *ngSwitchCase="'fillups'">
+              <div padding *ngIf="fillUps.length == 0" text-center>
+                Henüz kayıt yok. Sağ üstteki + butonuyla kayıt ekleyebilirsiniz.
+              </div>
+              <ion-item-sliding *ngFor="let item of fillUps">
+                <button ion-item (click)="editFillUp(item)">
+                  <h2>{{(item.unitPrice * item.quantity)}} TL {{ item.statsDistance }} {{ item.statsQuantity }} {{ item.totalDistance
+                    }} {{ item.quantity }}</h2>
+                  <ion-note item-end>{{ item.date }}</ion-note>
+                </button>
+                <ion-item-options>
+                  <button ion-button color="danger" (click)="deleteItem(item)">
+                    {{ 'DELETE_BUTTON' | translate }}
+                  </button>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-list>
+            <ion-list *ngSwitchCase="'services'">
+              <div padding text-center>
+                Henüz kayıt yok. Sağ üstteki + butonuyla kayıt ekleyebilirsiniz.
+              </div>
+            </ion-list>
+            <ion-list *ngSwitchCase="'expenses'">
+              <div padding text-center>
+                Henüz kayıt yok. Sağ üstteki + butonuyla kayıt ekleyebilirsiniz.
+              </div>
+            </ion-list>
+          </div>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
   </ion-content>
 </ng-container>
 <ng-container *ngIf="!vehicle">

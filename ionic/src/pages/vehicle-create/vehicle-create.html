@@ -3,7 +3,7 @@
   <ion-navbar>
     <ion-title>{{ (vehicle ? 'VEHICLE_EDIT_TITLE' : 'VEHICLE_CREATE_TITLE') | translate }}</ion-title>
     <ion-buttons start>
-      <button ion-button (click)="cancel()">
+      <button ion-button icon-only (click)="cancel()">
         <span color="primary" showWhen="ios">
           {{ 'CANCEL_BUTTON' | translate }}
         </span>
@@ -11,7 +11,7 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button ion-button (click)="done()" [disabled]="!isReadyToSave" strong>
+      <button ion-button icon-only (click)="done()" [disabled]="!isReadyToSave" strong>
         <span color="primary" showWhen="ios">
           {{ 'DONE_BUTTON' | translate }}
         </span>
@@ -36,8 +36,8 @@
     </div>
     <ion-list>
       <ion-item>
-        <ion-label>{{ 'VEHICLE_FUELTYPE_PLACEHOLDER' | translate }}</ion-label>
-        <ion-select formControlName="fuelType">
+        <ion-label floating>{{ 'VEHICLE_FUELTYPE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="fuelType" interface="popover">
           <ion-option value="GAS">{{ 'GAS' | translate }}</ion-option>
           <ion-option value="DIESEL">{{ 'DIESEL' | translate }}</ion-option>
           <ion-option value="LPG">{{ 'LPG' | translate }}</ion-option>
@@ -46,29 +46,29 @@
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'VEHICLE_CC_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label floating>{{ 'VEHICLE_CC_PLACEHOLDER' | translate }}</ion-label>
         <ion-input type="number" formControlName="cc"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'VEHICLE_YEAR_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label floating>{{ 'VEHICLE_YEAR_PLACEHOLDER' | translate }}</ion-label>
         <ion-input type="number" formControlName="year"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'VEHICLE_TRANSMISSION_PLACEHOLDER' | translate }}</ion-label>
-        <ion-select formControlName="transmission">
+        <ion-label floating>{{ 'VEHICLE_TRANSMISSION_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="transmission" interface="popover">
           <ion-option value="AUTO">{{ 'AUTO' | translate }}</ion-option>
           <ion-option value="MANUAL">{{ 'MANUAL' | translate }}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'VEHICLE_MAKE_PLACEHOLDER' | translate }}</ion-label>
-        <ion-select formControlName="make" (ionChange)="getModels($event)">
+        <ion-label floating>{{ 'VEHICLE_MAKE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="make" (ionChange)="getModels($event)" interface="popover">
           <ion-option *ngFor="let item of makes" [value]="item.id">{{ item.name }}</ion-option>
         </ion-select>
       </ion-item>
       <ion-item>
-        <ion-label>{{ 'VEHICLE_MODEL_PLACEHOLDER' | translate }}</ion-label>
-        <ion-select formControlName="model">
+        <ion-label floating>{{ 'VEHICLE_MODEL_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="model" interface="popover">
           <ion-option *ngFor="let item of models" [value]="item.id">{{ item.name }}</ion-option>
         </ion-select>
       </ion-item>

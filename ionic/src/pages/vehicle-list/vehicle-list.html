@@ -21,7 +21,7 @@
           <img style="height:unset;width:60px;" *ngIf="item.photo == ''" src="../assets/img/car.png" />
         </ion-avatar>
         <h2>{{item.model ? item.model.parent.name : ""}} {{item.model ? item.model.name : ""}}</h2>
-        <ion-note item-end>{{item.year}} {{ api.roundcc(item.cc) }} {{item.fuelType}} {{item.transmission}}</ion-note>
+        <ion-note item-end>{{ api.roundcc(item.cc) }} {{item.fuelType}} {{item.transmission}} {{item.year}}</ion-note>
       </button>
       <ion-item-options>
         <button ion-button color="danger" (click)="deleteItem(item)">

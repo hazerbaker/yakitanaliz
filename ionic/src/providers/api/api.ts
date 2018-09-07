@@ -125,11 +125,11 @@ export class Api {
   }
 
   roundcc(cc) {
-    return Math.round(cc / 100) / 10
+    return (Math.round(cc / 100) / 10).toFixed(1)
   }
 
   round(number) {
-    return Math.round(number * 100) / 100
+    return (Math.round(number * 100) / 100)
   }
 
   goRoot(navCtrl) {

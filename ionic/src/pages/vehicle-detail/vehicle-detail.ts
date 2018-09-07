@@ -14,6 +14,7 @@ export class VehicleDetailPage {
   deleteSuccessString: any;
   editSuccessString: any;
   fillUps = [];
+  segment = 'all';
 
   constructor(public navCtrl: NavController,
     navParams: NavParams,
@@ -95,6 +96,10 @@ export class VehicleDetailPage {
       this.getItem();
     })
     editModal.present();
+  }
+
+  segmentChanged(e) {
+    console.log(e)
   }
 
 }
