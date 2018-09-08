@@ -30,7 +30,7 @@ export class FillUpCreatePage {
     this.form = formBuilder.group({
       date: this.fillUp ? this.fillUp.date : new Date().toISOString(),
       quantity: this.fillUp ? this.fillUp.quantity : undefined,
-      totalPrice: this.fillUp ? this.api.round(this.fillUp.unitPrice * this.fillUp.quantity) : undefined,
+      totalPrice: this.fillUp ? this.api.round2(this.fillUp.unitPrice * this.fillUp.quantity) : undefined,
       odometer: this.fillUp ? this.fillUp.odometer : undefined,
       unitPrice: this.fillUp ? this.fillUp.unitPrice : undefined,
       missed: this.fillUp ? this.fillUp.missed : false,
@@ -77,8 +77,12 @@ export class FillUpCreatePage {
   
   unitPriceChange() {
     setTimeout(function(){ 
-      if(this.form.value.unitPrice > 0 && this.form.value.quantity > 0) {
-        this.form.value.totalPrice = this.api.round(this.form.value.unitPrice * this.form.value.quantity);
+      if(this.form.value.unitPrice > 0 && this.form.value.totalPrice > 0) {
+        this.form.value.quantity = this.api.round2(this.form.value.totalPrice / this.form.value.unitPrice);
+        this.form.setValue(this.form.value);
+      }
+      else if(this.form.value.unitPrice > 0 && this.form.value.quantity > 0) {
+        this.form.value.totalPrice = this.api.round2(this.form.value.unitPrice * this.form.value.quantity);
         this.form.setValue(this.form.value);
       }
     }.bind(this), 0);

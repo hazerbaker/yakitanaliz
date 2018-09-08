@@ -35,8 +35,8 @@
         <ion-col col-4>
           <ion-card>
             <ion-card-content text-center>
-              <h1>{{ api.round1(vehicle.statsQuantity / vehicle.statsDistance)}}</h1>
-              <ion-note>Ortalama<br/>(lt/km)</ion-note>
+              <h1>{{ api.round1((vehicle.statsQuantity * 100) / vehicle.statsDistance)}}</h1>
+              <ion-note>lt/100km<br/>Yakıt</ion-note>
             </ion-card-content>
           </ion-card>
         </ion-col>
@@ -44,15 +44,15 @@
           <ion-card>
             <ion-card-content text-center>
               <h1>{{ vehicle.statsDistance }}</h1>
-              <ion-note>Gidilen Yol<br/>(km)</ion-note>
+              <ion-note>km<br/>Gidilen</ion-note>
             </ion-card-content>
           </ion-card>
         </ion-col>
         <ion-col col-4>
           <ion-card>
             <ion-card-content text-center>
-              <h1>{{ vehicle.totalExpense }}</h1>
-              <ion-note>Masraf<br/>(TL)</ion-note>
+              <h1>{{ api.round(vehicle.totalExpense) }}</h1>
+              <ion-note>TL<br/>Harcanan</ion-note>
             </ion-card-content>
           </ion-card>
         </ion-col>

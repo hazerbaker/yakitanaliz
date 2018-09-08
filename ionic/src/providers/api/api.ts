@@ -129,11 +129,15 @@ export class Api {
   }
 
   round(number) {
-    return (Math.round(number * 100) / 100)
+    return Math.round(number)
   }
 
   round1(number) {
     return (Math.round(number * 100) / 100).toFixed(1)
+  }
+
+  round2(number) {
+    return (Math.round(number * 100) / 100).toFixed(2)
   }
 
   goRoot(navCtrl) {
