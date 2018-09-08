@@ -81,6 +81,7 @@ export class VehicleDetailPage {
             position: 'bottom'
           });
           toast.present();
+          this.getItem();
           this.getItems();
         });
       }

@@ -132,6 +132,10 @@ export class Api {
     return (Math.round(number * 100) / 100)
   }
 
+  round1(number) {
+    return (Math.round(number * 100) / 100).toFixed(1)
+  }
+
   goRoot(navCtrl) {
     navCtrl.setRoot(MainPage);
     navCtrl.popToRoot();
