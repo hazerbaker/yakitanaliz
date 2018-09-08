@@ -81,7 +81,7 @@
               </div>
               <ion-item-sliding *ngFor="let item of fillUps">
                 <button ion-item (click)="editFillUp(item)">
-                  <h2>{{(item.unitPrice * item.quantity)}} TL {{ item.statsDistance }} {{ item.statsQuantity }} {{ item.totalDistance
+                  <h2>{{(item.unitPrice * item.quantity)}} TL {{ item.statsDistance }} {{ item.statsQuantity }} {{ item.odometer
                     }} {{ item.quantity }}</h2>
                   <ion-note item-end>{{ item.date }}</ion-note>
                 </button>

@@ -31,7 +31,7 @@ export class FillUpCreatePage {
       date: this.fillUp ? this.fillUp.date : new Date().toISOString(),
       quantity: this.fillUp ? this.fillUp.quantity : undefined,
       totalPrice: this.fillUp ? this.api.round(this.fillUp.unitPrice * this.fillUp.quantity) : undefined,
-      totalDistance: this.fillUp ? this.fillUp.totalDistance : undefined,
+      odometer: this.fillUp ? this.fillUp.odometer : undefined,
       unitPrice: this.fillUp ? this.fillUp.unitPrice : undefined,
       missed: this.fillUp ? this.fillUp.missed : false,
       partial: this.fillUp ? this.fillUp.partial : false,
