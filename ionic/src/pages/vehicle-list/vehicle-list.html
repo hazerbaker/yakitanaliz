@@ -17,8 +17,8 @@
     <ion-item-sliding *ngFor="let item of currentItems">
       <button ion-item (click)="openItem(item)">
         <ion-avatar style="width:60px;" item-start>
-          <img style="height:unset;width:60px;" *ngIf="item.photo != ''" [src]="'data:' + item.photoContentType + ';base64,' + item.photo" />
-          <img style="height:unset;width:60px;" *ngIf="item.photo == ''" src="../assets/img/car.png" />
+          <img style="height:unset;width:60px;border-radius:unset" *ngIf="item.photo != ''" [src]="'data:' + item.photoContentType + ';base64,' + item.photo" />
+          <img style="height:unset;width:60px;border-radius:unset" *ngIf="item.photo == ''" src="../assets/img/car.png" />
         </ion-avatar>
         <h2>{{item.model ? item.model.parent.name : ""}} {{item.model ? item.model.name : ""}}</h2>
         <ion-note item-end>{{ api.roundcc(item.cc) }} {{item.fuelType}} {{item.transmission}} {{item.year}}</ion-note>
