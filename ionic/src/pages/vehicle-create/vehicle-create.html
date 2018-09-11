@@ -32,9 +32,22 @@
           {{ 'VEHICLE_CREATE_CHOOSE_IMAGE' | translate }}
         </div>
       </div>
-      <div style="width:100%;height:140px;border-radius:unset;background-repeat: no-repeat;background-position: center;background-size:90%" class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.photo.value"></div>
+      <div style="width:100%;height:140px;border-radius:unset;background-repeat: no-repeat;background-position: center;background-size:90%"
+        class="profile-image" [style.backgroundImage]="getProfileImageStyle()" *ngIf="this.form.controls.photo.value"></div>
     </div>
     <ion-list>
+      <ion-item>
+        <ion-label floating>{{ 'VEHICLE_MAKE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="make" (ionChange)="getModels($event)" interface="popover">
+          <ion-option *ngFor="let item of makes" [value]="item.id">{{ item.name }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>{{ 'VEHICLE_MODEL_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="model" interface="popover">
+          <ion-option *ngFor="let item of models" [value]="item.id">{{ item.name }}</ion-option>
+        </ion-select>
+      </ion-item>
       <ion-item>
         <ion-label floating>{{ 'VEHICLE_FUELTYPE_PLACEHOLDER' | translate }}</ion-label>
         <ion-select formControlName="fuelType" interface="popover">
@@ -58,18 +71,6 @@
         <ion-select formControlName="transmission" interface="popover">
           <ion-option value="AUTO">{{ 'AUTO' | translate }}</ion-option>
           <ion-option value="MANUAL">{{ 'MANUAL' | translate }}</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>{{ 'VEHICLE_MAKE_PLACEHOLDER' | translate }}</ion-label>
-        <ion-select formControlName="make" (ionChange)="getModels($event)" interface="popover">
-          <ion-option *ngFor="let item of makes" [value]="item.id">{{ item.name }}</ion-option>
-        </ion-select>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>{{ 'VEHICLE_MODEL_PLACEHOLDER' | translate }}</ion-label>
-        <ion-select formControlName="model" interface="popover">
-          <ion-option *ngFor="let item of models" [value]="item.id">{{ item.name }}</ion-option>
         </ion-select>
       </ion-item>
     </ion-list>

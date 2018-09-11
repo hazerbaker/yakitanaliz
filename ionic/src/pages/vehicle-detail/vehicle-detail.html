@@ -35,7 +35,8 @@
         <ion-col col-4>
           <ion-card>
             <ion-card-content text-center>
-              <h1>{{ api.round1((vehicle.statsQuantity * 100) / vehicle.statsDistance)}}</h1>
+              <h1 *ngIf="vehicle.statsQuantity && vehicle.statsDistance">{{ api.round1((vehicle.statsQuantity * 100) / vehicle.statsDistance)}}</h1>
+              <h1 *ngIf="!vehicle.statsQuantity || !vehicle.statsDistance">---</h1>
               <ion-note>lt/100km<br/>Yakıt</ion-note>
             </ion-card-content>
           </ion-card>
@@ -43,7 +44,8 @@
         <ion-col col-4>
           <ion-card>
             <ion-card-content text-center>
-              <h1>{{ vehicle.statsDistance }}</h1>
+              <h1 *ngIf="vehicle.statsDistance">{{ vehicle.statsDistance }}</h1>
+              <h1 *ngIf="!vehicle.statsDistance">---</h1>
               <ion-note>km<br/>Gidilen</ion-note>
             </ion-card-content>
           </ion-card>
@@ -51,7 +53,8 @@
         <ion-col col-4>
           <ion-card>
             <ion-card-content text-center>
-              <h1>{{ api.round(vehicle.totalExpense) }}</h1>
+              <h1 *ngIf="vehicle.totalExpense">{{ api.round(vehicle.totalExpense) }}</h1>
+              <h1 *ngIf="!vehicle.totalExpense">---</h1>
               <ion-note>TL<br/>Harcanan</ion-note>
             </ion-card-content>
           </ion-card>
