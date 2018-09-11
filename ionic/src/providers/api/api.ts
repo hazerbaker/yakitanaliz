@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/catch';
 import { MainPage } from '../../pages';
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -9,11 +10,14 @@ import { MainPage } from '../../pages';
 @Injectable()
 export class Api {
   url: string = 'https://yakitanaliz.herokuapp.com/api'; // https://yakitanaliz.herokuapp.com/api / http://localhost:8080/api
+  loader;
 
-  constructor(public http: HttpClient) {
+  constructor(public http: HttpClient, public loadingCtrl: LoadingController) {
+
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
+    this.loading(true);
 
     let _this = this;
 
@@ -33,6 +37,7 @@ export class Api {
     let request = _this.http.get(_this.url + '/' + endpoint, reqOpts)
       .map(
         response => {
+          this.loading(false);
           return response;
         })
       .catch(
@@ -43,6 +48,8 @@ export class Api {
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {
+
+    this.loading(true);
 
     let _this = this;
 
@@ -60,25 +67,34 @@ export class Api {
     }
 
     let request;
-    
-    if(body.id) {
-      request = _this.http.put(_this.url + '/' + endpoint, body, reqOpts);
-    } else {
-      request = _this.http.post(_this.url + '/' + endpoint, body, reqOpts);
-    }
 
-    request.map(
-      response => {
-        return response;
-      })
-      .catch(
-        error => _this.track(error)
-      )
+    if (body.id) {
+      request = _this.http.put(_this.url + '/' + endpoint, body, reqOpts).map(
+        response => {
+          this.loading(false);
+          return response;
+        })
+        .catch(
+          error => _this.track(error)
+        );
+    } else {
+      request = _this.http.post(_this.url + '/' + endpoint, body, reqOpts).map(
+        response => {
+          this.loading(false);
+          return response;
+        })
+        .catch(
+          error => _this.track(error)
+        );
+    }
 
     return request;
   }
 
   delete(endpoint: string, reqOpts?: any) {
+
+    this.loading(true);
+
     let _this = this;
 
     if (!reqOpts) {
@@ -97,6 +113,7 @@ export class Api {
     let request = _this.http.delete(_this.url + '/' + endpoint, reqOpts)
       .map(
         response => {
+          this.loading(false);
           return response;
         })
       .catch(
@@ -113,6 +130,7 @@ export class Api {
   }
 
   track(err) {
+    this.loading(false);
     if (err.status === 401) {
       localStorage.removeItem('jwttoken');
       location.href = "/";
@@ -143,5 +161,22 @@ export class Api {
   goRoot(navCtrl) {
     navCtrl.setRoot(MainPage);
     navCtrl.popToRoot();
+  }
+
+  loading(flag) {
+    if (flag) {
+      if (this.loader == null) {
+        this.loader = this.loadingCtrl.create({
+          content: "Loading..."
+        });
+        this.loader.present();
+      }
+    }
+    else {
+      if (this.loader != null) {
+        this.loader.dismiss();
+        this.loader = null;
+      }
+    }
   }
 }
