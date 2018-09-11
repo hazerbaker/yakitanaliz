@@ -7,6 +7,7 @@ import com.hazerbaker.yakitanaliz.repository.VehicleRepository;
 import com.hazerbaker.yakitanaliz.repository.FillUpRepository;
 import com.hazerbaker.yakitanaliz.repository.UserRepository;
 import com.hazerbaker.yakitanaliz.security.SecurityUtils;
+import com.hazerbaker.yakitanaliz.service.util.StatsCalculator;
 import com.hazerbaker.yakitanaliz.web.rest.errors.BadRequestAlertException;
 import com.hazerbaker.yakitanaliz.web.rest.util.HeaderUtil;
 import com.hazerbaker.yakitanaliz.web.rest.util.PaginationUtil;
@@ -91,6 +92,7 @@ public class VehicleResource {
         }
         vehicle.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
         Vehicle result = vehicleRepository.save(vehicle);
+        StatsCalculator.calculateDistances(vehicle, fillUpRepository, vehicleRepository);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, vehicle.getId().toString()))
                 .body(result);
     }
