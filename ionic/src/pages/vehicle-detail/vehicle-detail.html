@@ -81,8 +81,8 @@
               </div>
               <ion-item-sliding *ngFor="let item of fillUps">
                 <button ion-item (click)="editFillUp(item)">
-                  <h2>{{ item.odometer}} km / {{api.round(item.unitPrice * item.quantity)}} TL / {{ item.quantity }} Lt</h2>
-                  <ion-note item-end>{{ item.date }}</ion-note>
+                  <h2>{{api.round(item.unitPrice * item.quantity)}} TL / {{ item.quantity }} Lt</h2>
+                  <ion-note item-end>{{ item.odometer }} km</ion-note>
                 </button>
                 <ion-item-options>
                   <button ion-button color="danger" (click)="deleteItem(item)">
@@ -98,7 +98,7 @@
               <ion-item-sliding *ngFor="let item of expenses">
                 <button ion-item (click)="editExpense(item)">
                   <h2>{{ item.paidAmount }} TL / {{ item.type }}</h2>
-                  <ion-note item-end>{{ item.date }}</ion-note>
+                  <ion-note item-end>{{ item.odometer }} km</ion-note>
                 </button>
                 <ion-item-options>
                   <button ion-button color="danger" (click)="deleteItem(item)">
