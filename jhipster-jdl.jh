@@ -13,6 +13,7 @@ entity Vehicle {
     statsDistance Integer,
     statsQuantity Double,
     totalExpense Double,
+    odometer Integer,
     note String
 }
 

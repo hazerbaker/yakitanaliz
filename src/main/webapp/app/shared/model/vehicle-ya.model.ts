@@ -25,6 +25,7 @@ export interface IVehicleYa {
     statsDistance?: number;
     statsQuantity?: number;
     totalExpense?: number;
+    odometer?: number;
     note?: string;
     model?: IEnumerationYa;
     user?: IUser;
@@ -42,6 +43,7 @@ export class VehicleYa implements IVehicleYa {
         public statsDistance?: number,
         public statsQuantity?: number,
         public totalExpense?: number,
+        public odometer?: number,
         public note?: string,
         public model?: IEnumerationYa,
         public user?: IUser

@@ -55,6 +55,9 @@ public class Vehicle implements Serializable {
     @Column(name = "total_expense")
     private Double totalExpense;
 
+    @Column(name = "odometer")
+    private Integer odometer;
+
     @Column(name = "note")
     private String note;
 
@@ -192,6 +195,19 @@ public class Vehicle implements Serializable {
         this.totalExpense = totalExpense;
     }
 
+    public Integer getOdometer() {
+        return odometer;
+    }
+
+    public Vehicle odometer(Integer odometer) {
+        this.odometer = odometer;
+        return this;
+    }
+
+    public void setOdometer(Integer odometer) {
+        this.odometer = odometer;
+    }
+
     public String getNote() {
         return note;
     }
@@ -265,6 +281,7 @@ public class Vehicle implements Serializable {
             ", statsDistance=" + getStatsDistance() +
             ", statsQuantity=" + getStatsQuantity() +
             ", totalExpense=" + getTotalExpense() +
+            ", odometer=" + getOdometer() +
             ", note='" + getNote() + "'" +
             "}";
     }

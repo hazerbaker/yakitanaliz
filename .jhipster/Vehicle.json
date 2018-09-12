@@ -37,6 +37,10 @@
             "fieldType": "Double"
         },
         {
+            "fieldName": "odometer",
+            "fieldType": "Integer"
+        },
+        {
             "fieldName": "note",
             "fieldType": "String"
         }
