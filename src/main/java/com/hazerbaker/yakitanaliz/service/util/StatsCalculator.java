@@ -2,6 +2,7 @@ package com.hazerbaker.yakitanaliz.service.util;
 
 import java.util.List;
 
+import com.hazerbaker.yakitanaliz.domain.Expense;
 import com.hazerbaker.yakitanaliz.domain.FillUp;
 import com.hazerbaker.yakitanaliz.domain.Vehicle;
 import com.hazerbaker.yakitanaliz.repository.ExpenseRepository;
@@ -18,12 +19,14 @@ public class StatsCalculator {
     }
 
     public static void calculateVehicle(Vehicle vehicle, FillUpRepository fillUpRepository, ExpenseRepository expenseRepository, VehicleRepository vehicleRepository) {
-        List<FillUp> fillUps = fillUpRepository.findByVehicleIdOrderByOdometerAsc(vehicle.getId());
-        FillUp prevFillUp = null;
-        FillUp partialFillUp = null;
         Integer totalStatsDistance = 0;
         Double totalStatsQuantity = Double.parseDouble("0");
         Double totalExpense = Double.parseDouble("0");
+        Integer odometer = 0;
+
+        List<FillUp> fillUps = fillUpRepository.findByVehicleIdOrderByOdometerAsc(vehicle.getId());
+        FillUp prevFillUp = null;
+        FillUp partialFillUp = null;
         for(FillUp fillUp: fillUps) {
             fillUp.setStatsDistance(0);
             fillUp.setStatsQuantity(Double.parseDouble("0"));
@@ -50,11 +53,20 @@ public class StatsCalculator {
             totalStatsDistance += fillUp.getStatsDistance();
             totalStatsQuantity += fillUp.getStatsQuantity();
             totalExpense += fillUp.getQuantity() * fillUp.getUnitPrice();
+            if(fillUp.getOdometer() > odometer) odometer = fillUp.getOdometer();
             fillUpRepository.save(fillUp);
         }
+
+        List<Expense> expenses = expenseRepository.findByVehicleIdOrderByOdometerAsc(vehicle.getId());
+        for(Expense expense: expenses) {
+            totalExpense += expense.getPaidAmount();
+            if(expense.getOdometer() > odometer) odometer = expense.getOdometer();
+        }
+
         vehicle.setStatsDistance(totalStatsDistance);
         vehicle.setStatsQuantity(totalStatsQuantity);
         vehicle.setTotalExpense(totalExpense);
+        vehicle.setOdometer(odometer);
         vehicleRepository.save(vehicle);        
     }
 }

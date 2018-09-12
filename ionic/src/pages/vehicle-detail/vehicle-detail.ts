@@ -26,10 +26,10 @@ export class VehicleDetailPage {
   ) {
     this.vehicle = navParams.get('vehicle');
 
-    this.translateService.get('FILLUP_CREATE_SUCCESS').subscribe((value) => {
+    this.translateService.get('CREATE_SUCCESS').subscribe((value) => {
       this.createSuccessString = value;
     })
-    this.translateService.get('FILLUP_DELETE_SUCCESS').subscribe((value) => {
+    this.translateService.get('DELETE_SUCCESS').subscribe((value) => {
       this.deleteSuccessString = value;
     })
     this.translateService.get('EDIT_SUCCESS').subscribe((value) => {

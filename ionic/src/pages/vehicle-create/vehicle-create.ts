@@ -44,15 +44,6 @@ export class VehicleCreatePage implements OnInit {
       model: '',
       id: ''
     });
-    /*
-          photo: [undefined],
-          photoContentType: [undefined],
-          fuelType: [undefined, Validators.required],
-          cc: [undefined],
-          transmission: '',
-          year: [undefined],
-          make: [undefined],
-          model: [undefined], */
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
@@ -72,23 +63,21 @@ export class VehicleCreatePage implements OnInit {
   }
 
   ngOnInit() {
-    if(this.vehicle) {
+    if (this.vehicle) {
 
       this.getModels(this.vehicle.model.parent.id);
 
       setTimeout(function () {
-        if (this.vehicle) {
-          this.form.value.photo = this.vehicle.photo;
-          this.form.value.photoContentType = this.vehicle.photoContentType;
-          this.form.value.fuelType = this.vehicle.fuelType;
-          this.form.value.cc = this.vehicle.cc;
-          this.form.value.transmission = this.vehicle.transmission;
-          this.form.value.year = this.vehicle.year;
-          this.form.value.make = this.vehicle.model.parent.id;
-          this.form.value.model = this.vehicle.model.id;
-          this.form.value.id = this.vehicle.id;
-          this.form.setValue(this.form.value);
-        }
+        this.form.value.photo = this.vehicle.photo;
+        this.form.value.photoContentType = this.vehicle.photoContentType;
+        this.form.value.fuelType = this.vehicle.fuelType;
+        this.form.value.cc = this.vehicle.cc;
+        this.form.value.transmission = this.vehicle.transmission;
+        this.form.value.year = this.vehicle.year;
+        this.form.value.make = this.vehicle.model.parent.id;
+        this.form.value.model = this.vehicle.model.id;
+        this.form.value.id = this.vehicle.id;
+        this.form.setValue(this.form.value);
       }.bind(this), 0);
 
     }

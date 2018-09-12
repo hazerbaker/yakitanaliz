@@ -14,7 +14,6 @@ export class FillUpCreatePage {
   isReadyToSave: boolean;
   fillUp: any;
   form: FormGroup;
-  createSuccessString: any;
 
   constructor(public navCtrl: NavController, 
     navParams: NavParams, 
@@ -40,10 +39,6 @@ export class FillUpCreatePage {
     this.form.valueChanges.subscribe((v) => {
       this.isReadyToSave = this.form.valid;
     });
-
-    this.translateService.get('FILLUP_CREATE_SUCCESS').subscribe((value) => {
-      this.createSuccessString = value;
-    })
   }
 
   cancel() {
