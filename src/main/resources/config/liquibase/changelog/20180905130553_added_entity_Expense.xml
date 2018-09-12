@@ -25,7 +25,11 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="total_distance" type="integer">
+            <column name="jhi_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="odometer" type="integer">
                 <constraints nullable="true" />
             </column>
 

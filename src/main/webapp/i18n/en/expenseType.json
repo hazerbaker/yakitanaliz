@@ -1,0 +1,14 @@
+{
+    "yakitanalizApp": {
+        "ExpenseType" : {
+            "null": "",
+            "INSURANCE": "INSURANCE",
+            "TPL": "TPL",
+            "TAX": "TAX",
+            "MAINTENANCE": "MAINTENANCE",
+            "REPAIR": "REPAIR",
+            "DAMAGE": "DAMAGE",
+            "OTHER": "OTHER"
+        }
+    }
+}

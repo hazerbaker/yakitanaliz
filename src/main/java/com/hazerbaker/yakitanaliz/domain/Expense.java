@@ -8,6 +8,8 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
+import com.hazerbaker.yakitanaliz.domain.enumeration.ExpenseType;
+
 /**
  * A Expense.
  */
@@ -25,8 +27,12 @@ public class Expense implements Serializable {
     @Column(name = "jhi_date")
     private LocalDate date;
 
-    @Column(name = "total_distance")
-    private Integer totalDistance;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "jhi_type")
+    private ExpenseType type;
+
+    @Column(name = "odometer")
+    private Integer odometer;
 
     @Column(name = "paid_amount")
     private Double paidAmount;
@@ -60,17 +66,30 @@ public class Expense implements Serializable {
         this.date = date;
     }
 
-    public Integer getTotalDistance() {
-        return totalDistance;
+    public ExpenseType getType() {
+        return type;
     }
 
-    public Expense totalDistance(Integer totalDistance) {
-        this.totalDistance = totalDistance;
+    public Expense type(ExpenseType type) {
+        this.type = type;
         return this;
     }
 
-    public void setTotalDistance(Integer totalDistance) {
-        this.totalDistance = totalDistance;
+    public void setType(ExpenseType type) {
+        this.type = type;
+    }
+
+    public Integer getOdometer() {
+        return odometer;
+    }
+
+    public Expense odometer(Integer odometer) {
+        this.odometer = odometer;
+        return this;
+    }
+
+    public void setOdometer(Integer odometer) {
+        this.odometer = odometer;
     }
 
     public Double getPaidAmount() {
@@ -138,7 +157,8 @@ public class Expense implements Serializable {
         return "Expense{" +
             "id=" + getId() +
             ", date='" + getDate() + "'" +
-            ", totalDistance=" + getTotalDistance() +
+            ", type='" + getType() + "'" +
+            ", odometer=" + getOdometer() +
             ", paidAmount=" + getPaidAmount() +
             ", note='" + getNote() + "'" +
             "}";

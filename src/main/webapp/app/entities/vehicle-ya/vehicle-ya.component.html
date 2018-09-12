@@ -23,6 +23,7 @@
             <th jhiSortBy="statsDistance"><span jhiTranslate="yakitanalizApp.vehicle.statsDistance">Stats Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="statsQuantity"><span jhiTranslate="yakitanalizApp.vehicle.statsQuantity">Stats Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="totalExpense"><span jhiTranslate="yakitanalizApp.vehicle.totalExpense">Total Expense</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="note"><span jhiTranslate="yakitanalizApp.vehicle.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="model.id"><span jhiTranslate="yakitanalizApp.vehicle.model">Model</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="user.id"><span jhiTranslate="yakitanalizApp.vehicle.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
@@ -42,6 +43,7 @@
                 <td>{{vehicle.statsDistance}}</td>
                 <td>{{vehicle.statsQuantity}}</td>
                 <td>{{vehicle.totalExpense}}</td>
+                <td>{{vehicle.note}}</td>
                 <td>
                     <div *ngIf="vehicle.model">
                         <a [routerLink]="['../enumeration-ya', vehicle.model?.id, 'view' ]" >{{vehicle.model?.id}}</a>

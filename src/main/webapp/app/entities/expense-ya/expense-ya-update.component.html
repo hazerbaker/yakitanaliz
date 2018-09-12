@@ -20,9 +20,21 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.expense.totalDistance" for="field_totalDistance">Total Distance</label>
-                    <input type="number" class="form-control" name="totalDistance" id="field_totalDistance"
-                        [(ngModel)]="expense.totalDistance" />
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.expense.type" for="field_type">Type</label>
+                    <select class="form-control" name="type" [(ngModel)]="expense.type" id="field_type" >
+                        <option value="INSURANCE">{{'yakitanalizApp.ExpenseType.INSURANCE' | translate}}</option>
+                        <option value="TPL">{{'yakitanalizApp.ExpenseType.TPL' | translate}}</option>
+                        <option value="TAX">{{'yakitanalizApp.ExpenseType.TAX' | translate}}</option>
+                        <option value="MAINTENANCE">{{'yakitanalizApp.ExpenseType.MAINTENANCE' | translate}}</option>
+                        <option value="REPAIR">{{'yakitanalizApp.ExpenseType.REPAIR' | translate}}</option>
+                        <option value="DAMAGE">{{'yakitanalizApp.ExpenseType.DAMAGE' | translate}}</option>
+                        <option value="OTHER">{{'yakitanalizApp.ExpenseType.OTHER' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="yakitanalizApp.expense.odometer" for="field_odometer">Odometer</label>
+                    <input type="number" class="form-control" name="odometer" id="field_odometer"
+                        [(ngModel)]="expense.odometer" />
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="yakitanalizApp.expense.paidAmount" for="field_paidAmount">Paid Amount</label>

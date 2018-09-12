@@ -12,7 +12,8 @@ entity Vehicle {
     photo Blob,
     statsDistance Integer,
     statsQuantity Double,
-    totalExpense Double
+    totalExpense Double,
+    note String
 }
 
 entity FillUp {
@@ -27,31 +28,12 @@ entity FillUp {
     statsQuantity Double
 }
 
-entity Service {
-    date LocalDate,
-    totalDistance Integer,
-	paidAmount Double,
-    note String
-}
-
 entity Expense {
     date LocalDate,
-    totalDistance Integer,
+    type ExpenseType,
+    odometer Integer,
 	paidAmount Double,
     note String
-}
-
-entity Note {
-    date LocalDate,
-    totalDistance Integer,
-    note String
-}
-
-entity Reminder {
-    firstDate LocalDate,
-    recurDate LocalDate,
-    firstDistance Integer,
-    recurDistance String
 }
 
 enum Language {
@@ -60,6 +42,10 @@ enum Language {
 
 enum FuelType {
     GAS, DIESEL, LPG, HYBRID, ELECTRIC
+}
+
+enum ExpenseType {
+    INSURANCE, TPL, TAX, MAINTENANCE, REPAIR, DAMAGE, OTHER
 }
 
 enum EnumerationType {
@@ -73,14 +59,11 @@ enum Transmission {
 relationship ManyToOne {
     Vehicle{model} to Enumeration,
     FillUp{vehicle} to Vehicle,
-    Service{vehicle} to Vehicle,
     Expense{vehicle} to Vehicle,
-    Note{vehicle} to Vehicle,
-    Reminder{vehicle} to Vehicle,
 	Enumeration{parent} to Enumeration,
     Vehicle{user} to User
 }
 
-paginate FillUp, Service, Expense, Note, Reminder, Vehicle, Enumeration with pagination
+paginate FillUp, Expense, Vehicle, Enumeration with pagination
 
 angularSuffix * with ya

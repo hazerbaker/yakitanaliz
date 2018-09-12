@@ -9,9 +9,13 @@
                 <dd>
                     <span>{{expense.date}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.expense.totalDistance">Total Distance</span></dt>
+                <dt><span jhiTranslate="yakitanalizApp.expense.type">Type</span></dt>
                 <dd>
-                    <span>{{expense.totalDistance}}</span>
+                    <span jhiTranslate="{{'yakitanalizApp.ExpenseType.' + expense.type}}">{{expense.type}}</span>
+                </dd>
+                <dt><span jhiTranslate="yakitanalizApp.expense.odometer">Odometer</span></dt>
+                <dd>
+                    <span>{{expense.odometer}}</span>
                 </dd>
                 <dt><span jhiTranslate="yakitanalizApp.expense.paidAmount">Paid Amount</span></dt>
                 <dd>

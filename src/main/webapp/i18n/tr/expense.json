@@ -17,7 +17,8 @@
                 "title": "Expense"
             },
             "date": "Date",
-            "totalDistance": "Total Distance",
+            "type": "Type",
+            "odometer": "Odometer",
             "paidAmount": "Paid Amount",
             "note": "Note",
             "vehicle": "Vehicle"

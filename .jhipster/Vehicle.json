@@ -35,6 +35,10 @@
         {
             "fieldName": "totalExpense",
             "fieldType": "Double"
+        },
+        {
+            "fieldName": "note",
+            "fieldType": "String"
         }
     ],
     "relationships": [

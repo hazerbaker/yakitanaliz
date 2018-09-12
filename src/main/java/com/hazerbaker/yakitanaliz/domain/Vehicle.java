@@ -55,6 +55,9 @@ public class Vehicle implements Serializable {
     @Column(name = "total_expense")
     private Double totalExpense;
 
+    @Column(name = "note")
+    private String note;
+
     @ManyToOne
     @JsonIgnoreProperties("")
     private Enumeration model;
@@ -189,6 +192,19 @@ public class Vehicle implements Serializable {
         this.totalExpense = totalExpense;
     }
 
+    public String getNote() {
+        return note;
+    }
+
+    public Vehicle note(String note) {
+        this.note = note;
+        return this;
+    }
+
+    public void setNote(String note) {
+        this.note = note;
+    }
+
     public Enumeration getModel() {
         return model;
     }
@@ -249,6 +265,7 @@ public class Vehicle implements Serializable {
             ", statsDistance=" + getStatsDistance() +
             ", statsQuantity=" + getStatsQuantity() +
             ", totalExpense=" + getTotalExpense() +
+            ", note='" + getNote() + "'" +
             "}";
     }
 }

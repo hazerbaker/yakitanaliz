@@ -6,7 +6,12 @@
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "totalDistance",
+            "fieldName": "type",
+            "fieldType": "ExpenseType",
+            "fieldValues": "INSURANCE,TPL,TAX,MAINTENANCE,REPAIR,DAMAGE,OTHER"
+        },
+        {
+            "fieldName": "odometer",
             "fieldType": "Integer"
         },
         {
