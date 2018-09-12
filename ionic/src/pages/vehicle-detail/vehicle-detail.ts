@@ -67,6 +67,28 @@ export class VehicleDetailPage {
     });
   }
 
+  editExpense(editItem?) {
+    let editModal = this.modalCtrl.create('ExpenseCreatePage', {
+      expense: editItem
+    });
+    editModal.onDidDismiss(item => {
+      if (item) {
+        item.vehicle = this.vehicle;
+        this.api.post('expenses', item).subscribe((res: any) => {
+          let toast = this.toastCtrl.create({
+            message: editItem ? this.editSuccessString : this.createSuccessString,
+            duration: 2000,
+            position: 'bottom'
+          });
+          toast.present();
+          this.getItem();
+          this.getItems();
+        });
+      }
+    })
+    editModal.present();
+  }
+
   editFillUp(editItem?) {
     let editModal = this.modalCtrl.create('FillUpCreatePage', {
       fillUp: editItem

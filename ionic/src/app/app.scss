@@ -28,8 +28,11 @@ ion-icon {
     &[class*="custom-gas-station"] {
         mask-image: url(../assets/gas-station.svg);
     }
-    &[class*="custom-turkish-lira"] {
-        mask-image: url(../assets/turkish-lira.svg);
+    &[class*="custom-expense"] {
+        mask-image: url(../assets/expense.png);
+    }
+    &[class*="custom-gas-station"] {
+        mask-image: url(../assets/gas-station.png);
     }
   
   }

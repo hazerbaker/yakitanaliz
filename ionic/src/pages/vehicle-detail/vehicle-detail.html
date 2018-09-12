@@ -5,8 +5,8 @@
       <ion-title>{{ vehicle.name }}</ion-title>
 
       <ion-buttons end>
-        <button ion-button icon-only (click)="editVehicle(vehicle)">
-          <ion-icon name="create"></ion-icon>
+        <button ion-button icon-only (click)="editExpense()">
+          <ion-icon name="custom-expense"></ion-icon>
         </button>
         <button ion-button icon-only (click)="editFillUp()">
           <ion-icon name="custom-gas-station"></ion-icon>
@@ -66,13 +66,10 @@
           <div padding>
             <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
               <ion-segment-button value="fillups">
-                Yakıt
-              </ion-segment-button>
-              <ion-segment-button value="services">
-                Servis
+                Yakıt Alımları
               </ion-segment-button>
               <ion-segment-button value="expenses">
-                Masraf
+                Diğer Masraflar
               </ion-segment-button>
             </ion-segment>
           </div>
@@ -80,7 +77,7 @@
           <div [ngSwitch]="segment">
             <ion-list *ngSwitchCase="'fillups'">
               <div padding *ngIf="fillUps.length == 0" text-center>
-                Henüz kayıt yok. Sağ üstteki + butonuyla kayıt ekleyebilirsiniz.
+                Henüz kayıt yok. Sağ üstteki  <ion-icon name="custom-gas-station"></ion-icon>  butonuyla kayıt ekleyebilirsiniz.
               </div>
               <ion-item-sliding *ngFor="let item of fillUps">
                 <button ion-item (click)="editFillUp(item)">
@@ -94,14 +91,9 @@
                 </ion-item-options>
               </ion-item-sliding>
             </ion-list>
-            <ion-list *ngSwitchCase="'services'">
-              <div padding text-center>
-                Henüz kayıt yok. Sağ üstteki + butonuyla kayıt ekleyebilirsiniz.
-              </div>
-            </ion-list>
             <ion-list *ngSwitchCase="'expenses'">
               <div padding text-center>
-                Henüz kayıt yok. Sağ üstteki + butonuyla kayıt ekleyebilirsiniz.
+                Henüz kayıt yok. Sağ üstteki  <ion-icon name="custom-expense"></ion-icon>  butonuyla kayıt ekleyebilirsiniz.
               </div>
             </ion-list>
           </div>
