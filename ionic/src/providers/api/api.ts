@@ -19,7 +19,7 @@ export class Api {
   get(endpoint: string, params?: any, reqOpts?: any) {
     this.loading(true);
 
-    let _this = this;
+    let _self = this;
 
     if (!reqOpts) {
       reqOpts = {
@@ -34,14 +34,14 @@ export class Api {
       reqOpts.headers = headers;
     }
 
-    let request = _this.http.get(_this.url + '/' + endpoint, reqOpts)
+    let request = _self.http.get(_self.url + '/' + endpoint, reqOpts)
       .map(
         response => {
           this.loading(false);
           return response;
         })
       .catch(
-        error => _this.track(error)
+        error => _self.track(error)
       )
 
     return request;
@@ -51,7 +51,7 @@ export class Api {
 
     this.loading(true);
 
-    let _this = this;
+    let _self = this;
 
     if (!reqOpts) {
       reqOpts = {
@@ -69,22 +69,22 @@ export class Api {
     let request;
 
     if (body.id) {
-      request = _this.http.put(_this.url + '/' + endpoint, body, reqOpts).map(
+      request = _self.http.put(_self.url + '/' + endpoint, body, reqOpts).map(
         response => {
           this.loading(false);
           return response;
         })
         .catch(
-          error => _this.track(error)
+          error => _self.track(error)
         );
     } else {
-      request = _this.http.post(_this.url + '/' + endpoint, body, reqOpts).map(
+      request = _self.http.post(_self.url + '/' + endpoint, body, reqOpts).map(
         response => {
           this.loading(false);
           return response;
         })
         .catch(
-          error => _this.track(error)
+          error => _self.track(error)
         );
     }
 
@@ -95,7 +95,7 @@ export class Api {
 
     this.loading(true);
 
-    let _this = this;
+    let _self = this;
 
     if (!reqOpts) {
       reqOpts = {
@@ -110,7 +110,7 @@ export class Api {
       reqOpts.headers = headers;
     }
 
-    let request = _this.http.delete(_this.url + '/' + endpoint, reqOpts)
+    let request = _self.http.delete(_self.url + '/' + endpoint, reqOpts)
       .map(
         response => {
           this.loading(false);
@@ -118,7 +118,7 @@ export class Api {
         })
       .catch(
         error => {
-          return _this.track(error);
+          return _self.track(error);
         }
       )
 

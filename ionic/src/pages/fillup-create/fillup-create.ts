@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Camera } from '@ionic-native/camera';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
@@ -21,7 +20,6 @@ export class FillUpCreatePage {
     navParams: NavParams, 
     public viewCtrl: ViewController, 
     formBuilder: FormBuilder, 
-    public camera: Camera, 
     public api: Api, 
     public translateService: TranslateService
   ) {

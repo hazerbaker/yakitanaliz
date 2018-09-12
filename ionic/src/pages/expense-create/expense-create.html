@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{ (expense ? 'EXPENSE_EDIT_TITLE' : 'EXPENSE_CREATE_TITLE') | translate }}</ion-title>
+    <ion-buttons start>
+      <button ion-button icon-only (click)="cancel()">
+        <span color="primary" showWhen="ios">
+          {{ 'CANCEL_BUTTON' | translate }}
+        </span>
+        <ion-icon name="md-close" showWhen="core,android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="done()" [disabled]="!isReadyToSave" strong>
+        <span color="primary" showWhen="ios">
+          {{ 'DONE_BUTTON' | translate }}
+        </span>
+        <ion-icon name="md-checkmark" showWhen="core,android,windows"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="createExpense()">
+    <ion-list>
+      <ion-item>
+        <ion-label color="primary" floating>{{ 'EXPENSE_DATE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" formControlName="date"></ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>{{ 'EXPENSE_TYPE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-select formControlName="type" interface="popover">
+          <ion-option value="INSURANCE">{{ 'INSURANCE' | translate }}</ion-option>
+          <ion-option value="TPL">{{ 'TPL' | translate }}</ion-option>
+          <ion-option value="TAX">{{ 'TAX' | translate }}</ion-option>
+          <ion-option value="MAINTENANCE">{{ 'MAINTENANCE' | translate }}</ion-option>
+          <ion-option value="REPAIR">{{ 'REPAIR' | translate }}</ion-option>
+          <ion-option value="DAMAGE">{{ 'DAMAGE' | translate }}</ion-option>
+          <ion-option value="OTHER">{{ 'OTHER' | translate }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>{{ 'EXPENSE_PAID_PLACEHOLDER' | translate }}</ion-label>
+        <ion-input type="number" formControlName="paid"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>{{ 'EXPENSE_ODOMETER_PLACEHOLDER' | translate }}</ion-label>
+        <ion-input type="number" formControlName="odometer"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>{{ 'EXPENSE_NOTE_PLACEHOLDER' | translate }}</ion-label>
+        <ion-textarea formControlName="note"></ion-textarea>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>
