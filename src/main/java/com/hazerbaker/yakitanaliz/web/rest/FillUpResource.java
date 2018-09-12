@@ -2,6 +2,8 @@ package com.hazerbaker.yakitanaliz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.hazerbaker.yakitanaliz.domain.FillUp;
+import com.hazerbaker.yakitanaliz.domain.Vehicle;
+import com.hazerbaker.yakitanaliz.repository.ExpenseRepository;
 import com.hazerbaker.yakitanaliz.repository.FillUpRepository;
 import com.hazerbaker.yakitanaliz.repository.VehicleRepository;
 import com.hazerbaker.yakitanaliz.service.util.StatsCalculator;
@@ -34,10 +36,13 @@ public class FillUpResource {
 
     private final FillUpRepository fillUpRepository;
 
+    private final ExpenseRepository expenseRepository;
+
     private final VehicleRepository vehicleRepository;
 
-    public FillUpResource(FillUpRepository fillUpRepository, VehicleRepository vehicleRepository) {
+    public FillUpResource(FillUpRepository fillUpRepository, ExpenseRepository expenseRepository, VehicleRepository vehicleRepository) {
         this.fillUpRepository = fillUpRepository;
+        this.expenseRepository = expenseRepository;
         this.vehicleRepository = vehicleRepository;
     }
 
@@ -49,7 +54,7 @@ public class FillUpResource {
             throw new BadRequestAlertException("A new fillUp cannot already have an ID", ENTITY_NAME, "idexists");
         }
         FillUp result = fillUpRepository.save(fillUp);
-        StatsCalculator.calculateDistances(fillUp.getVehicle(), fillUpRepository, vehicleRepository);
+        StatsCalculator.calculateVehicle(fillUp.getVehicle(), fillUpRepository, expenseRepository, vehicleRepository);
         return ResponseEntity.created(new URI("/api/fill-ups/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -63,7 +68,7 @@ public class FillUpResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         FillUp result = fillUpRepository.save(fillUp);
-        StatsCalculator.calculateDistances(fillUp.getVehicle(), fillUpRepository, vehicleRepository);
+        StatsCalculator.calculateVehicle(fillUp.getVehicle(), fillUpRepository, expenseRepository, vehicleRepository);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, fillUp.getId().toString()))
             .body(result);
@@ -99,8 +104,9 @@ public class FillUpResource {
     @Timed
     public ResponseEntity<Void> deleteFillUp(@PathVariable Long id) {
         log.debug("REST request to delete FillUp : {}", id);
-
+        Vehicle vehicle = fillUpRepository.findById(id).get().getVehicle();
         fillUpRepository.deleteById(id);
+        StatsCalculator.calculateVehicle(vehicle, fillUpRepository, expenseRepository, vehicleRepository);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

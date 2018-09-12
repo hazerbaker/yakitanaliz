@@ -2,7 +2,11 @@ package com.hazerbaker.yakitanaliz.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
 import com.hazerbaker.yakitanaliz.domain.Expense;
+import com.hazerbaker.yakitanaliz.domain.Vehicle;
 import com.hazerbaker.yakitanaliz.repository.ExpenseRepository;
+import com.hazerbaker.yakitanaliz.repository.FillUpRepository;
+import com.hazerbaker.yakitanaliz.repository.VehicleRepository;
+import com.hazerbaker.yakitanaliz.service.util.StatsCalculator;
 import com.hazerbaker.yakitanaliz.web.rest.errors.BadRequestAlertException;
 import com.hazerbaker.yakitanaliz.web.rest.util.HeaderUtil;
 import com.hazerbaker.yakitanaliz.web.rest.util.PaginationUtil;
@@ -33,19 +37,18 @@ public class ExpenseResource {
 
     private static final String ENTITY_NAME = "expense";
 
+    private final FillUpRepository fillUpRepository;
+
     private final ExpenseRepository expenseRepository;
 
-    public ExpenseResource(ExpenseRepository expenseRepository) {
+    private final VehicleRepository vehicleRepository;
+
+    public ExpenseResource(FillUpRepository fillUpRepository, ExpenseRepository expenseRepository, VehicleRepository vehicleRepository) {
+        this.fillUpRepository = fillUpRepository;
         this.expenseRepository = expenseRepository;
+        this.vehicleRepository = vehicleRepository;
     }
 
-    /**
-     * POST  /expenses : Create a new expense.
-     *
-     * @param expense the expense to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new expense, or with status 400 (Bad Request) if the expense has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
     @PostMapping("/expenses")
     @Timed
     public ResponseEntity<Expense> createExpense(@RequestBody Expense expense) throws URISyntaxException {
@@ -54,20 +57,12 @@ public class ExpenseResource {
             throw new BadRequestAlertException("A new expense cannot already have an ID", ENTITY_NAME, "idexists");
         }
         Expense result = expenseRepository.save(expense);
+        StatsCalculator.calculateVehicle(expense.getVehicle(), fillUpRepository, expenseRepository, vehicleRepository);
         return ResponseEntity.created(new URI("/api/expenses/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
     }
 
-    /**
-     * PUT  /expenses : Updates an existing expense.
-     *
-     * @param expense the expense to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated expense,
-     * or with status 400 (Bad Request) if the expense is not valid,
-     * or with status 500 (Internal Server Error) if the expense couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
     @PutMapping("/expenses")
     @Timed
     public ResponseEntity<Expense> updateExpense(@RequestBody Expense expense) throws URISyntaxException {
@@ -76,17 +71,12 @@ public class ExpenseResource {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
         Expense result = expenseRepository.save(expense);
+        StatsCalculator.calculateVehicle(expense.getVehicle(), fillUpRepository, expenseRepository, vehicleRepository);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, expense.getId().toString()))
             .body(result);
     }
 
-    /**
-     * GET  /expenses : get all the expenses.
-     *
-     * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of expenses in body
-     */
     @GetMapping("/expenses")
     @Timed
     public ResponseEntity<List<Expense>> getAllExpenses(Pageable pageable) {
@@ -96,12 +86,15 @@ public class ExpenseResource {
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
 
-    /**
-     * GET  /expenses/:id : get the "id" expense.
-     *
-     * @param id the id of the expense to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the expense, or with status 404 (Not Found)
-     */
+    @GetMapping("/expenses/byvehicle/{id}")
+    @Timed
+    public ResponseEntity<List<Expense>> getAllExpensesByVehicle(Pageable pageable, @PathVariable Long id) {
+        log.debug("REST request to get a page of Expenses By Vehicle");
+        Page<Expense> page = expenseRepository.findByVehicleIdOrderByOdometerDesc(pageable, id);
+        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/expenses/vehicle/"+id);
+        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+    }
+
     @GetMapping("/expenses/{id}")
     @Timed
     public ResponseEntity<Expense> getExpense(@PathVariable Long id) {
@@ -110,18 +103,13 @@ public class ExpenseResource {
         return ResponseUtil.wrapOrNotFound(expense);
     }
 
-    /**
-     * DELETE  /expenses/:id : delete the "id" expense.
-     *
-     * @param id the id of the expense to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
     @DeleteMapping("/expenses/{id}")
     @Timed
     public ResponseEntity<Void> deleteExpense(@PathVariable Long id) {
         log.debug("REST request to delete Expense : {}", id);
-
+        Vehicle vehicle = expenseRepository.findById(id).get().getVehicle();
         expenseRepository.deleteById(id);
+        StatsCalculator.calculateVehicle(vehicle, fillUpRepository, expenseRepository, vehicleRepository);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

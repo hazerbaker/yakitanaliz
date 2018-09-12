@@ -1,15 +1,22 @@
 package com.hazerbaker.yakitanaliz.repository;
 
+import java.util.List;
+
 import com.hazerbaker.yakitanaliz.domain.Expense;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.stereotype.Repository;
 
 
-/**
- * Spring Data  repository for the Expense entity.
- */
-@SuppressWarnings("unused")
 @Repository
 public interface ExpenseRepository extends JpaRepository<Expense, Long> {
+
+    Page<Expense> findByVehicleIdOrderByOdometerDesc(Pageable pageable, Long id);
+
+    List<Expense> findByVehicleIdOrderByOdometerAsc(Long id);
+
+    List<Expense> findByVehicleId(Long id);
 
 }

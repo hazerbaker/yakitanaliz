@@ -4,6 +4,7 @@ import com.codahale.metrics.annotation.Timed;
 import com.hazerbaker.yakitanaliz.domain.FillUp;
 import com.hazerbaker.yakitanaliz.domain.Vehicle;
 import com.hazerbaker.yakitanaliz.repository.VehicleRepository;
+import com.hazerbaker.yakitanaliz.repository.ExpenseRepository;
 import com.hazerbaker.yakitanaliz.repository.FillUpRepository;
 import com.hazerbaker.yakitanaliz.repository.UserRepository;
 import com.hazerbaker.yakitanaliz.security.SecurityUtils;
@@ -44,11 +45,14 @@ public class VehicleResource {
 
     private final FillUpRepository fillUpRepository;
 
+    private final ExpenseRepository expenseRepository;
+
     public VehicleResource(VehicleRepository vehicleRepository, UserRepository userRepository,
-            FillUpRepository fillUpRepository) {
+            FillUpRepository fillUpRepository, ExpenseRepository expenseRepository) {
         this.vehicleRepository = vehicleRepository;
         this.userRepository = userRepository;
         this.fillUpRepository = fillUpRepository;
+        this.expenseRepository = expenseRepository;
     }
 
     /**
@@ -92,7 +96,7 @@ public class VehicleResource {
         }
         vehicle.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
         Vehicle result = vehicleRepository.save(vehicle);
-        StatsCalculator.calculateDistances(vehicle, fillUpRepository, vehicleRepository);
+        StatsCalculator.calculateVehicle(vehicle, fillUpRepository, expenseRepository, vehicleRepository);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, vehicle.getId().toString()))
                 .body(result);
     }

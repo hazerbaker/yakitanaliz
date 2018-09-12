@@ -14,6 +14,7 @@ export class VehicleDetailPage {
   deleteSuccessString: any;
   editSuccessString: any;
   fillUps = [];
+  expenses = [];
   segment = 'fillups';
 
   constructor(public navCtrl: NavController,
@@ -46,6 +47,9 @@ export class VehicleDetailPage {
   getItems() {
     this.api.get('fill-ups/byvehicle/' + this.vehicle.id).subscribe((data: any) => {
       this.fillUps = data;
+    });
+    this.api.get('expenses/byvehicle/' + this.vehicle.id).subscribe((data: any) => {
+      this.expenses = data;
     });
   }
 

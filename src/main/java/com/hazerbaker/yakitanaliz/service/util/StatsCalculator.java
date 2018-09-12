@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.hazerbaker.yakitanaliz.domain.FillUp;
 import com.hazerbaker.yakitanaliz.domain.Vehicle;
+import com.hazerbaker.yakitanaliz.repository.ExpenseRepository;
 import com.hazerbaker.yakitanaliz.repository.FillUpRepository;
 import com.hazerbaker.yakitanaliz.repository.VehicleRepository;
 
@@ -16,7 +17,7 @@ public class StatsCalculator {
         
     }
 
-    public static void calculateDistances(Vehicle vehicle, FillUpRepository fillUpRepository, VehicleRepository vehicleRepository) {
+    public static void calculateVehicle(Vehicle vehicle, FillUpRepository fillUpRepository, ExpenseRepository expenseRepository, VehicleRepository vehicleRepository) {
         List<FillUp> fillUps = fillUpRepository.findByVehicleIdOrderByOdometerAsc(vehicle.getId());
         FillUp prevFillUp = null;
         FillUp partialFillUp = null;
@@ -54,6 +55,6 @@ public class StatsCalculator {
         vehicle.setStatsDistance(totalStatsDistance);
         vehicle.setStatsQuantity(totalStatsQuantity);
         vehicle.setTotalExpense(totalExpense);
-        vehicleRepository.save(vehicle);
+        vehicleRepository.save(vehicle);        
     }
 }
