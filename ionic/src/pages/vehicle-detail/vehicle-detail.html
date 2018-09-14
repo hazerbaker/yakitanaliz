@@ -2,7 +2,7 @@
   <ion-header>
 
     <ion-navbar>
-      <ion-title>{{ vehicle.name }}</ion-title>
+      <ion-title>Araç Detayı</ion-title>
 
       <ion-buttons end>
         <button ion-button icon-only (click)="editExpense()">
@@ -28,41 +28,28 @@
         </ion-col>
         <ion-col col-6>
           <h4>{{vehicle.model ? vehicle.model.parent.name : ""}} {{vehicle.model ? vehicle.model.name : ""}}</h4>
-          <ion-note item-end>{{ api.roundcc(vehicle.cc) }} {{vehicle.fuelType}} {{vehicle.transmission}} {{vehicle.year}}</ion-note>
+          <ion-note item-end>{{ api.roundcc(vehicle.cc) }} {{vehicle.fuelType}} {{vehicle.transmission}}
+            {{vehicle.year}}</ion-note>
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col col-4>
-          <ion-card>
-            <ion-card-content text-center>
-              <h1 *ngIf="vehicle.statsQuantity && vehicle.statsDistance">{{ api.round1((vehicle.statsQuantity * 100) / vehicle.statsDistance)}}</h1>
-              <h1 *ngIf="!vehicle.statsQuantity || !vehicle.statsDistance">---</h1>
-              <ion-note>lt/100km<br/>Yakıt</ion-note>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-        <ion-col col-4>
-          <ion-card>
-            <ion-card-content text-center>
-              <h1 *ngIf="vehicle.statsDistance">{{ vehicle.statsDistance }}</h1>
-              <h1 *ngIf="!vehicle.statsDistance">---</h1>
-              <ion-note>km<br/>Gidilen</ion-note>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-        <ion-col col-4>
-          <ion-card>
-            <ion-card-content text-center>
-              <h1 *ngIf="vehicle.totalExpense">{{ api.round(vehicle.totalExpense) }}</h1>
-              <h1 *ngIf="!vehicle.totalExpense">---</h1>
-              <ion-note>TL<br/>Harcanan</ion-note>
-            </ion-card-content>
-          </ion-card>
+        <ion-col col-12 text-center>
+          <ion-chip *ngIf="vehicle.odometer > 0">
+            <ion-icon name="speedometer"></ion-icon>
+            <ion-label>{{vehicle.odometer}} km</ion-label>
+          </ion-chip>
+          <ion-chip *ngIf="vehicle.totalExpense > 0">
+            <ion-icon name="stats"></ion-icon>
+            <ion-label>{{api.round(vehicle.totalExpense)}} TL</ion-label>
+          </ion-chip>
+          <ion-chip *ngIf="vehicle.statsQuantity > 0">
+            <ion-icon name="color-fill"></ion-icon>
+            <ion-label>{{ api.round1((vehicle.statsQuantity * 100) / vehicle.statsDistance)}} lt/100km</ion-label>
+          </ion-chip>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col col-12>
-
           <div padding>
             <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
               <ion-segment-button value="fillups">
@@ -73,14 +60,15 @@
               </ion-segment-button>
             </ion-segment>
           </div>
-
           <div [ngSwitch]="segment">
             <ion-list *ngSwitchCase="'fillups'">
               <div padding *ngIf="fillUps.length == 0" text-center>
-                Henüz kayıt yok. Sağ üstteki  <ion-icon name="custom-gas-station"></ion-icon>  butonuyla kayıt ekleyebilirsiniz.
+                Henüz kayıt yok. Sağ üstteki  <ion-icon name="custom-gas-station"></ion-icon>  butonuyla kayıt
+                ekleyebilirsiniz.
               </div>
               <ion-item-sliding *ngFor="let item of fillUps">
                 <button ion-item (click)="editFillUp(item)">
+                  <ion-icon style="font-size: 10px;" name="custom-gas-station" item-start color="secondary"></ion-icon>
                   <h2>{{api.round(item.unitPrice * item.quantity)}} TL / {{ item.quantity }} Lt</h2>
                   <ion-note item-end>{{ item.odometer }} km</ion-note>
                 </button>
@@ -92,11 +80,13 @@
               </ion-item-sliding>
             </ion-list>
             <ion-list *ngSwitchCase="'expenses'">
-              <div padding *ngIf="expenses.length == 0"text-center>
-                Henüz kayıt yok. Sağ üstteki  <ion-icon name="custom-expense"></ion-icon>  butonuyla kayıt ekleyebilirsiniz.
+              <div padding *ngIf="expenses.length == 0" text-center>
+                Henüz kayıt yok. Sağ üstteki  <ion-icon name="custom-expense"></ion-icon>  butonuyla kayıt
+                ekleyebilirsiniz.
               </div>
               <ion-item-sliding *ngFor="let item of expenses">
                 <button ion-item (click)="editExpense(item)">
+                  <ion-icon style="font-size: 10px;" name="custom-expense" item-start color="secondary"></ion-icon>
                   <h2>{{ item.paidAmount }} TL / {{ item.type }}</h2>
                   <ion-note item-end>{{ item.odometer }} km</ion-note>
                 </button>
@@ -108,7 +98,6 @@
               </ion-item-sliding>
             </ion-list>
           </div>
-
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -119,7 +108,7 @@
   <ion-header>
 
     <ion-navbar>
-      <ion-title>Araç Detay</ion-title>
+      <ion-title>Araç Detayı</ion-title>
     </ion-navbar>
 
   </ion-header>
