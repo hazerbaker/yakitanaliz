@@ -9,9 +9,6 @@ import com.hazerbaker.yakitanaliz.repository.ExpenseRepository;
 import com.hazerbaker.yakitanaliz.repository.FillUpRepository;
 import com.hazerbaker.yakitanaliz.repository.VehicleRepository;
 
-/**
- * Utility class for generating random Strings.
- */
 public class StatsCalculator {
 
     public StatsCalculator() {

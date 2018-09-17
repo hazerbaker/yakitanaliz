@@ -9,7 +9,7 @@ import { LoadingController } from 'ionic-angular';
  */
 @Injectable()
 export class Api {
-  url: string = 'https://yakitanaliz.herokuapp.com/api'; // https://yakitanaliz.herokuapp.com/api / http://localhost:8080/api
+  url: string = 'http://localhost:8080/api'; // https://yakitanaliz.herokuapp.com/api / http://localhost:8080/api
   loader;
 
   constructor(public http: HttpClient, public loadingCtrl: LoadingController) {
@@ -167,7 +167,7 @@ export class Api {
     if (flag) {
       if (this.loader == null) {
         this.loader = this.loadingCtrl.create({
-          content: "Loading..."
+          content: "Yükleniyor..."
         });
         this.loader.present();
       }
