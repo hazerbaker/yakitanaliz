@@ -52,6 +52,9 @@
         <ion-col col-12>
           <div padding>
             <ion-segment [(ngModel)]="segment" (ionChange)="segmentChanged($event)">
+              <ion-segment-button value="all">
+                Tümü
+              </ion-segment-button>
               <ion-segment-button value="fillups">
                 Yakıt Alımları
               </ion-segment-button>
@@ -61,6 +64,30 @@
             </ion-segment>
           </div>
           <div [ngSwitch]="segment">
+            <ion-list *ngSwitchCase="'all'">
+              <div padding *ngIf="allExpenses.length == 0" text-center>
+                Henüz kayıt yok. Sağ üstteki  <ion-icon name="custom-gas-station"></ion-icon> ve <ion-icon name="custom-expense"></ion-icon>  butonlarıyla
+                kayıt
+                ekleyebilirsiniz.
+              </div>
+              <ion-item-sliding *ngFor="let item of allExpenses">
+                <button ion-item (click)="editFillUp(item)" *ngIf="item.quantity">
+                  <ion-icon style="font-size: 10px;" name="custom-gas-station" item-start color="secondary"></ion-icon>
+                  <h2>{{api.round(item.unitPrice * item.quantity)}} TL / {{ item.quantity }} Lt</h2>
+                  <ion-note item-end>{{ item.odometer }} km</ion-note>
+                </button>
+                <button ion-item (click)="editExpense(item)" *ngIf="!item.quantity">
+                  <ion-icon style="font-size: 10px;" name="custom-expense" item-start color="secondary"></ion-icon>
+                  <h2>{{ item.paidAmount }} TL / {{ item.type }}</h2>
+                  <ion-note item-end>{{ item.odometer }} km</ion-note>
+                </button>
+                <ion-item-options>
+                  <button ion-button color="danger" (click)="deleteItem(item)">
+                    {{ 'DELETE_BUTTON' | translate }}
+                  </button>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-list>
             <ion-list *ngSwitchCase="'fillups'">
               <div padding *ngIf="fillUps.length == 0" text-center>
                 Henüz kayıt yok. Sağ üstteki  <ion-icon name="custom-gas-station"></ion-icon>  butonuyla kayıt

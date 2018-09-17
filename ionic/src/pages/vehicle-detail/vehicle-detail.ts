@@ -15,7 +15,8 @@ export class VehicleDetailPage {
   editSuccessString: any;
   fillUps = [];
   expenses = [];
-  segment = 'fillups';
+  allExpenses = [];
+  segment = 'all';
 
   constructor(public navCtrl: NavController,
     navParams: NavParams,
@@ -45,12 +46,27 @@ export class VehicleDetailPage {
   }
 
   getItems() {
+    this.fillUps = [];
+    this.expenses = [];
     this.api.get('fill-ups/byvehicle/' + this.vehicle.id).subscribe((data: any) => {
       this.fillUps = data;
+      this.uniteExpenses();
     });
     this.api.get('expenses/byvehicle/' + this.vehicle.id).subscribe((data: any) => {
       this.expenses = data;
+      this.uniteExpenses();
     });
+  }
+
+  uniteExpenses() {
+    let merged = this.fillUps.concat(this.expenses);
+    console.log(this.allExpenses.length)
+    merged.sort(function (a, b) {
+      console.log(a, b);
+      return b.odometer - a.odometer
+    });
+    this.allExpenses = merged;
+    console.log(this.allExpenses)
   }
 
   getItem() {
