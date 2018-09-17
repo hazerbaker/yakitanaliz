@@ -14,6 +14,7 @@ export class FillUpCreatePage {
   isReadyToSave: boolean;
   fillUp: any;
   form: FormGroup;
+  delayTimer;
 
   constructor(public navCtrl: NavController, 
     navParams: NavParams, 
@@ -51,25 +52,28 @@ export class FillUpCreatePage {
   }
   
   totalPriceChange() {
-    setTimeout(function(){ 
+    clearTimeout(this.delayTimer);
+    this.delayTimer = setTimeout(function(){ 
       if(this.form.value.totalPrice > 0 && this.form.value.quantity > 0) {
         this.form.value.unitPrice = Math.round((this.form.value.totalPrice / this.form.value.quantity)*100) / 100;
         this.form.setValue(this.form.value);
       }
-    }.bind(this), 0);
+    }.bind(this), 2000);
   }
   
   quantityChange() {
-    setTimeout(function(){ 
+    clearTimeout(this.delayTimer);
+    this.delayTimer = setTimeout(function(){ 
       if(this.form.value.totalPrice > 0 && this.form.value.quantity > 0) {
         this.form.value.unitPrice = Math.round((this.form.value.totalPrice / this.form.value.quantity)*100) / 100;
         this.form.setValue(this.form.value);
       }
-    }.bind(this), 0);
+    }.bind(this), 2000);
   }
   
   unitPriceChange() {
-    setTimeout(function(){ 
+    clearTimeout(this.delayTimer);
+    this.delayTimer = setTimeout(function(){ 
       if(this.form.value.unitPrice > 0 && this.form.value.totalPrice > 0) {
         this.form.value.quantity = this.api.round2(this.form.value.totalPrice / this.form.value.unitPrice);
         this.form.setValue(this.form.value);
@@ -78,6 +82,6 @@ export class FillUpCreatePage {
         this.form.value.totalPrice = this.api.round2(this.form.value.unitPrice * this.form.value.quantity);
         this.form.setValue(this.form.value);
       }
-    }.bind(this), 0);
+    }.bind(this), 2000);
   }
 }
