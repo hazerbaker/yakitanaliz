@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,6 +15,7 @@ export class FillUpCreatePage {
   fillUp: any;
   form: FormGroup;
   delayTimer;
+  vehicle: any;
 
   constructor(public navCtrl: NavController, 
     navParams: NavParams, 
@@ -24,13 +25,14 @@ export class FillUpCreatePage {
     public translateService: TranslateService
   ) {
     this.fillUp = navParams.get('fillUp');
+    this.vehicle = navParams.get('vehicle');
     
     this.form = formBuilder.group({
-      date: this.fillUp ? this.fillUp.date : new Date().toISOString(),
-      quantity: this.fillUp ? this.fillUp.quantity : undefined,
-      totalPrice: this.fillUp ? this.api.round2(this.fillUp.unitPrice * this.fillUp.quantity) : undefined,
-      odometer: this.fillUp ? this.fillUp.odometer : undefined,
-      unitPrice: this.fillUp ? this.fillUp.unitPrice : undefined,
+      date: [this.fillUp ? this.fillUp.date : new Date().toISOString(), Validators.required],
+      quantity: [this.fillUp ? this.fillUp.quantity : undefined, Validators.required],
+      totalPrice: [this.fillUp ? this.api.round2(this.fillUp.unitPrice * this.fillUp.quantity) : undefined, Validators.required],
+      odometer: [this.fillUp ? this.fillUp.odometer : undefined, Validators.required],
+      unitPrice: [this.fillUp ? this.fillUp.unitPrice : undefined, Validators.required],
       missed: this.fillUp ? this.fillUp.missed : false,
       partial: this.fillUp ? this.fillUp.partial : false,
       note: this.fillUp ? this.fillUp.note : undefined,
@@ -38,7 +40,7 @@ export class FillUpCreatePage {
     });
 
     this.form.valueChanges.subscribe((v) => {
-      this.isReadyToSave = this.form.valid;
+      this.isReadyToSave = this.form.valid && (Math.abs((v.quantity * v.unitPrice) - v.totalPrice) < 0.5);
     });
   }
 
@@ -52,13 +54,14 @@ export class FillUpCreatePage {
   }
   
   totalPriceChange() {
+    return;
     clearTimeout(this.delayTimer);
     this.delayTimer = setTimeout(function(){ 
       if(this.form.value.totalPrice > 0 && this.form.value.quantity > 0) {
         this.form.value.unitPrice = Math.round((this.form.value.totalPrice / this.form.value.quantity)*100) / 100;
         this.form.setValue(this.form.value);
       }
-    }.bind(this), 2000);
+    }.bind(this), 500);
   }
   
   quantityChange() {
@@ -68,7 +71,7 @@ export class FillUpCreatePage {
         this.form.value.unitPrice = Math.round((this.form.value.totalPrice / this.form.value.quantity)*100) / 100;
         this.form.setValue(this.form.value);
       }
-    }.bind(this), 2000);
+    }.bind(this), 500);
   }
   
   unitPriceChange() {
@@ -82,6 +85,6 @@ export class FillUpCreatePage {
         this.form.value.totalPrice = this.api.round2(this.form.value.unitPrice * this.form.value.quantity);
         this.form.setValue(this.form.value);
       }
-    }.bind(this), 2000);
+    }.bind(this), 500);
   }
 }

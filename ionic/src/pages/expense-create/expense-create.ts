@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { Api } from '../../providers/api/api';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,6 +14,7 @@ export class ExpenseCreatePage {
   isReadyToSave: boolean;
   expense: any;
   form: FormGroup;
+  vehicle: any;
 
   constructor(public navCtrl: NavController,
     navParams: NavParams,
@@ -23,12 +24,13 @@ export class ExpenseCreatePage {
     public translateService: TranslateService
   ) {
     this.expense = navParams.get('expense');
+    this.vehicle = navParams.get('vehicle');
 
     this.form = formBuilder.group({
-      date: new Date().toISOString(),
-      type: '',
-      odometer: '',
-      paidAmount:'',
+      date: [new Date().toISOString(), Validators.required],
+      type: ['', Validators.required],
+      odometer: ['', Validators.required],
+      paidAmount: ['', Validators.required],
       note: '',
       id: ''
     });

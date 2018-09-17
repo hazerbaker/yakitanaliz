@@ -44,7 +44,7 @@
         <ion-input type="number" formControlName="paidAmount"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label color="primary" floating>{{ 'EXPENSE_ODOMETER_PLACEHOLDER' | translate }}</ion-label>
+        <ion-label color="primary" floating>{{ 'EXPENSE_ODOMETER_PLACEHOLDER' | translate }} {{fillUp ? '' : '(Son: '+ vehicle.odometer + ')'}}</ion-label>
         <ion-input type="number" formControlName="odometer"></ion-input>
       </ion-item>
       <ion-item>

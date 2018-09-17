@@ -73,7 +73,8 @@ export class VehicleDetailPage {
 
   editExpense(editItem?) {
     let editModal = this.modalCtrl.create('ExpenseCreatePage', {
-      expense: editItem
+      expense: editItem,
+      vehicle: this.vehicle
     });
     editModal.onDidDismiss(item => {
       if (item) {
@@ -95,7 +96,8 @@ export class VehicleDetailPage {
 
   editFillUp(editItem?) {
     let editModal = this.modalCtrl.create('FillUpCreatePage', {
-      fillUp: editItem
+      fillUp: editItem,
+      vehicle: this.vehicle
     });
     editModal.onDidDismiss(item => {
       if (item) {
