@@ -37,11 +37,11 @@ export class VehicleCreatePage implements OnInit {
       photo: '',
       photoContentType: '',
       fuelType: ['', Validators.required],
-      cc: '',
-      transmission: '',
-      year: '',
-      make: '',
-      model: '',
+      cc: ['', Validators.required],
+      transmission: ['', Validators.required],
+      year: ['', Validators.required],
+      make: ['', Validators.required],
+      model: ['', Validators.required],
       id: ''
     });
     this.form.valueChanges.subscribe((v) => {

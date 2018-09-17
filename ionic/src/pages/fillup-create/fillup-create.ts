@@ -54,7 +54,6 @@ export class FillUpCreatePage {
   }
   
   totalPriceChange() {
-    return;
     clearTimeout(this.delayTimer);
     this.delayTimer = setTimeout(function(){ 
       if(this.form.value.totalPrice > 0 && this.form.value.quantity > 0) {
