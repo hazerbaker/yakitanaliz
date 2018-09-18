@@ -101,7 +101,7 @@ public class EnumerationResource {
     @Timed
     public ResponseEntity<List<Enumeration>> getEnumerationsByType(Pageable pageable, @PathVariable String type) {
         log.debug("REST request to get a page of Enumerations By Type");
-        Page<Enumeration> page = enumerationRepository.findByType(pageable, EnumerationType.valueOf(type));
+        Page<Enumeration> page = enumerationRepository.findByTypeOrderByNameAsc(pageable, EnumerationType.valueOf(type));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/enumerations");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }
@@ -110,7 +110,7 @@ public class EnumerationResource {
     @Timed
     public ResponseEntity<List<Enumeration>> getEnumerationsByParent(Pageable pageable, @PathVariable Enumeration parent) {
         log.debug("REST request to get a page of Enumerations By Type");
-        Page<Enumeration> page = enumerationRepository.findByParent(pageable, parent);
+        Page<Enumeration> page = enumerationRepository.findByParentOrderByNameAsc(pageable, parent);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/enumerations");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

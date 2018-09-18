@@ -15,9 +15,9 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EnumerationRepository extends JpaRepository<Enumeration, Long> {
 
-    Page<Enumeration> findByType(Pageable pageable, EnumerationType type);
+    Page<Enumeration> findByTypeOrderByNameAsc(Pageable pageable, EnumerationType type);
 
-    Page<Enumeration> findByParent(Pageable pageable, Enumeration parent);
+    Page<Enumeration> findByParentOrderByNameAsc(Pageable pageable, Enumeration parent);
 
     Enumeration findByName(String name);
 }
