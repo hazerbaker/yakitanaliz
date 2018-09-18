@@ -60,13 +60,10 @@ export class VehicleDetailPage {
 
   uniteExpenses() {
     let merged = this.fillUps.concat(this.expenses);
-    console.log(this.allExpenses.length)
     merged.sort(function (a, b) {
-      console.log(a, b);
       return b.odometer - a.odometer
     });
     this.allExpenses = merged;
-    console.log(this.allExpenses)
   }
 
   getItem() {
