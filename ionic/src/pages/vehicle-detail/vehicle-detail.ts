@@ -141,7 +141,7 @@ export class VehicleDetailPage {
   }
 
   segmentChanged(e) {
-    console.log(e)
+    
   }
 
 }

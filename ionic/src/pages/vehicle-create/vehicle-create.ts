@@ -32,7 +32,6 @@ export class VehicleCreatePage implements OnInit {
     public translateService: TranslateService
   ) {
     this.vehicle = navParams.get('vehicle');
-    console.log(this.vehicle);
     this.form = formBuilder.group({
       photo: '',
       photoContentType: '',

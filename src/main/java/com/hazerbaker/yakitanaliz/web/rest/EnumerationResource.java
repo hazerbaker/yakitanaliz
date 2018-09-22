@@ -23,9 +23,6 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * REST controller for managing Enumeration.
- */
 @RestController
 @RequestMapping("/api")
 public class EnumerationResource {
@@ -40,13 +37,6 @@ public class EnumerationResource {
         this.enumerationRepository = enumerationRepository;
     }
 
-    /**
-     * POST  /enumerations : Create a new enumeration.
-     *
-     * @param enumeration the enumeration to create
-     * @return the ResponseEntity with status 201 (Created) and with body the new enumeration, or with status 400 (Bad Request) if the enumeration has already an ID
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
     @PostMapping("/enumerations")
     @Timed
     public ResponseEntity<Enumeration> createEnumeration(@RequestBody Enumeration enumeration) throws URISyntaxException {
@@ -60,15 +50,6 @@ public class EnumerationResource {
             .body(result);
     }
 
-    /**
-     * PUT  /enumerations : Updates an existing enumeration.
-     *
-     * @param enumeration the enumeration to update
-     * @return the ResponseEntity with status 200 (OK) and with body the updated enumeration,
-     * or with status 400 (Bad Request) if the enumeration is not valid,
-     * or with status 500 (Internal Server Error) if the enumeration couldn't be updated
-     * @throws URISyntaxException if the Location URI syntax is incorrect
-     */
     @PutMapping("/enumerations")
     @Timed
     public ResponseEntity<Enumeration> updateEnumeration(@RequestBody Enumeration enumeration) throws URISyntaxException {
@@ -82,12 +63,6 @@ public class EnumerationResource {
             .body(result);
     }
 
-    /**
-     * GET  /enumerations : get all the enumerations.
-     *
-     * @param pageable the pagination information
-     * @return the ResponseEntity with status 200 (OK) and the list of enumerations in body
-     */
     @GetMapping("/enumerations")
     @Timed
     public ResponseEntity<List<Enumeration>> getAllEnumerations(Pageable pageable) {
@@ -99,28 +74,20 @@ public class EnumerationResource {
 
     @GetMapping("/enumerations/bytype/{type}")
     @Timed
-    public ResponseEntity<List<Enumeration>> getEnumerationsByType(Pageable pageable, @PathVariable String type) {
+    public ResponseEntity<List<Enumeration>> getEnumerationsByType(@PathVariable String type) {
         log.debug("REST request to get a page of Enumerations By Type");
-        Page<Enumeration> page = enumerationRepository.findByTypeOrderByNameAsc(pageable, EnumerationType.valueOf(type));
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/enumerations");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        List<Enumeration> list = enumerationRepository.findByTypeOrderByNameAsc(EnumerationType.valueOf(type));
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
     @GetMapping("/enumerations/byparent/{parent}")
     @Timed
-    public ResponseEntity<List<Enumeration>> getEnumerationsByParent(Pageable pageable, @PathVariable Enumeration parent) {
+    public ResponseEntity<List<Enumeration>> getEnumerationsByParent(@PathVariable Enumeration parent) {
         log.debug("REST request to get a page of Enumerations By Type");
-        Page<Enumeration> page = enumerationRepository.findByParentOrderByNameAsc(pageable, parent);
-        HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/enumerations");
-        return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+        List<Enumeration> list = enumerationRepository.findByParentOrderByNameAsc(parent);
+        return new ResponseEntity<>(list, HttpStatus.OK);
     }
 
-    /**
-     * GET  /enumerations/:id : get the "id" enumeration.
-     *
-     * @param id the id of the enumeration to retrieve
-     * @return the ResponseEntity with status 200 (OK) and with body the enumeration, or with status 404 (Not Found)
-     */
     @GetMapping("/enumerations/{id}")
     @Timed
     public ResponseEntity<Enumeration> getEnumeration(@PathVariable Long id) {
@@ -129,12 +96,6 @@ public class EnumerationResource {
         return ResponseUtil.wrapOrNotFound(enumeration);
     }
 
-    /**
-     * DELETE  /enumerations/:id : delete the "id" enumeration.
-     *
-     * @param id the id of the enumeration to delete
-     * @return the ResponseEntity with status 200 (OK)
-     */
     @DeleteMapping("/enumerations/{id}")
     @Timed
     public ResponseEntity<Void> deleteEnumeration(@PathVariable Long id) {

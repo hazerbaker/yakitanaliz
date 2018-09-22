@@ -9,7 +9,7 @@ import { Settings } from '../providers';
   template: `<ion-menu [content]="content">
     <ion-header>
       <ion-toolbar>
-        <ion-title>Pages</ion-title>
+        <ion-title>Menü</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -29,8 +29,8 @@ export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   pages: any[] = [
-    { title: 'Vehicle List', component: 'VehicleListPage' },
-    { title: 'Logout', component: 'LoginPage' }
+    { title: 'Araçlarım', component: 'VehicleListPage' },
+    { title: 'Çıkış', component: 'LoginPage' }
   ]
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {

@@ -1,5 +1,7 @@
 package com.hazerbaker.yakitanaliz.repository;
 
+import java.util.List;
+
 import com.hazerbaker.yakitanaliz.domain.Enumeration;
 import com.hazerbaker.yakitanaliz.domain.enumeration.EnumerationType;
 
@@ -14,10 +16,14 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface EnumerationRepository extends JpaRepository<Enumeration, Long> {
-
+    
     Page<Enumeration> findByTypeOrderByNameAsc(Pageable pageable, EnumerationType type);
 
+    List<Enumeration> findByTypeOrderByNameAsc(EnumerationType type);
+
     Page<Enumeration> findByParentOrderByNameAsc(Pageable pageable, Enumeration parent);
+
+    List<Enumeration> findByParentOrderByNameAsc(Enumeration parent);
 
     Enumeration findByName(String name);
 }
