@@ -12,7 +12,7 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
                 ...LAYOUT_ROUTES,
                 {
                     path: 'admin',
-                    loadChildren: './admin/admin.module#YakitanalizAdminModule'
+                    loadChildren: './admin/admin.module#OtodepomAdminModule'
                 }
             ],
             { useHash: true, enableTracing: DEBUG_INFO_ENABLED }
@@ -20,4 +20,4 @@ const LAYOUT_ROUTES = [navbarRoute, ...errorRoute];
     ],
     exports: [RouterModule]
 })
-export class YakitanalizAppRoutingModule {}
+export class OtodepomAppRoutingModule {}

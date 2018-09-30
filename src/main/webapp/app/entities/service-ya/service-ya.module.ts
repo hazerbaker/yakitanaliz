@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { YakitanalizSharedModule } from 'app/shared';
+import { OtodepomSharedModule } from 'app/shared';
 import {
     ServiceYaComponent,
     ServiceYaDetailComponent,
@@ -15,7 +15,7 @@ import {
 const ENTITY_STATES = [...serviceRoute, ...servicePopupRoute];
 
 @NgModule({
-    imports: [YakitanalizSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [OtodepomSharedModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         ServiceYaComponent,
         ServiceYaDetailComponent,
@@ -26,4 +26,4 @@ const ENTITY_STATES = [...serviceRoute, ...servicePopupRoute];
     entryComponents: [ServiceYaComponent, ServiceYaUpdateComponent, ServiceYaDeleteDialogComponent, ServiceYaDeletePopupComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class YakitanalizServiceYaModule {}
+export class OtodepomServiceYaModule {}

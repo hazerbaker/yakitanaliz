@@ -1,9 +1,9 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="yakitanalizApp.enumeration.home.title">Enumerations</span>
+        <span jhiTranslate="otodepomApp.enumeration.home.title">Enumerations</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-enumeration-ya" [routerLink]="['/enumeration-ya/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="yakitanalizApp.enumeration.home.createLabel">
+            <span  jhiTranslate="otodepomApp.enumeration.home.createLabel">
             Create new Enumeration
             </span>
         </button>
@@ -15,10 +15,10 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="name"><span jhiTranslate="yakitanalizApp.enumeration.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="description"><span jhiTranslate="yakitanalizApp.enumeration.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="type"><span jhiTranslate="yakitanalizApp.enumeration.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="parent.id"><span jhiTranslate="yakitanalizApp.enumeration.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="name"><span jhiTranslate="otodepomApp.enumeration.name">Name</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="description"><span jhiTranslate="otodepomApp.enumeration.description">Description</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="type"><span jhiTranslate="otodepomApp.enumeration.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="parent.id"><span jhiTranslate="otodepomApp.enumeration.parent">Parent</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -27,7 +27,7 @@
                 <td><a [routerLink]="['/enumeration-ya', enumeration.id, 'view' ]">{{enumeration.id}}</a></td>
                 <td>{{enumeration.name}}</td>
                 <td>{{enumeration.description}}</td>
-                <td jhiTranslate="{{'yakitanalizApp.EnumerationType.' + enumeration.type}}">{{enumeration.type}}</td>
+                <td jhiTranslate="{{'otodepomApp.EnumerationType.' + enumeration.type}}">{{enumeration.type}}</td>
                 <td>
                     <div *ngIf="enumeration.parent">
                         <a [routerLink]="['../enumeration-ya', enumeration.parent?.id, 'view' ]" >{{enumeration.parent?.id}}</a>

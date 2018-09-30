@@ -10,25 +10,25 @@ import { AuthInterceptor } from './blocks/interceptor/auth.interceptor';
 import { AuthExpiredInterceptor } from './blocks/interceptor/auth-expired.interceptor';
 import { ErrorHandlerInterceptor } from './blocks/interceptor/errorhandler.interceptor';
 import { NotificationInterceptor } from './blocks/interceptor/notification.interceptor';
-import { YakitanalizSharedModule } from 'app/shared';
-import { YakitanalizCoreModule } from 'app/core';
-import { YakitanalizAppRoutingModule } from './app-routing.module';
-import { YakitanalizHomeModule } from './home/home.module';
-import { YakitanalizAccountModule } from './account/account.module';
-import { YakitanalizEntityModule } from './entities/entity.module';
+import { OtodepomSharedModule } from 'app/shared';
+import { OtodepomCoreModule } from 'app/core';
+import { OtodepomAppRoutingModule } from './app-routing.module';
+import { OtodepomHomeModule } from './home/home.module';
+import { OtodepomAccountModule } from './account/account.module';
+import { OtodepomEntityModule } from './entities/entity.module';
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent, ActiveMenuDirective, ErrorComponent } from './layouts';
 
 @NgModule({
     imports: [
         BrowserModule,
-        YakitanalizAppRoutingModule,
+        OtodepomAppRoutingModule,
         Ng2Webstorage.forRoot({ prefix: 'jhi', separator: '-' }),
-        YakitanalizSharedModule,
-        YakitanalizCoreModule,
-        YakitanalizHomeModule,
-        YakitanalizAccountModule,
-        YakitanalizEntityModule
+        OtodepomSharedModule,
+        OtodepomCoreModule,
+        OtodepomHomeModule,
+        OtodepomAccountModule,
+        OtodepomEntityModule
         // jhipster-needle-angular-add-module JHipster will add new module here
     ],
     declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, ActiveMenuDirective, FooterComponent],
@@ -60,4 +60,4 @@ import { JhiMainComponent, NavbarComponent, FooterComponent, PageRibbonComponent
     ],
     bootstrap: [JhiMainComponent]
 })
-export class YakitanalizAppModule {}
+export class OtodepomAppModule {}

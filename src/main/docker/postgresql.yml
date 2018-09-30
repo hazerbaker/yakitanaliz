@@ -1,11 +1,11 @@
 version: '2'
 services:
-    yakitanaliz-postgresql:
+    otodepom-postgresql:
         image: postgres:10.4
         # volumes:
-        #     - ~/volumes/jhipster/yakitanaliz/postgresql/:/var/lib/postgresql/data/
+        #     - ~/volumes/jhipster/otodepom/postgresql/:/var/lib/postgresql/data/
         environment:
-            - POSTGRES_USER=yakitanaliz
+            - POSTGRES_USER=otodepom
             - POSTGRES_PASSWORD=
         ports:
             - 5432:5432

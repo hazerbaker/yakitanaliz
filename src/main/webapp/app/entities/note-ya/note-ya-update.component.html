@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-note-ya-heading" jhiTranslate="yakitanalizApp.note.home.createOrEditLabel">Create or edit a Note</h2>
+            <h2 id="jhi-note-ya-heading" jhiTranslate="otodepomApp.note.home.createOrEditLabel">Create or edit a Note</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!note.id">
@@ -10,7 +10,7 @@
                         [(ngModel)]="note.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.note.date" for="field_date">Date</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.note.date" for="field_date">Date</label>
                     <div class="input-group">
                         <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="note.date"
                         />
@@ -20,18 +20,18 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.note.totalDistance" for="field_totalDistance">Total Distance</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.note.totalDistance" for="field_totalDistance">Total Distance</label>
                     <input type="number" class="form-control" name="totalDistance" id="field_totalDistance"
                         [(ngModel)]="note.totalDistance" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.note.note" for="field_note">Note</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.note.note" for="field_note">Note</label>
                     <input type="text" class="form-control" name="note" id="field_note"
                         [(ngModel)]="note.note" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.note.vehicle" for="field_vehicle">Vehicle</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.note.vehicle" for="field_vehicle">Vehicle</label>
                     <select class="form-control" id="field_vehicle" name="vehicle" [(ngModel)]="note.vehicle" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="vehicleOption.id === note.vehicle?.id ? note.vehicle : vehicleOption" *ngFor="let vehicleOption of vehicles; trackBy: trackVehicleById">{{vehicleOption.id}}</option>

@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-vehicle-ya-heading" jhiTranslate="yakitanalizApp.vehicle.home.createOrEditLabel">Create or edit a Vehicle</h2>
+            <h2 id="jhi-vehicle-ya-heading" jhiTranslate="otodepomApp.vehicle.home.createOrEditLabel">Create or edit a Vehicle</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!vehicle.id">
@@ -10,34 +10,34 @@
                         [(ngModel)]="vehicle.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.fuelType" for="field_fuelType">Fuel Type</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.fuelType" for="field_fuelType">Fuel Type</label>
                     <select class="form-control" name="fuelType" [(ngModel)]="vehicle.fuelType" id="field_fuelType" >
-                        <option value="GAS">{{'yakitanalizApp.FuelType.GAS' | translate}}</option>
-                        <option value="DIESEL">{{'yakitanalizApp.FuelType.DIESEL' | translate}}</option>
-                        <option value="LPG">{{'yakitanalizApp.FuelType.LPG' | translate}}</option>
-                        <option value="HYBRID">{{'yakitanalizApp.FuelType.HYBRID' | translate}}</option>
-                        <option value="ELECTRIC">{{'yakitanalizApp.FuelType.ELECTRIC' | translate}}</option>
+                        <option value="GAS">{{'otodepomApp.FuelType.GAS' | translate}}</option>
+                        <option value="DIESEL">{{'otodepomApp.FuelType.DIESEL' | translate}}</option>
+                        <option value="LPG">{{'otodepomApp.FuelType.LPG' | translate}}</option>
+                        <option value="HYBRID">{{'otodepomApp.FuelType.HYBRID' | translate}}</option>
+                        <option value="ELECTRIC">{{'otodepomApp.FuelType.ELECTRIC' | translate}}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.cc" for="field_cc">Cc</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.cc" for="field_cc">Cc</label>
                     <input type="number" class="form-control" name="cc" id="field_cc"
                         [(ngModel)]="vehicle.cc" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.year" for="field_year">Year</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.year" for="field_year">Year</label>
                     <input type="number" class="form-control" name="year" id="field_year"
                         [(ngModel)]="vehicle.year" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.transmission" for="field_transmission">Transmission</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.transmission" for="field_transmission">Transmission</label>
                     <select class="form-control" name="transmission" [(ngModel)]="vehicle.transmission" id="field_transmission" >
-                        <option value="AUTO">{{'yakitanalizApp.Transmission.AUTO' | translate}}</option>
-                        <option value="MANUAL">{{'yakitanalizApp.Transmission.MANUAL' | translate}}</option>
+                        <option value="AUTO">{{'otodepomApp.Transmission.AUTO' | translate}}</option>
+                        <option value="MANUAL">{{'otodepomApp.Transmission.MANUAL' | translate}}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.photo" for="field_photo">Photo</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.photo" for="field_photo">Photo</label>
                     <div>
                         <div *ngIf="vehicle.photo" class="form-text text-danger clearfix">
                             <a class="pull-left" (click)="openFile(vehicle.photoContentType, vehicle.photo)" jhiTranslate="entity.action.open">open</a><br>
@@ -55,40 +55,40 @@
                         [(ngModel)]="vehicle.photoContentType" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.statsDistance" for="field_statsDistance">Stats Distance</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.statsDistance" for="field_statsDistance">Stats Distance</label>
                     <input type="number" class="form-control" name="statsDistance" id="field_statsDistance"
                         [(ngModel)]="vehicle.statsDistance" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.statsQuantity" for="field_statsQuantity">Stats Quantity</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.statsQuantity" for="field_statsQuantity">Stats Quantity</label>
                     <input type="number" class="form-control" name="statsQuantity" id="field_statsQuantity"
                         [(ngModel)]="vehicle.statsQuantity" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.totalExpense" for="field_totalExpense">Total Expense</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.totalExpense" for="field_totalExpense">Total Expense</label>
                     <input type="number" class="form-control" name="totalExpense" id="field_totalExpense"
                         [(ngModel)]="vehicle.totalExpense" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.odometer" for="field_odometer">Odometer</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.odometer" for="field_odometer">Odometer</label>
                     <input type="number" class="form-control" name="odometer" id="field_odometer"
                         [(ngModel)]="vehicle.odometer" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.note" for="field_note">Note</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.note" for="field_note">Note</label>
                     <input type="text" class="form-control" name="note" id="field_note"
                         [(ngModel)]="vehicle.note" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.model" for="field_model">Model</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.model" for="field_model">Model</label>
                     <select class="form-control" id="field_model" name="model" [(ngModel)]="vehicle.model" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="enumerationOption.id === vehicle.model?.id ? vehicle.model : enumerationOption" *ngFor="let enumerationOption of enumerations; trackBy: trackEnumerationById">{{enumerationOption.id}}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.vehicle.user" for="field_user">User</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.vehicle.user" for="field_user">User</label>
                     <select class="form-control" id="field_user" name="user" [(ngModel)]="vehicle.user" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="userOption.id === vehicle.user?.id ? vehicle.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>

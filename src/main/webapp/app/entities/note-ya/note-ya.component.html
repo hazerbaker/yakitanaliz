@@ -1,9 +1,9 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="yakitanalizApp.note.home.title">Notes</span>
+        <span jhiTranslate="otodepomApp.note.home.title">Notes</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-note-ya" [routerLink]="['/note-ya/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="yakitanalizApp.note.home.createLabel">
+            <span  jhiTranslate="otodepomApp.note.home.createLabel">
             Create new Note
             </span>
         </button>
@@ -15,10 +15,10 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="date"><span jhiTranslate="yakitanalizApp.note.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="totalDistance"><span jhiTranslate="yakitanalizApp.note.totalDistance">Total Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="note"><span jhiTranslate="yakitanalizApp.note.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="vehicle.id"><span jhiTranslate="yakitanalizApp.note.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="date"><span jhiTranslate="otodepomApp.note.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="totalDistance"><span jhiTranslate="otodepomApp.note.totalDistance">Total Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="note"><span jhiTranslate="otodepomApp.note.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="vehicle.id"><span jhiTranslate="otodepomApp.note.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>

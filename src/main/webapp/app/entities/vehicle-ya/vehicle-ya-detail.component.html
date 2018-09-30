@@ -1,60 +1,60 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="vehicle">
-            <h2><span jhiTranslate="yakitanalizApp.vehicle.detail.title">Vehicle</span> {{vehicle.id}}</h2>
+            <h2><span jhiTranslate="otodepomApp.vehicle.detail.title">Vehicle</span> {{vehicle.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.fuelType">Fuel Type</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.fuelType">Fuel Type</span></dt>
                 <dd>
-                    <span jhiTranslate="{{'yakitanalizApp.FuelType.' + vehicle.fuelType}}">{{vehicle.fuelType}}</span>
+                    <span jhiTranslate="{{'otodepomApp.FuelType.' + vehicle.fuelType}}">{{vehicle.fuelType}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.cc">Cc</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.cc">Cc</span></dt>
                 <dd>
                     <span>{{vehicle.cc}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.year">Year</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.year">Year</span></dt>
                 <dd>
                     <span>{{vehicle.year}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.transmission">Transmission</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.transmission">Transmission</span></dt>
                 <dd>
-                    <span jhiTranslate="{{'yakitanalizApp.Transmission.' + vehicle.transmission}}">{{vehicle.transmission}}</span>
+                    <span jhiTranslate="{{'otodepomApp.Transmission.' + vehicle.transmission}}">{{vehicle.transmission}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.photo">Photo</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.photo">Photo</span></dt>
                 <dd>
                     <div *ngIf="vehicle.photo">
                         <a (click)="openFile(vehicle.photoContentType, vehicle.photo)" jhiTranslate="entity.action.open">open</a>
                         {{vehicle.photoContentType}}, {{byteSize(vehicle.photo)}}
                     </div>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.statsDistance">Stats Distance</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.statsDistance">Stats Distance</span></dt>
                 <dd>
                     <span>{{vehicle.statsDistance}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.statsQuantity">Stats Quantity</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.statsQuantity">Stats Quantity</span></dt>
                 <dd>
                     <span>{{vehicle.statsQuantity}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.totalExpense">Total Expense</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.totalExpense">Total Expense</span></dt>
                 <dd>
                     <span>{{vehicle.totalExpense}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.odometer">Odometer</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.odometer">Odometer</span></dt>
                 <dd>
                     <span>{{vehicle.odometer}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.note">Note</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.note">Note</span></dt>
                 <dd>
                     <span>{{vehicle.note}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.model">Model</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.model">Model</span></dt>
                 <dd>
                     <div *ngIf="vehicle.model">
                         <a [routerLink]="['/enumeration-ya', vehicle.model?.id, 'view']">{{vehicle.model?.id}}</a>
                     </div>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.vehicle.user">User</span></dt>
+                <dt><span jhiTranslate="otodepomApp.vehicle.user">User</span></dt>
                 <dd>
                     {{vehicle.user?.id}}
                 </dd>

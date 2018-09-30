@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-fill-up-ya-heading" jhiTranslate="yakitanalizApp.fillUp.home.createOrEditLabel">Create or edit a Fill Up</h2>
+            <h2 id="jhi-fill-up-ya-heading" jhiTranslate="otodepomApp.fillUp.home.createOrEditLabel">Create or edit a Fill Up</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!fillUp.id">
@@ -10,17 +10,17 @@
                         [(ngModel)]="fillUp.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.quantity" for="field_quantity">Quantity</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.fillUp.quantity" for="field_quantity">Quantity</label>
                     <input type="number" class="form-control" name="quantity" id="field_quantity"
                         [(ngModel)]="fillUp.quantity" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.unitPrice" for="field_unitPrice">Unit Price</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.fillUp.unitPrice" for="field_unitPrice">Unit Price</label>
                     <input type="number" class="form-control" name="unitPrice" id="field_unitPrice"
                         [(ngModel)]="fillUp.unitPrice" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.date" for="field_date">Date</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.fillUp.date" for="field_date">Date</label>
                     <div class="input-group">
                         <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="fillUp.date"
                         />
@@ -30,38 +30,38 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.odometer" for="field_odometer">Odometer</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.fillUp.odometer" for="field_odometer">Odometer</label>
                     <input type="number" class="form-control" name="odometer" id="field_odometer"
                         [(ngModel)]="fillUp.odometer" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.partial" for="field_partial">Partial</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.fillUp.partial" for="field_partial">Partial</label>
                     <input type="checkbox" class="form-control" name="partial" id="field_partial"
                         [(ngModel)]="fillUp.partial" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.missed" for="field_missed">Missed</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.fillUp.missed" for="field_missed">Missed</label>
                     <input type="checkbox" class="form-control" name="missed" id="field_missed"
                         [(ngModel)]="fillUp.missed" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.note" for="field_note">Note</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.fillUp.note" for="field_note">Note</label>
                     <input type="text" class="form-control" name="note" id="field_note"
                         [(ngModel)]="fillUp.note" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.statsDistance" for="field_statsDistance">Stats Distance</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.fillUp.statsDistance" for="field_statsDistance">Stats Distance</label>
                     <input type="number" class="form-control" name="statsDistance" id="field_statsDistance"
                         [(ngModel)]="fillUp.statsDistance" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.statsQuantity" for="field_statsQuantity">Stats Quantity</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.fillUp.statsQuantity" for="field_statsQuantity">Stats Quantity</label>
                     <input type="number" class="form-control" name="statsQuantity" id="field_statsQuantity"
                         [(ngModel)]="fillUp.statsQuantity" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.fillUp.vehicle" for="field_vehicle">Vehicle</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.fillUp.vehicle" for="field_vehicle">Vehicle</label>
                     <select class="form-control" id="field_vehicle" name="vehicle" [(ngModel)]="fillUp.vehicle" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="vehicleOption.id === fillUp.vehicle?.id ? fillUp.vehicle : vehicleOption" *ngFor="let vehicleOption of vehicles; trackBy: trackVehicleById">{{vehicleOption.id}}</option>

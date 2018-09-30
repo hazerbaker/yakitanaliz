@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { YakitanalizSharedModule } from 'app/shared';
+import { OtodepomSharedModule } from 'app/shared';
 import {
     ReminderYaComponent,
     ReminderYaDetailComponent,
@@ -15,7 +15,7 @@ import {
 const ENTITY_STATES = [...reminderRoute, ...reminderPopupRoute];
 
 @NgModule({
-    imports: [YakitanalizSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [OtodepomSharedModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         ReminderYaComponent,
         ReminderYaDetailComponent,
@@ -26,4 +26,4 @@ const ENTITY_STATES = [...reminderRoute, ...reminderPopupRoute];
     entryComponents: [ReminderYaComponent, ReminderYaUpdateComponent, ReminderYaDeleteDialogComponent, ReminderYaDeletePopupComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class YakitanalizReminderYaModule {}
+export class OtodepomReminderYaModule {}

@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-enumeration-ya-heading" jhiTranslate="yakitanalizApp.enumeration.home.createOrEditLabel">Create or edit a Enumeration</h2>
+            <h2 id="jhi-enumeration-ya-heading" jhiTranslate="otodepomApp.enumeration.home.createOrEditLabel">Create or edit a Enumeration</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!enumeration.id">
@@ -10,25 +10,25 @@
                         [(ngModel)]="enumeration.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.enumeration.name" for="field_name">Name</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.enumeration.name" for="field_name">Name</label>
                     <input type="text" class="form-control" name="name" id="field_name"
                         [(ngModel)]="enumeration.name" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.enumeration.description" for="field_description">Description</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.enumeration.description" for="field_description">Description</label>
                     <input type="text" class="form-control" name="description" id="field_description"
                         [(ngModel)]="enumeration.description" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.enumeration.type" for="field_type">Type</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.enumeration.type" for="field_type">Type</label>
                     <select class="form-control" name="type" [(ngModel)]="enumeration.type" id="field_type" >
-                        <option value="VEHICLEMAKE">{{'yakitanalizApp.EnumerationType.VEHICLEMAKE' | translate}}</option>
-                        <option value="VEHICLEMODEL">{{'yakitanalizApp.EnumerationType.VEHICLEMODEL' | translate}}</option>
+                        <option value="VEHICLEMAKE">{{'otodepomApp.EnumerationType.VEHICLEMAKE' | translate}}</option>
+                        <option value="VEHICLEMODEL">{{'otodepomApp.EnumerationType.VEHICLEMODEL' | translate}}</option>
                     </select>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.enumeration.parent" for="field_parent">Parent</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.enumeration.parent" for="field_parent">Parent</label>
                     <select class="form-control" id="field_parent" name="parent" [(ngModel)]="enumeration.parent" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="enumerationOption.id === enumeration.parent?.id ? enumeration.parent : enumerationOption" *ngFor="let enumerationOption of enumerations; trackBy: trackEnumerationById">{{enumerationOption.id}}</option>

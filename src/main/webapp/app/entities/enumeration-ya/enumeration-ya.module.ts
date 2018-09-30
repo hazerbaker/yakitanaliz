@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { YakitanalizSharedModule } from 'app/shared';
+import { OtodepomSharedModule } from 'app/shared';
 import {
     EnumerationYaComponent,
     EnumerationYaDetailComponent,
@@ -15,7 +15,7 @@ import {
 const ENTITY_STATES = [...enumerationRoute, ...enumerationPopupRoute];
 
 @NgModule({
-    imports: [YakitanalizSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [OtodepomSharedModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         EnumerationYaComponent,
         EnumerationYaDetailComponent,
@@ -31,4 +31,4 @@ const ENTITY_STATES = [...enumerationRoute, ...enumerationPopupRoute];
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class YakitanalizEnumerationYaModule {}
+export class OtodepomEnumerationYaModule {}

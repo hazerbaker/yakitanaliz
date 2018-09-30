@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-service-ya-heading" jhiTranslate="yakitanalizApp.service.home.createOrEditLabel">Create or edit a Service</h2>
+            <h2 id="jhi-service-ya-heading" jhiTranslate="otodepomApp.service.home.createOrEditLabel">Create or edit a Service</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!service.id">
@@ -10,7 +10,7 @@
                         [(ngModel)]="service.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.service.date" for="field_date">Date</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.service.date" for="field_date">Date</label>
                     <div class="input-group">
                         <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="service.date"
                         />
@@ -20,23 +20,23 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.service.totalDistance" for="field_totalDistance">Total Distance</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.service.totalDistance" for="field_totalDistance">Total Distance</label>
                     <input type="number" class="form-control" name="totalDistance" id="field_totalDistance"
                         [(ngModel)]="service.totalDistance" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.service.paidAmount" for="field_paidAmount">Paid Amount</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.service.paidAmount" for="field_paidAmount">Paid Amount</label>
                     <input type="number" class="form-control" name="paidAmount" id="field_paidAmount"
                         [(ngModel)]="service.paidAmount" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.service.note" for="field_note">Note</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.service.note" for="field_note">Note</label>
                     <input type="text" class="form-control" name="note" id="field_note"
                         [(ngModel)]="service.note" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.service.vehicle" for="field_vehicle">Vehicle</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.service.vehicle" for="field_vehicle">Vehicle</label>
                     <select class="form-control" id="field_vehicle" name="vehicle" [(ngModel)]="service.vehicle" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="vehicleOption.id === service.vehicle?.id ? service.vehicle : vehicleOption" *ngFor="let vehicleOption of vehicles; trackBy: trackVehicleById">{{vehicleOption.id}}</option>

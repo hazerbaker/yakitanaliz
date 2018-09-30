@@ -1,9 +1,9 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="yakitanalizApp.reminder.home.title">Reminders</span>
+        <span jhiTranslate="otodepomApp.reminder.home.title">Reminders</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reminder-ya" [routerLink]="['/reminder-ya/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="yakitanalizApp.reminder.home.createLabel">
+            <span  jhiTranslate="otodepomApp.reminder.home.createLabel">
             Create new Reminder
             </span>
         </button>
@@ -15,11 +15,11 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="firstDate"><span jhiTranslate="yakitanalizApp.reminder.firstDate">First Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="recurDate"><span jhiTranslate="yakitanalizApp.reminder.recurDate">Recur Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="firstDistance"><span jhiTranslate="yakitanalizApp.reminder.firstDistance">First Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="recurDistance"><span jhiTranslate="yakitanalizApp.reminder.recurDistance">Recur Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="vehicle.id"><span jhiTranslate="yakitanalizApp.reminder.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="firstDate"><span jhiTranslate="otodepomApp.reminder.firstDate">First Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="recurDate"><span jhiTranslate="otodepomApp.reminder.recurDate">Recur Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="firstDistance"><span jhiTranslate="otodepomApp.reminder.firstDistance">First Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="recurDistance"><span jhiTranslate="otodepomApp.reminder.recurDistance">Recur Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="vehicle.id"><span jhiTranslate="otodepomApp.reminder.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>

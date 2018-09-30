@@ -1,8 +1,8 @@
 {
-  "name": "yakitanaliz",
+  "name": "otodepom",
   "version": "0.0.1",
   "author": "hazerbaker",
-  "homepage": "https://github.com/hazerbaker/yakitanaliz/",
+  "homepage": "https://github.com/hazerbaker/otodepom/",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

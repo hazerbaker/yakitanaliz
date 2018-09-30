@@ -1,27 +1,27 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="reminder">
-            <h2><span jhiTranslate="yakitanalizApp.reminder.detail.title">Reminder</span> {{reminder.id}}</h2>
+            <h2><span jhiTranslate="otodepomApp.reminder.detail.title">Reminder</span> {{reminder.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="yakitanalizApp.reminder.firstDate">First Date</span></dt>
+                <dt><span jhiTranslate="otodepomApp.reminder.firstDate">First Date</span></dt>
                 <dd>
                     <span>{{reminder.firstDate}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.reminder.recurDate">Recur Date</span></dt>
+                <dt><span jhiTranslate="otodepomApp.reminder.recurDate">Recur Date</span></dt>
                 <dd>
                     <span>{{reminder.recurDate}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.reminder.firstDistance">First Distance</span></dt>
+                <dt><span jhiTranslate="otodepomApp.reminder.firstDistance">First Distance</span></dt>
                 <dd>
                     <span>{{reminder.firstDistance}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.reminder.recurDistance">Recur Distance</span></dt>
+                <dt><span jhiTranslate="otodepomApp.reminder.recurDistance">Recur Distance</span></dt>
                 <dd>
                     <span>{{reminder.recurDistance}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.reminder.vehicle">Vehicle</span></dt>
+                <dt><span jhiTranslate="otodepomApp.reminder.vehicle">Vehicle</span></dt>
                 <dd>
                     <div *ngIf="reminder.vehicle">
                         <a [routerLink]="['/vehicle-ya', reminder.vehicle?.id, 'view']">{{reminder.vehicle?.id}}</a>

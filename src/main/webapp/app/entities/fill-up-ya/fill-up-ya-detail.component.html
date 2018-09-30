@@ -1,47 +1,47 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="fillUp">
-            <h2><span jhiTranslate="yakitanalizApp.fillUp.detail.title">Fill Up</span> {{fillUp.id}}</h2>
+            <h2><span jhiTranslate="otodepomApp.fillUp.detail.title">Fill Up</span> {{fillUp.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="yakitanalizApp.fillUp.quantity">Quantity</span></dt>
+                <dt><span jhiTranslate="otodepomApp.fillUp.quantity">Quantity</span></dt>
                 <dd>
                     <span>{{fillUp.quantity}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.fillUp.unitPrice">Unit Price</span></dt>
+                <dt><span jhiTranslate="otodepomApp.fillUp.unitPrice">Unit Price</span></dt>
                 <dd>
                     <span>{{fillUp.unitPrice}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.fillUp.date">Date</span></dt>
+                <dt><span jhiTranslate="otodepomApp.fillUp.date">Date</span></dt>
                 <dd>
                     <span>{{fillUp.date}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.fillUp.odometer">Odometer</span></dt>
+                <dt><span jhiTranslate="otodepomApp.fillUp.odometer">Odometer</span></dt>
                 <dd>
                     <span>{{fillUp.odometer}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.fillUp.partial">Partial</span></dt>
+                <dt><span jhiTranslate="otodepomApp.fillUp.partial">Partial</span></dt>
                 <dd>
                     <span>{{fillUp.partial}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.fillUp.missed">Missed</span></dt>
+                <dt><span jhiTranslate="otodepomApp.fillUp.missed">Missed</span></dt>
                 <dd>
                     <span>{{fillUp.missed}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.fillUp.note">Note</span></dt>
+                <dt><span jhiTranslate="otodepomApp.fillUp.note">Note</span></dt>
                 <dd>
                     <span>{{fillUp.note}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.fillUp.statsDistance">Stats Distance</span></dt>
+                <dt><span jhiTranslate="otodepomApp.fillUp.statsDistance">Stats Distance</span></dt>
                 <dd>
                     <span>{{fillUp.statsDistance}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.fillUp.statsQuantity">Stats Quantity</span></dt>
+                <dt><span jhiTranslate="otodepomApp.fillUp.statsQuantity">Stats Quantity</span></dt>
                 <dd>
                     <span>{{fillUp.statsQuantity}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.fillUp.vehicle">Vehicle</span></dt>
+                <dt><span jhiTranslate="otodepomApp.fillUp.vehicle">Vehicle</span></dt>
                 <dd>
                     <div *ngIf="fillUp.vehicle">
                         <a [routerLink]="['/vehicle-ya', fillUp.vehicle?.id, 'view']">{{fillUp.vehicle?.id}}</a>

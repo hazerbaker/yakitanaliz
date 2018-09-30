@@ -1,9 +1,9 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="yakitanalizApp.expense.home.title">Expenses</span>
+        <span jhiTranslate="otodepomApp.expense.home.title">Expenses</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-expense-ya" [routerLink]="['/expense-ya/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="yakitanalizApp.expense.home.createLabel">
+            <span  jhiTranslate="otodepomApp.expense.home.createLabel">
             Create new Expense
             </span>
         </button>
@@ -15,12 +15,12 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="date"><span jhiTranslate="yakitanalizApp.expense.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="type"><span jhiTranslate="yakitanalizApp.expense.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="odometer"><span jhiTranslate="yakitanalizApp.expense.odometer">Odometer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="paidAmount"><span jhiTranslate="yakitanalizApp.expense.paidAmount">Paid Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="note"><span jhiTranslate="yakitanalizApp.expense.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="vehicle.id"><span jhiTranslate="yakitanalizApp.expense.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="date"><span jhiTranslate="otodepomApp.expense.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="type"><span jhiTranslate="otodepomApp.expense.type">Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="odometer"><span jhiTranslate="otodepomApp.expense.odometer">Odometer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paidAmount"><span jhiTranslate="otodepomApp.expense.paidAmount">Paid Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="note"><span jhiTranslate="otodepomApp.expense.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="vehicle.id"><span jhiTranslate="otodepomApp.expense.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
@@ -28,7 +28,7 @@
             <tr *ngFor="let expense of expenses ;trackBy: trackId">
                 <td><a [routerLink]="['/expense-ya', expense.id, 'view' ]">{{expense.id}}</a></td>
                 <td>{{expense.date | date:'mediumDate'}}</td>
-                <td jhiTranslate="{{'yakitanalizApp.ExpenseType.' + expense.type}}">{{expense.type}}</td>
+                <td jhiTranslate="{{'otodepomApp.ExpenseType.' + expense.type}}">{{expense.type}}</td>
                 <td>{{expense.odometer}}</td>
                 <td>{{expense.paidAmount}}</td>
                 <td>{{expense.note}}</td>

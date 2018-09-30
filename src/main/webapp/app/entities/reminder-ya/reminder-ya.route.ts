@@ -35,7 +35,7 @@ export const reminderRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             defaultSort: 'id,asc',
-            pageTitle: 'yakitanalizApp.reminder.home.title'
+            pageTitle: 'otodepomApp.reminder.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -47,7 +47,7 @@ export const reminderRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'yakitanalizApp.reminder.home.title'
+            pageTitle: 'otodepomApp.reminder.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -59,7 +59,7 @@ export const reminderRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'yakitanalizApp.reminder.home.title'
+            pageTitle: 'otodepomApp.reminder.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -71,7 +71,7 @@ export const reminderRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'yakitanalizApp.reminder.home.title'
+            pageTitle: 'otodepomApp.reminder.home.title'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -86,7 +86,7 @@ export const reminderPopupRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'yakitanalizApp.reminder.home.title'
+            pageTitle: 'otodepomApp.reminder.home.title'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

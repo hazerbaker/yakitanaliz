@@ -1,23 +1,23 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <div *ngIf="enumeration">
-            <h2><span jhiTranslate="yakitanalizApp.enumeration.detail.title">Enumeration</span> {{enumeration.id}}</h2>
+            <h2><span jhiTranslate="otodepomApp.enumeration.detail.title">Enumeration</span> {{enumeration.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="yakitanalizApp.enumeration.name">Name</span></dt>
+                <dt><span jhiTranslate="otodepomApp.enumeration.name">Name</span></dt>
                 <dd>
                     <span>{{enumeration.name}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.enumeration.description">Description</span></dt>
+                <dt><span jhiTranslate="otodepomApp.enumeration.description">Description</span></dt>
                 <dd>
                     <span>{{enumeration.description}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.enumeration.type">Type</span></dt>
+                <dt><span jhiTranslate="otodepomApp.enumeration.type">Type</span></dt>
                 <dd>
-                    <span jhiTranslate="{{'yakitanalizApp.EnumerationType.' + enumeration.type}}">{{enumeration.type}}</span>
+                    <span jhiTranslate="{{'otodepomApp.EnumerationType.' + enumeration.type}}">{{enumeration.type}}</span>
                 </dd>
-                <dt><span jhiTranslate="yakitanalizApp.enumeration.parent">Parent</span></dt>
+                <dt><span jhiTranslate="otodepomApp.enumeration.parent">Parent</span></dt>
                 <dd>
                     <div *ngIf="enumeration.parent">
                         <a [routerLink]="['/enumeration-ya', enumeration.parent?.id, 'view']">{{enumeration.parent?.id}}</a>

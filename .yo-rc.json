@@ -1,14 +1,14 @@
 {
   "generator-jhipster": {
     "promptValues": {
-      "packageName": "com.hazerbaker.yakitanaliz",
+      "packageName": "com.hazerbaker.otodepom",
       "nativeLanguage": "en"
     },
     "jhipsterVersion": "5.0.1",
     "applicationType": "monolith",
-    "baseName": "yakitanaliz",
-    "packageName": "com.hazerbaker.yakitanaliz",
-    "packageFolder": "com/hazerbaker/yakitanaliz",
+    "baseName": "otodepom",
+    "packageName": "com.hazerbaker.otodepom",
+    "packageFolder": "com/hazerbaker/otodepom",
     "serverPort": "8080",
     "authenticationType": "jwt",
     "cacheProvider": "no",

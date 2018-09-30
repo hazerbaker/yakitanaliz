@@ -35,7 +35,7 @@ export const vehicleRoute: Routes = [
         data: {
             authorities: ['ROLE_USER'],
             defaultSort: 'id,asc',
-            pageTitle: 'yakitanalizApp.vehicle.home.title'
+            pageTitle: 'otodepomApp.vehicle.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -47,7 +47,7 @@ export const vehicleRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'yakitanalizApp.vehicle.home.title'
+            pageTitle: 'otodepomApp.vehicle.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -59,7 +59,7 @@ export const vehicleRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'yakitanalizApp.vehicle.home.title'
+            pageTitle: 'otodepomApp.vehicle.home.title'
         },
         canActivate: [UserRouteAccessService]
     },
@@ -71,7 +71,7 @@ export const vehicleRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'yakitanalizApp.vehicle.home.title'
+            pageTitle: 'otodepomApp.vehicle.home.title'
         },
         canActivate: [UserRouteAccessService]
     }
@@ -86,7 +86,7 @@ export const vehiclePopupRoute: Routes = [
         },
         data: {
             authorities: ['ROLE_USER'],
-            pageTitle: 'yakitanalizApp.vehicle.home.title'
+            pageTitle: 'otodepomApp.vehicle.home.title'
         },
         canActivate: [UserRouteAccessService],
         outlet: 'popup'

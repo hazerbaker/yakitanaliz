@@ -12,7 +12,7 @@
 
 eureka:
     instance:
-        hostname: yakitanaliz.herokuapp.com
+        hostname: otodepom.herokuapp.com
         non-secure-port: 80
         prefer-ip-address: false
     client:

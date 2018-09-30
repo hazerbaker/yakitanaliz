@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-expense-ya-heading" jhiTranslate="yakitanalizApp.expense.home.createOrEditLabel">Create or edit a Expense</h2>
+            <h2 id="jhi-expense-ya-heading" jhiTranslate="otodepomApp.expense.home.createOrEditLabel">Create or edit a Expense</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!expense.id">
@@ -10,7 +10,7 @@
                         [(ngModel)]="expense.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.expense.date" for="field_date">Date</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.expense.date" for="field_date">Date</label>
                     <div class="input-group">
                         <input id="field_date" type="text" class="form-control" name="date" ngbDatepicker  #dateDp="ngbDatepicker" [(ngModel)]="expense.date"
                         />
@@ -20,35 +20,35 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.expense.type" for="field_type">Type</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.expense.type" for="field_type">Type</label>
                     <select class="form-control" name="type" [(ngModel)]="expense.type" id="field_type" >
-                        <option value="INSURANCE">{{'yakitanalizApp.ExpenseType.INSURANCE' | translate}}</option>
-                        <option value="TPL">{{'yakitanalizApp.ExpenseType.TPL' | translate}}</option>
-                        <option value="TAX">{{'yakitanalizApp.ExpenseType.TAX' | translate}}</option>
-                        <option value="MAINTENANCE">{{'yakitanalizApp.ExpenseType.MAINTENANCE' | translate}}</option>
-                        <option value="REPAIR">{{'yakitanalizApp.ExpenseType.REPAIR' | translate}}</option>
-                        <option value="DAMAGE">{{'yakitanalizApp.ExpenseType.DAMAGE' | translate}}</option>
-                        <option value="OTHER">{{'yakitanalizApp.ExpenseType.OTHER' | translate}}</option>
+                        <option value="INSURANCE">{{'otodepomApp.ExpenseType.INSURANCE' | translate}}</option>
+                        <option value="TPL">{{'otodepomApp.ExpenseType.TPL' | translate}}</option>
+                        <option value="TAX">{{'otodepomApp.ExpenseType.TAX' | translate}}</option>
+                        <option value="MAINTENANCE">{{'otodepomApp.ExpenseType.MAINTENANCE' | translate}}</option>
+                        <option value="REPAIR">{{'otodepomApp.ExpenseType.REPAIR' | translate}}</option>
+                        <option value="DAMAGE">{{'otodepomApp.ExpenseType.DAMAGE' | translate}}</option>
+                        <option value="OTHER">{{'otodepomApp.ExpenseType.OTHER' | translate}}</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.expense.odometer" for="field_odometer">Odometer</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.expense.odometer" for="field_odometer">Odometer</label>
                     <input type="number" class="form-control" name="odometer" id="field_odometer"
                         [(ngModel)]="expense.odometer" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.expense.paidAmount" for="field_paidAmount">Paid Amount</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.expense.paidAmount" for="field_paidAmount">Paid Amount</label>
                     <input type="number" class="form-control" name="paidAmount" id="field_paidAmount"
                         [(ngModel)]="expense.paidAmount" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.expense.note" for="field_note">Note</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.expense.note" for="field_note">Note</label>
                     <input type="text" class="form-control" name="note" id="field_note"
                         [(ngModel)]="expense.note" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.expense.vehicle" for="field_vehicle">Vehicle</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.expense.vehicle" for="field_vehicle">Vehicle</label>
                     <select class="form-control" id="field_vehicle" name="vehicle" [(ngModel)]="expense.vehicle" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="vehicleOption.id === expense.vehicle?.id ? expense.vehicle : vehicleOption" *ngFor="let vehicleOption of vehicles; trackBy: trackVehicleById">{{vehicleOption.id}}</option>

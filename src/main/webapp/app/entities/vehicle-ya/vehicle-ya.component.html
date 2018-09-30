@@ -1,9 +1,9 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="yakitanalizApp.vehicle.home.title">Vehicles</span>
+        <span jhiTranslate="otodepomApp.vehicle.home.title">Vehicles</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-vehicle-ya" [routerLink]="['/vehicle-ya/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="yakitanalizApp.vehicle.home.createLabel">
+            <span  jhiTranslate="otodepomApp.vehicle.home.createLabel">
             Create new Vehicle
             </span>
         </button>
@@ -15,28 +15,28 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="fuelType"><span jhiTranslate="yakitanalizApp.vehicle.fuelType">Fuel Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="cc"><span jhiTranslate="yakitanalizApp.vehicle.cc">Cc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="year"><span jhiTranslate="yakitanalizApp.vehicle.year">Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="transmission"><span jhiTranslate="yakitanalizApp.vehicle.transmission">Transmission</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="photo"><span jhiTranslate="yakitanalizApp.vehicle.photo">Photo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="statsDistance"><span jhiTranslate="yakitanalizApp.vehicle.statsDistance">Stats Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="statsQuantity"><span jhiTranslate="yakitanalizApp.vehicle.statsQuantity">Stats Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="totalExpense"><span jhiTranslate="yakitanalizApp.vehicle.totalExpense">Total Expense</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="odometer"><span jhiTranslate="yakitanalizApp.vehicle.odometer">Odometer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="note"><span jhiTranslate="yakitanalizApp.vehicle.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="model.id"><span jhiTranslate="yakitanalizApp.vehicle.model">Model</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="user.id"><span jhiTranslate="yakitanalizApp.vehicle.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="fuelType"><span jhiTranslate="otodepomApp.vehicle.fuelType">Fuel Type</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="cc"><span jhiTranslate="otodepomApp.vehicle.cc">Cc</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="year"><span jhiTranslate="otodepomApp.vehicle.year">Year</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="transmission"><span jhiTranslate="otodepomApp.vehicle.transmission">Transmission</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="photo"><span jhiTranslate="otodepomApp.vehicle.photo">Photo</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="statsDistance"><span jhiTranslate="otodepomApp.vehicle.statsDistance">Stats Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="statsQuantity"><span jhiTranslate="otodepomApp.vehicle.statsQuantity">Stats Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="totalExpense"><span jhiTranslate="otodepomApp.vehicle.totalExpense">Total Expense</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="odometer"><span jhiTranslate="otodepomApp.vehicle.odometer">Odometer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="note"><span jhiTranslate="otodepomApp.vehicle.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="model.id"><span jhiTranslate="otodepomApp.vehicle.model">Model</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="user.id"><span jhiTranslate="otodepomApp.vehicle.user">User</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let vehicle of vehicles ;trackBy: trackId">
                 <td><a [routerLink]="['/vehicle-ya', vehicle.id, 'view' ]">{{vehicle.id}}</a></td>
-                <td jhiTranslate="{{'yakitanalizApp.FuelType.' + vehicle.fuelType}}">{{vehicle.fuelType}}</td>
+                <td jhiTranslate="{{'otodepomApp.FuelType.' + vehicle.fuelType}}">{{vehicle.fuelType}}</td>
                 <td>{{vehicle.cc}}</td>
                 <td>{{vehicle.year}}</td>
-                <td jhiTranslate="{{'yakitanalizApp.Transmission.' + vehicle.transmission}}">{{vehicle.transmission}}</td>
+                <td jhiTranslate="{{'otodepomApp.Transmission.' + vehicle.transmission}}">{{vehicle.transmission}}</td>
                 <td>
                     <a *ngIf="vehicle.photo" (click)="openFile(vehicle.photoContentType, vehicle.photo)" jhiTranslate="entity.action.open">open</a>
                     <span *ngIf="vehicle.photo">{{vehicle.photoContentType}}, {{byteSize(vehicle.photo)}}</span>

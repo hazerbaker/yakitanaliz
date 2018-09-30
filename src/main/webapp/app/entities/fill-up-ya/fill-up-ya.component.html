@@ -1,9 +1,9 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="yakitanalizApp.fillUp.home.title">Fill Ups</span>
+        <span jhiTranslate="otodepomApp.fillUp.home.title">Fill Ups</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-fill-up-ya" [routerLink]="['/fill-up-ya/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="yakitanalizApp.fillUp.home.createLabel">
+            <span  jhiTranslate="otodepomApp.fillUp.home.createLabel">
             Create new Fill Up
             </span>
         </button>
@@ -15,16 +15,16 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="quantity"><span jhiTranslate="yakitanalizApp.fillUp.quantity">Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="unitPrice"><span jhiTranslate="yakitanalizApp.fillUp.unitPrice">Unit Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="date"><span jhiTranslate="yakitanalizApp.fillUp.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="odometer"><span jhiTranslate="yakitanalizApp.fillUp.odometer">Odometer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="partial"><span jhiTranslate="yakitanalizApp.fillUp.partial">Partial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="missed"><span jhiTranslate="yakitanalizApp.fillUp.missed">Missed</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="note"><span jhiTranslate="yakitanalizApp.fillUp.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="statsDistance"><span jhiTranslate="yakitanalizApp.fillUp.statsDistance">Stats Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="statsQuantity"><span jhiTranslate="yakitanalizApp.fillUp.statsQuantity">Stats Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="vehicle.id"><span jhiTranslate="yakitanalizApp.fillUp.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="quantity"><span jhiTranslate="otodepomApp.fillUp.quantity">Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="unitPrice"><span jhiTranslate="otodepomApp.fillUp.unitPrice">Unit Price</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="date"><span jhiTranslate="otodepomApp.fillUp.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="odometer"><span jhiTranslate="otodepomApp.fillUp.odometer">Odometer</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="partial"><span jhiTranslate="otodepomApp.fillUp.partial">Partial</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="missed"><span jhiTranslate="otodepomApp.fillUp.missed">Missed</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="note"><span jhiTranslate="otodepomApp.fillUp.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="statsDistance"><span jhiTranslate="otodepomApp.fillUp.statsDistance">Stats Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="statsQuantity"><span jhiTranslate="otodepomApp.fillUp.statsQuantity">Stats Quantity</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="vehicle.id"><span jhiTranslate="otodepomApp.fillUp.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>

@@ -1,9 +1,9 @@
 <div>
     <h2 id="page-heading">
-        <span jhiTranslate="yakitanalizApp.service.home.title">Services</span>
+        <span jhiTranslate="otodepomApp.service.home.title">Services</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-service-ya" [routerLink]="['/service-ya/new']">
             <fa-icon [icon]="'plus'"></fa-icon>
-            <span  jhiTranslate="yakitanalizApp.service.home.createLabel">
+            <span  jhiTranslate="otodepomApp.service.home.createLabel">
             Create new Service
             </span>
         </button>
@@ -15,11 +15,11 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="date"><span jhiTranslate="yakitanalizApp.service.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="totalDistance"><span jhiTranslate="yakitanalizApp.service.totalDistance">Total Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="paidAmount"><span jhiTranslate="yakitanalizApp.service.paidAmount">Paid Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="note"><span jhiTranslate="yakitanalizApp.service.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="vehicle.id"><span jhiTranslate="yakitanalizApp.service.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="date"><span jhiTranslate="otodepomApp.service.date">Date</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="totalDistance"><span jhiTranslate="otodepomApp.service.totalDistance">Total Distance</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="paidAmount"><span jhiTranslate="otodepomApp.service.paidAmount">Paid Amount</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="note"><span jhiTranslate="otodepomApp.service.note">Note</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+            <th jhiSortBy="vehicle.id"><span jhiTranslate="otodepomApp.service.vehicle">Vehicle</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th></th>
             </tr>
             </thead>

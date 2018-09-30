@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { YakitanalizSharedModule } from 'app/shared';
+import { OtodepomSharedModule } from 'app/shared';
 import {
     ExpenseYaComponent,
     ExpenseYaDetailComponent,
@@ -15,7 +15,7 @@ import {
 const ENTITY_STATES = [...expenseRoute, ...expensePopupRoute];
 
 @NgModule({
-    imports: [YakitanalizSharedModule, RouterModule.forChild(ENTITY_STATES)],
+    imports: [OtodepomSharedModule, RouterModule.forChild(ENTITY_STATES)],
     declarations: [
         ExpenseYaComponent,
         ExpenseYaDetailComponent,
@@ -26,4 +26,4 @@ const ENTITY_STATES = [...expenseRoute, ...expensePopupRoute];
     entryComponents: [ExpenseYaComponent, ExpenseYaUpdateComponent, ExpenseYaDeleteDialogComponent, ExpenseYaDeletePopupComponent],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class YakitanalizExpenseYaModule {}
+export class OtodepomExpenseYaModule {}

@@ -3,14 +3,14 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "yakitanaliz": {
+    "otodepom": {
       "root": "",
       "sourceRoot": "src/main/webapp",
       "projectType": "application",
       "architect": {}
     }
   },
-  "defaultProject": "yakitanaliz",
+  "defaultProject": "otodepom",
   "cli": {
     "packageManager": "yarn"
   },

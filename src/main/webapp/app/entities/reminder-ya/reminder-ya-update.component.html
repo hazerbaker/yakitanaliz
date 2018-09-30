@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
     <div class="col-8">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-            <h2 id="jhi-reminder-ya-heading" jhiTranslate="yakitanalizApp.reminder.home.createOrEditLabel">Create or edit a Reminder</h2>
+            <h2 id="jhi-reminder-ya-heading" jhiTranslate="otodepomApp.reminder.home.createOrEditLabel">Create or edit a Reminder</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!reminder.id">
@@ -10,7 +10,7 @@
                         [(ngModel)]="reminder.id" readonly />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.reminder.firstDate" for="field_firstDate">First Date</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.reminder.firstDate" for="field_firstDate">First Date</label>
                     <div class="input-group">
                         <input id="field_firstDate" type="text" class="form-control" name="firstDate" ngbDatepicker  #firstDateDp="ngbDatepicker" [(ngModel)]="reminder.firstDate"
                         />
@@ -20,7 +20,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.reminder.recurDate" for="field_recurDate">Recur Date</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.reminder.recurDate" for="field_recurDate">Recur Date</label>
                     <div class="input-group">
                         <input id="field_recurDate" type="text" class="form-control" name="recurDate" ngbDatepicker  #recurDateDp="ngbDatepicker" [(ngModel)]="reminder.recurDate"
                         />
@@ -30,18 +30,18 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.reminder.firstDistance" for="field_firstDistance">First Distance</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.reminder.firstDistance" for="field_firstDistance">First Distance</label>
                     <input type="number" class="form-control" name="firstDistance" id="field_firstDistance"
                         [(ngModel)]="reminder.firstDistance" />
                 </div>
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.reminder.recurDistance" for="field_recurDistance">Recur Distance</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.reminder.recurDistance" for="field_recurDistance">Recur Distance</label>
                     <input type="text" class="form-control" name="recurDistance" id="field_recurDistance"
                         [(ngModel)]="reminder.recurDistance" />
                 </div>
 
                 <div class="form-group">
-                    <label class="form-control-label" jhiTranslate="yakitanalizApp.reminder.vehicle" for="field_vehicle">Vehicle</label>
+                    <label class="form-control-label" jhiTranslate="otodepomApp.reminder.vehicle" for="field_vehicle">Vehicle</label>
                     <select class="form-control" id="field_vehicle" name="vehicle" [(ngModel)]="reminder.vehicle" >
                         <option [ngValue]="null"></option>
                         <option [ngValue]="vehicleOption.id === reminder.vehicle?.id ? reminder.vehicle : vehicleOption" *ngFor="let vehicleOption of vehicles; trackBy: trackVehicleById">{{vehicleOption.id}}</option>

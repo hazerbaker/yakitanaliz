@@ -17,7 +17,7 @@ import locale from '@angular/common/locales/en';
         DatePipe
     ]
 })
-export class YakitanalizCoreModule {
+export class OtodepomCoreModule {
     constructor() {
         registerLocaleData(locale);
     }

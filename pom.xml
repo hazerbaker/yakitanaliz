@@ -2,11 +2,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.hazerbaker.yakitanaliz</groupId>
-    <artifactId>yakitanaliz</artifactId>
+    <groupId>com.hazerbaker.otodepom</groupId>
+    <artifactId>otodepom</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>Yakitanaliz</name>
+    <name>Otodepom</name>
 
     <repositories>
         <!-- jhipster-needle-maven-repository -->
@@ -482,11 +482,11 @@
                     <changeLogFile>src/main/resources/config/liquibase/master.xml</changeLogFile>
                     <diffChangeLogFile>src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                     <driver>org.h2.Driver</driver>
-                    <url>jdbc:h2:file:./target/h2db/db/yakitanaliz</url>
+                    <url>jdbc:h2:file:./target/h2db/db/otodepom</url>
                     <defaultSchemaName></defaultSchemaName>
-                    <username>yakitanaliz</username>
+                    <username>otodepom</username>
                     <password></password>
-                    <referenceUrl>hibernate:spring:com.hazerbaker.yakitanaliz.domain?dialect=org.hibernate.dialect.H2Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
+                    <referenceUrl>hibernate:spring:com.hazerbaker.otodepom.domain?dialect=org.hibernate.dialect.H2Dialect&amp;hibernate.physical_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy&amp;hibernate.implicit_naming_strategy=org.springframework.boot.orm.jpa.hibernate.SpringImplicitNamingStrategy</referenceUrl>
                     <verbose>true</verbose>
                     <logging>debug</logging>
                 </configuration>
@@ -584,7 +584,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>yakitanaliz</repository>
+                    <repository>otodepom</repository>
                     <contextDirectory>${project.build.directory}</contextDirectory>
                 </configuration>
             </plugin>
