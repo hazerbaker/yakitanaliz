@@ -132,9 +132,11 @@ export class Api {
   track(err) {
     this.loading(false);
     if (err.status === 401) {
-      localStorage.removeItem('jwttoken');
-      location.href = "/";
-      //location.reload();
+      if (location.href.indexOf('login') == -1) {
+        localStorage.removeItem('jwttoken');
+        location.href = "/";
+        location.reload();
+      }
     }
     else {
       console.error('ERROR', err);
