@@ -40,7 +40,7 @@
         <ion-input type="number" formControlName="quantity" (keydown)="quantityChange()"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label color="primary" floating>{{ 'FILLUP_ODOMETER_PLACEHOLDER' | translate }} {{fillUp ? '' : '(Son: '+ vehicle.odometer + ')'}}</ion-label>
+        <ion-label color="primary" floating>{{ 'FILLUP_ODOMETER_PLACEHOLDER' | translate }} {{fillUp || vehicle.odometer == null ? '' : '(Son: '+ vehicle.odometer + ')'}}</ion-label>
         <ion-input type="number" formControlName="odometer"></ion-input>
       </ion-item>
       <ion-item>

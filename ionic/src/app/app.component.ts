@@ -70,7 +70,6 @@ export class MyApp {
   }
 
   openPage(page) {
-    console.log("page",page)
     if(page.component == 'LoginPage') localStorage.removeItem('jwttoken')
     this.nav.setRoot(page.component);
   }

@@ -28,7 +28,7 @@
         </ion-col>
         <ion-col col-6>
           <h4>{{vehicle.model ? vehicle.model.parent.name : ""}} {{vehicle.model ? vehicle.model.name : ""}}</h4>
-          <ion-note item-end>{{ api.roundcc(vehicle.cc) }} {{vehicle.fuelType}} {{vehicle.transmission}}
+          <ion-note item-end>{{ api.roundcc(vehicle.cc) }} {{vehicle.fuelType | translate }} {{vehicle.transmission | translate }}
             {{vehicle.year}}</ion-note>
         </ion-col>
       </ion-row>
