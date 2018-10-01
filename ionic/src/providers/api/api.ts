@@ -9,7 +9,7 @@ import { LoadingController } from 'ionic-angular';
  */
 @Injectable()
 export class Api {
-  url: string = 'http://localhost:8080/api'; // https://otodepom.herokuapp.com/api / http://localhost:8080/api
+  url: string = 'https://otodepom.herokuapp.com/api'; // https://otodepom.herokuapp.com/api / http://localhost:8080/api
   loader;
 
   constructor(public http: HttpClient, public loadingCtrl: LoadingController) {
@@ -135,7 +135,6 @@ export class Api {
       if (location.href.indexOf('login') == -1) {
         localStorage.removeItem('jwttoken');
         location.href = "/";
-        location.reload();
       }
     }
     else {
