@@ -54,6 +54,17 @@ spring:
             enabled: false
     thymeleaf:
         mode: HTML
+    mail:
+        host: smtp.yandex.com
+        port: 587
+        username: 
+        password: 
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.yandex.com
 
 server:
     servlet:
@@ -86,7 +97,8 @@ jhipster:
         allow-credentials: true
         max-age: 1800
     mail:
-        from: otodepom@localhost
+        from: cagdas@innotek.com.tr
+        base-url: http://www.otodepom.com
     swagger:
         default-include-pattern: /api/.*
         title: otodepom API
@@ -98,14 +110,3 @@ jhipster:
         contact-email:
         license:
         license-url:
-
-# ===================================================================
-# Application specific properties
-# Add your own application properties here, see the ApplicationProperties class
-# to have type-safe configuration, like in the JHipsterProperties above
-#
-# More documentation is available at:
-# https://www.jhipster.tech/common-application-properties/
-# ===================================================================
-
-# application:
