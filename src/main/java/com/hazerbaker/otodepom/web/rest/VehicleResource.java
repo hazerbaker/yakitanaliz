@@ -66,7 +66,7 @@ public class VehicleResource {
         if (vehicle.getId() != null) {
             throw new BadRequestAlertException("A new vehicle cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        vehicle.setPhoto(ImageUtil.resize(vehicle.getPhoto(), 400));
+        if(vehicle.getPhotoContentType() != "") vehicle.setPhoto(ImageUtil.resize(vehicle.getPhoto(), 400));
         vehicle.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
         Vehicle result = vehicleRepository.save(vehicle);
         return ResponseEntity.created(new URI("/api/vehicles/" + result.getId()))
@@ -80,7 +80,7 @@ public class VehicleResource {
         if (vehicle.getId() == null) {
             throw new BadRequestAlertException("Invalid id", ENTITY_NAME, "idnull");
         }
-        vehicle.setPhoto(ImageUtil.resize(vehicle.getPhoto(), 400));
+        if(vehicle.getPhotoContentType() != "") vehicle.setPhoto(ImageUtil.resize(vehicle.getPhoto(), 400));
         vehicle.setUser(userRepository.findOneByLogin(SecurityUtils.getCurrentUserLogin().get()).get());
         Vehicle result = vehicleRepository.save(vehicle);
         StatsCalculator.calculateVehicle(vehicle, fillUpRepository, expenseRepository, vehicleRepository);

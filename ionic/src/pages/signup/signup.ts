@@ -14,7 +14,7 @@ export class SignupPage {
     login: 'test',
     email: 'test@example.com',
     password: 'qqqq',
-    langKey: 'en'
+    langKey: 'tr'
   };
 
   // Our translated text strings
