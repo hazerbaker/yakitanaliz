@@ -1,6 +1,8 @@
 {
     "home": {
-        "title": "Welcome, Java Hipster!",
+        "title": "otoDepom.com",
+        "userTitle": "Welcome, {{username}}!",
+        "guestTitle": "Welcome!",
         "subtitle": "This is your homepage",
         "logged": {
             "message": "You are logged in as user \"{{username}}\"."

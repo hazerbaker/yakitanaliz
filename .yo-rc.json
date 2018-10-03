@@ -2,7 +2,7 @@
   "generator-jhipster": {
     "promptValues": {
       "packageName": "com.hazerbaker.otodepom",
-      "nativeLanguage": "en"
+      "nativeLanguage": "tr"
     },
     "jhipsterVersion": "5.0.1",
     "applicationType": "monolith",

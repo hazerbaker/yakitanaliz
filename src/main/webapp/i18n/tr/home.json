@@ -1,9 +1,11 @@
 {
     "home": {
-        "title": "Merhaba, Java Hipster!",
+        "title": "otodepom",
+        "userTitle": "Merhaba, {{username}}!",
+        "guestTitle": "Merhaba!",
         "subtitle": "Burası Ana Sayfanız",
         "logged": {
-            "message": "\"{{username}}\" olarak giriş yaptınız."
+            "message": " olarak giriş yaptınız."
         },
         "question": "JHipster hakkında sorularınız için:",
         "link": {
