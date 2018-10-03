@@ -27,3 +27,14 @@ spring:
         password: ${JDBC_DATABASE_PASSWORD}
         hikari:
             maximumPoolSize: 8
+    mail:
+        host: smtp.yandex.com
+        port: 587
+        username: ${MAIL_USERNAME}
+        password: ${MAIL_PASSWORD}
+        protocol: smtp
+        tls: true
+        properties.mail.smtp:
+            auth: true
+            starttls.enable: true
+            ssl.trust: smtp.yandex.com
